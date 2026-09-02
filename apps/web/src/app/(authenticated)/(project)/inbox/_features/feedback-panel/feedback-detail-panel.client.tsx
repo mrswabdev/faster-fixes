@@ -9,6 +9,7 @@ import {
   SheetTitle,
 } from "@workspace/ui/components/sheet";
 import { format, formatDistanceToNow } from "date-fns";
+import { de } from "date-fns/locale";
 import { ExternalLink, ImageOff, Paperclip } from "lucide-react";
 import type { GetFeedbackOutput } from "../get-feedback.trpc.query";
 import { ThreadSection } from "./thread/thread-section.client";
@@ -257,6 +258,7 @@ export function FeedbackDetailPanel({
               Zuletzt aktualisiert{" "}
               {formatDistanceToNow(new Date(feedback.updatedAt), {
                 addSuffix: true,
+                locale: de,
               })}
             </span>
           </div>

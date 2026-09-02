@@ -7,6 +7,7 @@ import { Badge } from "@workspace/ui/components/badge";
 import { Button } from "@workspace/ui/components/button";
 import { Textarea } from "@workspace/ui/components/textarea";
 import { formatDistanceToNow } from "date-fns";
+import { de } from "date-fns/locale";
 import { Loader2, Paperclip, X } from "lucide-react";
 import { useRef, useState } from "react";
 
@@ -159,6 +160,7 @@ export function ThreadSection({ feedbackId }: ThreadSectionProps) {
                 <span className="text-muted-foreground text-xs">
                   {formatDistanceToNow(new Date(comment.createdAt), {
                     addSuffix: true,
+                    locale: de,
                   })}
                 </span>
               </div>

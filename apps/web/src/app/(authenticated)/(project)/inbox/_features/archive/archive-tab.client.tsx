@@ -11,6 +11,7 @@ import { type ColumnDef } from "@tanstack/react-table";
 import { Avatar, AvatarFallback, AvatarImage } from "@workspace/ui/components/avatar";
 import { Skeleton } from "@workspace/ui/components/skeleton";
 import { formatDistanceToNow } from "date-fns";
+import { de } from "date-fns/locale";
 import { AlertCircle } from "lucide-react";
 import * as React from "react";
 import { toast } from "sonner";
@@ -139,7 +140,7 @@ export function ArchiveTab() {
         ),
         cell: ({ row }) => (
           <span className="text-muted-foreground text-xs">
-            {formatDistanceToNow(new Date(row.original.updatedAt), { addSuffix: true })}
+            {formatDistanceToNow(new Date(row.original.updatedAt), { addSuffix: true, locale: de })}
           </span>
         ),
       },

@@ -11,6 +11,7 @@ import { GithubIcon } from "@workspace/ui/components/icons/github-icon";
 import { resolveS3Url } from "@/server/storage/resolve-s3-url";
 import { cn } from "@workspace/ui/lib/utils";
 import { formatDistanceToNow } from "date-fns";
+import { de } from "date-fns/locale";
 import { GripVertical } from "lucide-react";
 import type { GetFeedbackOutput } from "../get-feedback.trpc.query";
 
@@ -117,6 +118,7 @@ function KanbanCardView({
           <span className="text-muted-foreground ml-auto shrink-0 text-xs">
             {formatDistanceToNow(new Date(feedback.createdAt), {
               addSuffix: true,
+              locale: de,
             })}
           </span>
         </div>
