@@ -24,7 +24,7 @@ export function RestoreReviewerButton({
         queryClient.invalidateQueries(
           trpc.authenticated.projects.reviewer.list.queryOptions({ projectId }),
         );
-        toast.success("Reviewer restored");
+        toast.success("Reviewer wiederhergestellt");
       },
       onError: (error) => {
         toast.error(error.message);
@@ -40,7 +40,7 @@ export function RestoreReviewerButton({
       onClick={() => restoreReviewer.mutate({ reviewerId })}
     >
       <RotateCcw className="size-4" />
-      Restore
+      Wiederherstellen
     </Button>
   );
 }

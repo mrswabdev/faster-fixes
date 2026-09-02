@@ -48,15 +48,15 @@ export function ViewDiagnosticsDialog({
       <DialogTrigger asChild>
         <Button variant="outline" size="sm" className="w-full">
           <Terminal className="size-3.5" />
-          View diagnostics
+          Diagnose ansehen
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-2xl">
         <DialogHeader>
-          <DialogTitle>Diagnostics</DialogTitle>
+          <DialogTitle>Diagnose</DialogTitle>
           <DialogDescription>
-            Console and network activity captured before this feedback was
-            submitted.
+            Konsolen- und Netzwerkaktivität, die vor dem Absenden dieses
+            Feedbacks erfasst wurde.
           </DialogDescription>
         </DialogHeader>
         {matchQueryStatus(query, {
@@ -68,12 +68,12 @@ export function ViewDiagnosticsDialog({
           ),
           Errored: (
             <p className="text-muted-foreground py-8 text-center text-sm">
-              Could not load diagnostics.
+              Diagnose konnte nicht geladen werden.
             </p>
           ),
           Empty: (
             <p className="text-muted-foreground py-8 text-center text-sm">
-              No diagnostics were captured for this feedback.
+              Für dieses Feedback wurden keine Diagnosedaten erfasst.
             </p>
           ),
           Success: ({ data }) => <DiagnosticsTabs trail={data} />,
@@ -90,13 +90,13 @@ function DiagnosticsTabs({ trail }: { trail: DiagnosticTrail }) {
   return (
     <Tabs defaultValue="console">
       <TabsList>
-        <TabsTrigger value="console">Console ({consoleCount})</TabsTrigger>
-        <TabsTrigger value="network">Network ({networkCount})</TabsTrigger>
+        <TabsTrigger value="console">Konsole ({consoleCount})</TabsTrigger>
+        <TabsTrigger value="network">Netzwerk ({networkCount})</TabsTrigger>
       </TabsList>
 
       <TabsContent value="console">
         {consoleCount === 0 ? (
-          <EmptyRow text="No console output captured." />
+          <EmptyRow text="Keine Konsolenausgabe erfasst." />
         ) : (
           <ul className="max-h-[60vh] divide-y overflow-y-auto rounded-md border">
             {trail.console.map((entry, i) => (
@@ -108,7 +108,7 @@ function DiagnosticsTabs({ trail }: { trail: DiagnosticTrail }) {
 
       <TabsContent value="network">
         {networkCount === 0 ? (
-          <EmptyRow text="No network requests captured." />
+          <EmptyRow text="Keine Netzwerkanfragen erfasst." />
         ) : (
           <ul className="max-h-[60vh] divide-y overflow-y-auto rounded-md border">
             {trail.network.map((entry, i) => (

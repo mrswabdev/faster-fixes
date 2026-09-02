@@ -14,7 +14,7 @@ export const SubscriptionStatusBanner = () => {
 
   const formatDate = (date: string | Date) => {
     const d = typeof date === "string" ? new Date(date) : date;
-    return d.toLocaleDateString("en-US", {
+    return d.toLocaleDateString("de-DE", {
       year: "numeric",
       month: "long",
       day: "numeric",
@@ -37,11 +37,11 @@ export const SubscriptionStatusBanner = () => {
           <div className="rounded-2xl border border-yellow-800/20 bg-yellow-50 p-4">
             <div className="flex w-full flex-col items-center justify-between gap-4 md:flex-row">
               <div>
-                <p className="font-semibold">Subscription canceled</p>
+                <p className="font-semibold">Abonnement gekündigt</p>
                 <p className="text-sm opacity-90">
-                  Your subscription will end on{" "}
-                  <strong>{formattedDate}</strong>. You will lose access to
-                  premium features after this date.
+                  Ihr Abonnement endet am{" "}
+                  <strong>{formattedDate}</strong>. Danach verlieren Sie den
+                  Zugriff auf Premium-Funktionen.
                 </p>
               </div>
 
@@ -65,11 +65,11 @@ export const SubscriptionStatusBanner = () => {
           <div className="rounded-2xl border border-blue-800/20 bg-blue-50 p-4">
             <div className="flex w-full flex-col items-center justify-between gap-4 md:flex-row">
               <div>
-                <p className="font-semibold">Free trial</p>
+                <p className="font-semibold">Kostenlose Testphase</p>
                 <p className="text-sm opacity-90">
-                  Your free trial ends on{" "}
-                  <strong>{formattedDate}</strong>. Your subscription will
-                  automatically renew on this date.
+                  Ihre kostenlose Testphase endet am{" "}
+                  <strong>{formattedDate}</strong>. Ihr Abonnement verlängert
+                  sich an diesem Datum automatisch.
                 </p>
               </div>
 

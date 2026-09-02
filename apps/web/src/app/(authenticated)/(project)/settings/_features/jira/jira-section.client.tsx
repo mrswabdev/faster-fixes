@@ -23,10 +23,10 @@ export function JiraSection({ projectId }: JiraSectionProps) {
     return (
       <div className="flex flex-col gap-2">
         <p className="text-muted-foreground text-sm">
-          Jira integration is available on paid plans.
+          Die Jira-Integration ist in kostenpflichtigen Tarifen verfügbar.
         </p>
         <Button className="w-fit" asChild>
-          <a href="/account/billing">Upgrade your plan</a>
+          <a href="/account/billing">Tarif upgraden</a>
         </Button>
       </div>
     );
@@ -55,17 +55,19 @@ function JiraSectionInner({ orgId, projectId }: JiraSectionInnerProps) {
     Errored: (
       <Alert variant="destructive">
         <AlertDescription>
-          Failed to load Jira integration. Try refreshing the page.
+          Jira-Integration konnte nicht geladen werden. Laden Sie die Seite
+          neu.
         </AlertDescription>
       </Alert>
     ),
     Empty: (
       <div className="flex flex-col gap-2">
         <p className="text-muted-foreground text-sm">
-          Connect a Jira site in organization settings to link a Jira project.
+          Verbinden Sie eine Jira-Site in den Organisationseinstellungen, um
+          ein Jira-Projekt zu verknüpfen.
         </p>
         <Button variant="link" className="w-fit px-0" asChild>
-          <a href="/integrations">Go to integrations</a>
+          <a href="/integrations">Zu den Integrationen</a>
         </Button>
       </div>
     ),
@@ -80,11 +82,11 @@ function JiraSectionInner({ orgId, projectId }: JiraSectionInnerProps) {
       ) : (
         <div className="flex flex-col gap-2">
           <p className="text-muted-foreground text-sm">
-            The Jira connection needs attention before a Jira project can be
-            linked.
+            Die Jira-Verbindung erfordert eine Prüfung, bevor ein
+            Jira-Projekt verknüpft werden kann.
           </p>
           <Button variant="link" className="w-fit px-0" asChild>
-            <a href="/integrations">Go to integrations</a>
+            <a href="/integrations">Zu den Integrationen</a>
           </Button>
         </div>
       ),
@@ -118,7 +120,8 @@ function LinkOrPickJiraProject({
     Errored: (
       <Alert variant="destructive">
         <AlertDescription>
-          Failed to load the Jira project link. Try refreshing the page.
+          Jira-Projektverknüpfung konnte nicht geladen werden. Laden Sie die
+          Seite neu.
         </AlertDescription>
       </Alert>
     ),

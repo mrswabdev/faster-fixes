@@ -21,9 +21,9 @@ import * as React from "react";
 import { toast } from "sonner";
 
 const AVAILABLE_SCOPES = [
-  { value: "feedbacks:read", label: "Read feedbacks" },
-  { value: "feedbacks:update_status", label: "Update feedback status" },
-  { value: "feedbacks:create", label: "Create feedbacks" },
+  { value: "feedbacks:read", label: "Feedback lesen" },
+  { value: "feedbacks:update_status", label: "Feedback-Status aktualisieren" },
+  { value: "feedbacks:create", label: "Feedback erstellen" },
 ] as const;
 
 export function CreateAgentTokenDialog() {
@@ -100,16 +100,17 @@ export function CreateAgentTokenDialog() {
       <DialogTrigger asChild>
         <Button variant="outline" size="sm" className="w-full">
           <Plus className="size-4" />
-          Create token
+          Token erstellen
         </Button>
       </DialogTrigger>
       <DialogContent>
         {rawToken ? (
           <>
             <DialogHeader>
-              <DialogTitle>Agent token created</DialogTitle>
+              <DialogTitle>Agent-Token erstellt</DialogTitle>
               <DialogDescription>
-                Copy this token now. It will not be shown again.
+                Kopieren Sie diesen Token jetzt. Er wird nicht erneut
+                angezeigt.
               </DialogDescription>
             </DialogHeader>
 
@@ -129,17 +130,17 @@ export function CreateAgentTokenDialog() {
             </div>
 
             <DialogFooter>
-              <Button onClick={() => handleOpenChange(false)}>Done</Button>
+              <Button onClick={() => handleOpenChange(false)}>Fertig</Button>
             </DialogFooter>
           </>
         ) : (
           <>
             <DialogHeader>
-              <DialogTitle>Create agent token</DialogTitle>
+              <DialogTitle>Agent-Token erstellen</DialogTitle>
               <DialogDescription>
-                This token authenticates the Faster Fixes MCP server, giving
-                your AI coding agent access to feedback across all projects in
-                this organization.
+                Dieser Token authentifiziert den Faster Fixes MCP-Server und
+                gibt Ihrem KI-Coding-Agent Zugriff auf Feedback in allen
+                Projekten dieser Organisation.
               </DialogDescription>
             </DialogHeader>
 
@@ -148,14 +149,14 @@ export function CreateAgentTokenDialog() {
                 <Label htmlFor="token-name">Name</Label>
                 <Input
                   id="token-name"
-                  placeholder="e.g. Claude Code"
+                  placeholder="z. B. Claude Code"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
 
               <div className="flex flex-col gap-2">
-                <Label>Permissions</Label>
+                <Label>Berechtigungen</Label>
                 {AVAILABLE_SCOPES.map((scope) => (
                   <div key={scope.value} className="flex items-center gap-2">
                     <Checkbox
@@ -176,7 +177,7 @@ export function CreateAgentTokenDialog() {
 
             <DialogFooter>
               <Button variant="outline" onClick={() => handleOpenChange(false)}>
-                Cancel
+                Abbrechen
               </Button>
               <Button
                 disabled={
@@ -184,7 +185,7 @@ export function CreateAgentTokenDialog() {
                 }
                 onClick={handleCreate}
               >
-                {createToken.isPending ? "Creating..." : "Create token"}
+                {createToken.isPending ? "Wird erstellt..." : "Token erstellen"}
               </Button>
             </DialogFooter>
           </>

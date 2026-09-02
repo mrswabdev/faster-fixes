@@ -17,7 +17,7 @@ export const disconnectLinear = protectedProcedure.mutation(async ({ ctx }) => {
   if (!activeOrganization) {
     throw new TRPCError({
       code: "BAD_REQUEST",
-      message: "No active organization.",
+      message: "Keine aktive Organisation.",
     });
   }
 
@@ -32,7 +32,7 @@ export const disconnectLinear = protectedProcedure.mutation(async ({ ctx }) => {
   if (!membership) {
     throw new TRPCError({
       code: "FORBIDDEN",
-      message: "Only owners and admins can disconnect Linear.",
+      message: "Nur Inhaber und Admins können Linear trennen.",
     });
   }
 

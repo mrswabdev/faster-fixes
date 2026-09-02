@@ -56,10 +56,10 @@ export function ArchiveTab() {
         queryClient.invalidateQueries({
           queryKey: trpc.authenticated.projects.feedback.listArchived.queryKey({ projectId }),
         });
-        toast.success("Feedback deleted permanently.");
+        toast.success("Feedback dauerhaft gelöscht.");
       },
       onError: () => {
-        toast.error("Failed to delete feedback.");
+        toast.error("Feedback konnte nicht gelöscht werden.");
       },
     }),
   );
@@ -70,10 +70,10 @@ export function ArchiveTab() {
         queryClient.invalidateQueries({
           queryKey: trpc.authenticated.projects.feedback.listArchived.queryKey({ projectId }),
         });
-        toast.success("Feedback deleted permanently.");
+        toast.success("Feedback dauerhaft gelöscht.");
       },
       onError: () => {
-        toast.error("Failed to delete feedback.");
+        toast.error("Feedback konnte nicht gelöscht werden.");
       },
     }),
   );
@@ -82,14 +82,14 @@ export function ArchiveTab() {
     () => [
       {
         accessorKey: "comment",
-        header: "Comment",
+        header: "Kommentar",
         cell: ({ row }) => (
           <p className="max-w-[300px] truncate text-sm">{row.original.comment}</p>
         ),
       },
       {
         accessorKey: "pageUrl",
-        header: "Page URL",
+        header: "Seiten-URL",
         cell: ({ row }) => {
           try {
             const url = new URL(row.original.pageUrl);
@@ -112,10 +112,10 @@ export function ArchiveTab() {
       },
       {
         accessorKey: "assignee",
-        header: "Assignee",
+        header: "Zugewiesen an",
         cell: ({ row }) => {
           const assignee = row.original.assignee;
-          if (!assignee) return <span className="text-muted-foreground text-xs">Unassigned</span>;
+          if (!assignee) return <span className="text-muted-foreground text-xs">Nicht zugewiesen</span>;
           return (
             <div className="flex items-center gap-1.5">
               <Avatar className="size-5">
@@ -135,7 +135,7 @@ export function ArchiveTab() {
       {
         accessorKey: "updatedAt",
         header: ({ column }) => (
-          <DataTableColumnHeader column={column} title="Closed Date" />
+          <DataTableColumnHeader column={column} title="Abschlussdatum" />
         ),
         cell: ({ row }) => (
           <span className="text-muted-foreground text-xs">
@@ -171,8 +171,8 @@ export function ArchiveTab() {
           <EmptyMedia variant="icon">
             <AlertCircle />
           </EmptyMedia>
-          <EmptyTitle>Failed to load archive</EmptyTitle>
-          <EmptyDescription>Something went wrong. Please try again later.</EmptyDescription>
+          <EmptyTitle>Archiv konnte nicht geladen werden</EmptyTitle>
+          <EmptyDescription>Etwas ist schiefgelaufen. Bitte versuchen Sie es später erneut.</EmptyDescription>
         </EmptyHeader>
       </Empty>
     ),
@@ -182,9 +182,9 @@ export function ArchiveTab() {
           <EmptyMedia variant="icon">
             <Archive />
           </EmptyMedia>
-          <EmptyTitle>No archived feedback</EmptyTitle>
+          <EmptyTitle>Kein archiviertes Feedback</EmptyTitle>
           <EmptyDescription>
-            Feedback items moved to archive will appear here.
+            Ins Archiv verschobene Feedback-Einträge erscheinen hier.
           </EmptyDescription>
         </EmptyHeader>
       </Empty>
@@ -198,7 +198,7 @@ export function ArchiveTab() {
         setCurrentPage={setPage}
         search={search}
         setSearch={setSearch}
-        searchInputPlaceholder="Search by comment..."
+        searchInputPlaceholder="Nach Kommentar suchen..."
         isLoading={archiveQuery.isFetching}
         onSortingChange={setSorting}
       />

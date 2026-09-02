@@ -15,7 +15,7 @@ export const resetPasswordMutation = publicProcedure
       if (!token) {
         throw new TRPCError({
           code: "BAD_REQUEST",
-          message: "Missing token. Invalid reset link.",
+          message: "Fehlendes Token. Ungültiger Zurücksetzen-Link.",
         });
       }
 
@@ -42,7 +42,7 @@ export const resetPasswordMutation = publicProcedure
         ) {
           throw new TRPCError({
             code: "UNAUTHORIZED",
-            message: "The reset link is invalid or has expired.",
+            message: "Der Zurücksetzen-Link ist ungültig oder abgelaufen.",
           });
         }
       }
@@ -50,7 +50,7 @@ export const resetPasswordMutation = publicProcedure
       throw new TRPCError({
         code: "INTERNAL_SERVER_ERROR",
         message:
-          "Password reset failed. Please try again.",
+          "Passwort-Zurücksetzung fehlgeschlagen. Bitte versuchen Sie es erneut.",
       });
     }
   });

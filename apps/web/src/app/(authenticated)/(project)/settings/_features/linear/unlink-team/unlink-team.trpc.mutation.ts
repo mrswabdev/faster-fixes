@@ -16,7 +16,7 @@ export const unlinkLinearTeam = protectedProcedure
     });
 
     if (!project) {
-      throw new TRPCError({ code: "NOT_FOUND", message: "Project not found." });
+      throw new TRPCError({ code: "NOT_FOUND", message: "Projekt nicht gefunden." });
     }
 
     const membership = await prisma.member.findFirst({
@@ -30,7 +30,7 @@ export const unlinkLinearTeam = protectedProcedure
     if (!membership) {
       throw new TRPCError({
         code: "FORBIDDEN",
-        message: "Only owners and admins can unlink Linear teams.",
+        message: "Nur Inhaber und Admins können Linear-Teams trennen.",
       });
     }
 

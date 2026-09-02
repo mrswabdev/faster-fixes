@@ -7,8 +7,9 @@ export function GitHubNotConnected() {
   return (
     <div className="flex flex-col gap-4">
       <p className="text-muted-foreground text-sm">
-        No GitHub account connected. Install the Faster Fixes GitHub App to
-        enable automatic issue creation from feedback.
+        Kein GitHub-Konto verbunden. Installieren Sie die Faster Fixes
+        GitHub App, um die automatische Issue-Erstellung aus Feedback zu
+        aktivieren.
       </p>
       <Button asChild>
         <a
@@ -17,7 +18,7 @@ export function GitHubNotConnected() {
           rel="noopener noreferrer"
         >
           <GithubIcon className="size-4" />
-          Connect to GitHub
+          Mit GitHub verbinden
         </a>
       </Button>
     </div>

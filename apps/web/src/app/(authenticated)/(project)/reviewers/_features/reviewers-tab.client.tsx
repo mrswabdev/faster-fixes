@@ -54,7 +54,7 @@ export function ReviewersTab({ projectId }: ReviewersTabProps) {
                 <TableHead>Name</TableHead>
                 <TableHead>Status</TableHead>
                 <TableHead>Feedback</TableHead>
-                <TableHead>Share link</TableHead>
+                <TableHead>Freigabe-Link</TableHead>
                 <TableHead />
               </TableRow>
             </TableHeader>
@@ -77,9 +77,10 @@ export function ReviewersTab({ projectId }: ReviewersTabProps) {
               <EmptyMedia variant="icon">
                 <AlertCircle />
               </EmptyMedia>
-              <EmptyTitle>Failed to load reviewers</EmptyTitle>
+              <EmptyTitle>Reviewer konnten nicht geladen werden</EmptyTitle>
               <EmptyDescription>
-                Something went wrong. Please try again later.
+                Etwas ist schiefgelaufen. Bitte versuchen Sie es später
+                erneut.
               </EmptyDescription>
             </EmptyHeader>
           </Empty>
@@ -90,9 +91,9 @@ export function ReviewersTab({ projectId }: ReviewersTabProps) {
               <EmptyMedia variant="icon">
                 <Users />
               </EmptyMedia>
-              <EmptyTitle>No reviewers yet</EmptyTitle>
+              <EmptyTitle>Noch keine Reviewer</EmptyTitle>
               <EmptyDescription>
-                Add your first client to start collecting feedback.
+                Fügen Sie Ihren ersten Kunden hinzu, um Feedback zu sammeln.
               </EmptyDescription>
             </EmptyHeader>
             <EmptyContent>

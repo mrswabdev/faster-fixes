@@ -18,7 +18,7 @@ export const deleteAgentToken = protectedProcedure
     });
 
     if (!membership) {
-      throw new TRPCError({ code: "FORBIDDEN", message: "Access denied." });
+      throw new TRPCError({ code: "FORBIDDEN", message: "Zugriff verweigert." });
     }
 
     const token = await prisma.agentToken.findFirst({
@@ -26,7 +26,7 @@ export const deleteAgentToken = protectedProcedure
     });
 
     if (!token) {
-      throw new TRPCError({ code: "NOT_FOUND", message: "Token not found." });
+      throw new TRPCError({ code: "NOT_FOUND", message: "Token nicht gefunden." });
     }
 
     await prisma.agentToken.delete({ where: { id: input.tokenId } });

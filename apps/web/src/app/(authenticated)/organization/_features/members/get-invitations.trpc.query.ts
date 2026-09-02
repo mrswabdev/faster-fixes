@@ -21,7 +21,7 @@ export const getInvitations = protectedProcedure
       throw new TRPCError({
         code: "FORBIDDEN",
         message:
-          "You do not have permission to view invitations.",
+          "Sie haben keine Berechtigung, Einladungen anzusehen.",
       });
     }
 

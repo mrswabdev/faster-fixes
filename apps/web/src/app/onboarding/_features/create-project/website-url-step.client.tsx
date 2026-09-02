@@ -24,16 +24,16 @@ export function WebsiteUrlStep({
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-2">
-        <h1 className="text-2xl font-bold">What&apos;s the website domain?</h1>
+        <h1 className="text-2xl font-bold">Wie lautet die Website-Domain?</h1>
         <p className="text-muted-foreground text-sm">
-          The domain of the website where you&apos;ll install the feedback
-          widget. www. and protocol variants are matched automatically.
+          Die Domain der Website, auf der Sie das Feedback-Widget installieren.
+          www.- und Protokoll-Varianten werden automatisch erkannt.
         </p>
       </div>
 
       <div className="flex flex-col gap-2">
         <label htmlFor="project-domain" className="text-sm font-medium">
-          Website domain
+          Website-Domain
         </label>
         <Input
           id="project-domain"
@@ -52,17 +52,17 @@ export function WebsiteUrlStep({
       <div className="flex items-center justify-between">
         <Button variant="ghost" onClick={onBack} disabled={isPending}>
           <ArrowLeft className="size-4" />
-          Back
+          Zurück
         </Button>
         <Button onClick={onNext} disabled={!domain.trim() || isPending}>
           {isPending ? (
             <>
               <Loader2 className="size-4 animate-spin" />
-              Creating project...
+              Projekt wird erstellt...
             </>
           ) : (
             <>
-              Continue
+              Weiter
               <ArrowRight className="size-4" />
             </>
           )}

@@ -36,10 +36,10 @@ export function JiraIntegrationSection() {
           <EmptyMedia variant="icon">
             <AlertTriangle />
           </EmptyMedia>
-          <EmptyTitle>Failed to load integration</EmptyTitle>
+          <EmptyTitle>Integration konnte nicht geladen werden</EmptyTitle>
           <EmptyDescription>
-            An error occurred while loading the Jira integration. Try refreshing
-            the page.
+            Beim Laden der Jira-Integration ist ein Fehler aufgetreten.
+            Laden Sie die Seite neu.
           </EmptyDescription>
         </EmptyHeader>
       </Empty>

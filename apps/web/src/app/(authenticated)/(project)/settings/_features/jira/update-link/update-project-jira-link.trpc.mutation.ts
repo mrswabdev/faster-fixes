@@ -29,7 +29,7 @@ export const updateProjectJiraLink = planAwareProcedure
     if (!link) {
       throw new TRPCError({
         code: "NOT_FOUND",
-        message: "This project is not linked to a Jira project.",
+        message: "Dieses Projekt ist mit keinem Jira-Projekt verknüpft.",
       });
     }
 

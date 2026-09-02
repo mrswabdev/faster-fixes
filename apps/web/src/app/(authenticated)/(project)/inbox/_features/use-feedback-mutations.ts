@@ -32,7 +32,7 @@ export function useFeedbackMutations() {
         if (context?.previous) {
           queryClient.setQueryData(feedbackQueryKey, context.previous);
         }
-        toast.error("Failed to update status.");
+        toast.error("Status konnte nicht aktualisiert werden.");
       },
       onSettled: () => {
         queryClient.invalidateQueries({ queryKey: feedbackQueryKey });
@@ -59,7 +59,7 @@ export function useFeedbackMutations() {
         if (context?.previous) {
           queryClient.setQueryData(feedbackQueryKey, context.previous);
         }
-        toast.error("Failed to update status.");
+        toast.error("Status konnte nicht aktualisiert werden.");
       },
       onSettled: () => {
         queryClient.invalidateQueries({ queryKey: feedbackQueryKey });
@@ -73,7 +73,7 @@ export function useFeedbackMutations() {
         queryClient.invalidateQueries({ queryKey: feedbackQueryKey });
       },
       onError: () => {
-        toast.error("Failed to update assignee.");
+        toast.error("Zuweisung konnte nicht aktualisiert werden.");
       },
     }),
   );

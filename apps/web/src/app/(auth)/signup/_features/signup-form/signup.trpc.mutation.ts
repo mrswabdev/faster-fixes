@@ -24,7 +24,7 @@ export const signupMutation = publicProcedure
       if (!data) {
         throw new TRPCError({
           code: "BAD_REQUEST",
-          message: "Account creation failed",
+          message: "Kontoerstellung fehlgeschlagen",
         });
       }
 
@@ -40,13 +40,13 @@ export const signupMutation = publicProcedure
       if (error instanceof Error && error.message.includes("email")) {
         throw new TRPCError({
           code: "CONFLICT",
-          message: "Email already registered",
+          message: "E-Mail-Adresse bereits registriert",
         });
       }
 
       throw new TRPCError({
         code: "INTERNAL_SERVER_ERROR",
-        message: "Account creation failed. Please try again.",
+        message: "Kontoerstellung fehlgeschlagen. Bitte versuchen Sie es erneut.",
       });
     }
   });

@@ -19,19 +19,19 @@ export function ScreenshotDialog({ src }: ScreenshotDialogProps) {
         <button type="button" className="cursor-zoom-in">
           <img
             src={src}
-            alt="Feedback screenshot"
+            alt="Feedback-Screenshot"
             className="w-full rounded-md border"
           />
         </button>
       </DialogTrigger>
       <DialogContent className="h-[calc(100vh-2rem)] overflow-auto rounded-none border-none p-0 sm:max-w-[calc(100%-2rem)]">
-        <DialogTitle className="sr-only">Screenshot preview</DialogTitle>
+        <DialogTitle className="sr-only">Screenshot-Vorschau</DialogTitle>
         <DialogDescription className="sr-only">
-          Full-size feedback screenshot
+          Feedback-Screenshot in voller Größe
         </DialogDescription>
         <img
           src={src}
-          alt="Feedback screenshot"
+          alt="Feedback-Screenshot"
           className="h-full w-full object-contain"
         />
       </DialogContent>

@@ -24,7 +24,7 @@ export const createIssueForFeedback = protectedProcedure
     });
 
     if (!feedback) {
-      throw new TRPCError({ code: "NOT_FOUND", message: "Feedback not found." });
+      throw new TRPCError({ code: "NOT_FOUND", message: "Feedback nicht gefunden." });
     }
 
     const membership = await prisma.member.findFirst({
@@ -35,20 +35,20 @@ export const createIssueForFeedback = protectedProcedure
     });
 
     if (!membership) {
-      throw new TRPCError({ code: "FORBIDDEN", message: "Access denied." });
+      throw new TRPCError({ code: "FORBIDDEN", message: "Zugriff verweigert." });
     }
 
     if (feedback.issueLink) {
       throw new TRPCError({
         code: "CONFLICT",
-        message: "A GitHub issue already exists for this feedback.",
+        message: "Für dieses Feedback existiert bereits ein GitHub-Issue.",
       });
     }
 
     if (!feedback.project.gitHubLink) {
       throw new TRPCError({
         code: "BAD_REQUEST",
-        message: "No GitHub repository linked to this project.",
+        message: "Kein GitHub-Repository mit diesem Projekt verknüpft.",
       });
     }
 

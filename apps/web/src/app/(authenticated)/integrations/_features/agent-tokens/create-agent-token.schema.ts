@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const CreateAgentTokenSchema = z.object({
   organizationId: z.string(),
-  name: z.string().trim().min(1, "Name is required").max(100),
+  name: z.string().trim().min(1, "Name ist erforderlich").max(100),
   scopes: z
     .array(
       z.enum([
@@ -11,7 +11,7 @@ export const CreateAgentTokenSchema = z.object({
         "feedbacks:create",
       ]),
     )
-    .min(1, "Select at least one permission"),
+    .min(1, "Wählen Sie mindestens eine Berechtigung"),
 });
 
 export type CreateAgentTokenSchemaType = z.infer<typeof CreateAgentTokenSchema>;

@@ -9,7 +9,7 @@ export const stopImpersonate = protectedProcedure.mutation(async ({ ctx }) => {
     if (!ctx.session?.session?.impersonatedBy) {
       throw new TRPCError({
         code: "BAD_REQUEST",
-        message: "User is not currently impersonating",
+        message: "Es wird aktuell keine Identität übernommen",
       });
     }
 
@@ -25,7 +25,7 @@ export const stopImpersonate = protectedProcedure.mutation(async ({ ctx }) => {
       message:
         error instanceof Error
           ? error.message
-          : "Failed to stop impersonating user",
+          : "Beenden der Identitätsübernahme fehlgeschlagen",
     });
   }
 });

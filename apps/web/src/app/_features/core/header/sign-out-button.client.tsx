@@ -12,7 +12,7 @@ export function SignOutButton() {
       className="cursor-pointer"
       variant="destructive"
     >
-      Sign out
+      Abmelden
     </DropdownMenuItem>
   );
 }

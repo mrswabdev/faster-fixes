@@ -49,7 +49,7 @@ export const getPlansPrices = publicProcedure
     } catch (error) {
       throw new TRPCError({
         code: "INTERNAL_SERVER_ERROR",
-        message: "Failed to fetch Stripe prices",
+        message: "Stripe-Preise konnten nicht abgerufen werden",
         cause: error,
       });
     }

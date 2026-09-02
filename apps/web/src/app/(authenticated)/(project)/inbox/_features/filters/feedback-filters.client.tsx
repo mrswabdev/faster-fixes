@@ -50,13 +50,13 @@ export function FeedbackFilters({
         itemToStringValue={formatPageUrl}
       >
         <ComboboxInput
-          placeholder="Filter by page"
+          placeholder="Nach Seite filtern"
           showTrigger
           showClear={!!selectedPageUrl}
           className="w-full sm:w-[250px]"
         />
         <ComboboxContent>
-          <ComboboxEmpty>No pages found.</ComboboxEmpty>
+          <ComboboxEmpty>Keine Seiten gefunden.</ComboboxEmpty>
           <ComboboxList>
             {(url) => (
               <ComboboxItem key={url} value={url}>
@@ -72,9 +72,9 @@ export function FeedbackFilters({
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="newest">Newest first</SelectItem>
-          <SelectItem value="oldest">Oldest first</SelectItem>
-          <SelectItem value="updated">Recently updated</SelectItem>
+          <SelectItem value="newest">Neueste zuerst</SelectItem>
+          <SelectItem value="oldest">Älteste zuerst</SelectItem>
+          <SelectItem value="updated">Zuletzt aktualisiert</SelectItem>
         </SelectContent>
       </Select>
     </div>

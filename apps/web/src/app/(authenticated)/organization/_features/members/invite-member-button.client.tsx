@@ -12,7 +12,7 @@ export function InviteMemberButton() {
     <>
       <Button onClick={() => setOpen(true)}>
         <Plus className="size-4" />
-        Invite member
+        Mitglied einladen
       </Button>
       <InviteMemberDialog open={open} onOpenChange={setOpen} />
     </>

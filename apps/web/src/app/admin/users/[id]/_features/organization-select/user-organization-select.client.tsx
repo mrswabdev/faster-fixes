@@ -23,7 +23,7 @@ export function UserOrganizationSelect({
   userId,
   value,
   onValueChange,
-  placeholder = "Select an organization",
+  placeholder = "Organisation auswählen",
 }: UserOrganizationSelectProps) {
   const trpc = useTRPC();
   const organizationsQuery = useQuery(
@@ -36,12 +36,12 @@ export function UserOrganizationSelect({
     Loading: <Skeleton className="h-10 w-full rounded-md" />,
     Errored: (error) => (
       <div className="text-sm text-red-500">
-        Failed to load organizations: {String(error)}
+Organisationen konnten nicht geladen werden: {String(error)}
       </div>
     ),
     Empty: (
       <div className="text-muted-foreground text-sm">
-        No organization found for this user
+Keine Organisation für diesen Benutzer gefunden
       </div>
     ),
     Success: () => (

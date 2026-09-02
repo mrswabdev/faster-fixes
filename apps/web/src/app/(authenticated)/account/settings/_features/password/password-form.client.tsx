@@ -42,11 +42,11 @@ export function PasswordForm() {
   const changePasswordMutation =
     useMutation(trpc.authenticated.account.password.change.mutationOptions({
       onSuccess: () => {
-        toast.success("Password changed successfully");
+        toast.success("Passwort erfolgreich geändert");
         form.reset();
       },
       onError: (error) => {
-        const message = error.message || "An error occurred.";
+        const message = error.message || "Ein Fehler ist aufgetreten.";
         form.setError("root", { message });
       },
     }));
@@ -64,7 +64,7 @@ export function PasswordForm() {
         {form.formState.errors.root && (
           <Alert variant="destructive">
             <AlertCircleIcon />
-            <AlertTitle>Error</AlertTitle>
+            <AlertTitle>Fehler</AlertTitle>
             <AlertDescription>
               <p>{form.formState.errors.root.message}</p>
             </AlertDescription>
@@ -76,10 +76,10 @@ export function PasswordForm() {
           name="currentPassword"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Current password</FormLabel>
+              <FormLabel>Aktuelles Passwort</FormLabel>
               <FormControl>
                 <PasswordInput
-                  placeholder="Enter your current password"
+                  placeholder="Aktuelles Passwort eingeben"
                   autoComplete="current-password"
                   {...field}
                 />
@@ -94,17 +94,17 @@ export function PasswordForm() {
           name="newPassword"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>New password</FormLabel>
+              <FormLabel>Neues Passwort</FormLabel>
               <FormControl>
                 <PasswordInput
-                  placeholder="Enter your new password"
+                  placeholder="Neues Passwort eingeben"
                   autoComplete="new-password"
                   {...field}
                 />
               </FormControl>
               <FormDescription>
-                Minimum 8 characters, with at least one uppercase, one lowercase,
-                and one number
+                Mindestens 8 Zeichen, davon mindestens ein Großbuchstabe,
+                ein Kleinbuchstabe und eine Zahl
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -116,10 +116,10 @@ export function PasswordForm() {
           name="confirmPassword"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Confirm password</FormLabel>
+              <FormLabel>Passwort bestätigen</FormLabel>
               <FormControl>
                 <PasswordInput
-                  placeholder="Confirm your new password"
+                  placeholder="Neues Passwort bestätigen"
                   autoComplete="new-password"
                   {...field}
                 />
@@ -135,8 +135,8 @@ export function PasswordForm() {
           className="self-end"
         >
           {changePasswordMutation.isPending
-            ? "Changing..."
-            : "Change password"}
+            ? "Wird geändert..."
+            : "Passwort ändern"}
         </Button>
       </form>
     </Form>

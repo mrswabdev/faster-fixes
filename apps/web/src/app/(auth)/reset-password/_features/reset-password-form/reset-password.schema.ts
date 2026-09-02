@@ -3,12 +3,12 @@ import { z } from "zod";
 
 export const ResetPasswordSchema = z
   .object({
-    token: z.string().min(1, "Token is required"),
+    token: z.string().min(1, "Token ist erforderlich"),
     password: PasswordSchema,
     confirmPassword: z.string(),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords do not match",
+    message: "Passwörter stimmen nicht überein",
     path: ["confirmPassword"],
   });
 

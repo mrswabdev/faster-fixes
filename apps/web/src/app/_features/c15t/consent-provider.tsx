@@ -23,36 +23,36 @@ export function ConsentProvider({ children }: ConsentProviderProps) {
           translations: {
             en: {
               common: {
-                acceptAll: "Accept all",
-                rejectAll: "Reject all",
-                customize: "Customize",
-                save: "Save",
+                acceptAll: "Alle akzeptieren",
+                rejectAll: "Alle ablehnen",
+                customize: "Anpassen",
+                save: "Speichern",
               },
               cookieBanner: {
-                title: "Cookie management",
+                title: "Cookie-Verwaltung",
                 description:
-                  "We use cookies to improve your experience on our site, analyze traffic, and personalize content. You can accept all cookies, reject them, or customize your preferences.",
+                  "Wir verwenden Cookies, um Ihre Erfahrung auf unserer Website zu verbessern, den Traffic zu analysieren und Inhalte zu personalisieren. Sie können alle Cookies akzeptieren, ablehnen oder Ihre Einstellungen anpassen.",
               },
               consentManagerDialog: {
-                title: "Privacy settings",
+                title: "Datenschutzeinstellungen",
                 description:
-                  "Manage your cookie and privacy preferences. You can change these settings at any time.",
+                  "Verwalten Sie Ihre Cookie- und Datenschutzeinstellungen. Sie können diese Einstellungen jederzeit ändern.",
               },
               consentTypes: {
                 necessary: {
-                  title: "Necessary cookies",
+                  title: "Notwendige Cookies",
                   description:
-                    "These cookies are essential for the website to function and cannot be disabled. They are usually set in response to actions you take that constitute a request for services.",
+                    "Diese Cookies sind für die Funktion der Website unerlässlich und können nicht deaktiviert werden. Sie werden in der Regel als Reaktion auf von Ihnen getätigte Aktionen gesetzt, die eine Anfrage nach Diensten darstellen.",
                 },
                 marketing: {
-                  title: "Marketing cookies",
+                  title: "Marketing-Cookies",
                   description:
-                    "These cookies allow us to personalize advertising and measure the effectiveness of our marketing campaigns. They may be set by our advertising partners.",
+                    "Diese Cookies ermöglichen es uns, Werbung zu personalisieren und die Wirksamkeit unserer Marketingkampagnen zu messen. Sie können von unseren Werbepartnern gesetzt werden.",
                 },
                 measurement: {
-                  title: "Analytics cookies",
+                  title: "Analyse-Cookies",
                   description:
-                    "These cookies help us analyze website usage, understand how visitors interact with our site, and improve our services.",
+                    "Diese Cookies helfen uns, die Website-Nutzung zu analysieren, zu verstehen, wie Besucher mit unserer Website interagieren, und unsere Dienste zu verbessern.",
                 },
               },
             },

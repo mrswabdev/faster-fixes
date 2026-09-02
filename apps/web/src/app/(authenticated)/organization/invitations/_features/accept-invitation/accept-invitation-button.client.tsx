@@ -23,7 +23,7 @@ export function AcceptInvitationButton({
   const acceptMutation = useMutation(
     trpc.authenticated.organization.invitation.accept.mutationOptions({
       onSuccess: async () => {
-        toast.success("Invitation accepted");
+        toast.success("Einladung angenommen");
 
         await organization.setActive({ organizationId });
         await refetchOrganizations();
@@ -33,7 +33,7 @@ export function AcceptInvitationButton({
       },
       onError: (error) => {
         toast.error(
-          error.message || "Failed to accept invitation.",
+          error.message || "Einladung konnte nicht angenommen werden.",
         );
       },
     }),
@@ -47,7 +47,7 @@ export function AcceptInvitationButton({
       className="flex-1"
     >
       <Check className="size-4" />
-      Accept
+      Annehmen
     </Button>
   );
 }

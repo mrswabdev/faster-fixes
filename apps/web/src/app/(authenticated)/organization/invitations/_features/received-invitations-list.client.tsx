@@ -56,17 +56,17 @@ export function ReceivedInvitationsList() {
     Errored: (
       <Empty>
         <EmptyHeader>
-          <EmptyTitle>Error</EmptyTitle>
-          <EmptyDescription>Unable to load invitations.</EmptyDescription>
+          <EmptyTitle>Fehler</EmptyTitle>
+          <EmptyDescription>Einladungen konnten nicht geladen werden.</EmptyDescription>
         </EmptyHeader>
       </Empty>
     ),
     Empty: (
       <Empty>
         <EmptyHeader>
-          <EmptyTitle>No invitations</EmptyTitle>
+          <EmptyTitle>Keine Einladungen</EmptyTitle>
           <EmptyDescription>
-            You don&apos;t have any pending invitations.
+            Sie haben keine ausstehenden Einladungen.
           </EmptyDescription>
         </EmptyHeader>
       </Empty>
@@ -83,19 +83,19 @@ export function ReceivedInvitationsList() {
             <CardContent>
               <div className="flex flex-col gap-2 text-sm">
                 <div className="flex items-center gap-2">
-                  <span className="text-muted-foreground">Organization:</span>
+                  <span className="text-muted-foreground">Organisation:</span>
                   <span>{invitation.organization.name}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-muted-foreground">Role:</span>
+                  <span className="text-muted-foreground">Rolle:</span>
                   <Badge variant="outline">
                     {getRoleLabel(invitation.role ?? "member")}
                   </Badge>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-muted-foreground">Expires on:</span>
+                  <span className="text-muted-foreground">Läuft ab am:</span>
                   <span>
-                    {new Date(invitation.expiresAt).toLocaleDateString("en-US")}
+                    {new Date(invitation.expiresAt).toLocaleDateString("de-DE")}
                   </span>
                 </div>
               </div>

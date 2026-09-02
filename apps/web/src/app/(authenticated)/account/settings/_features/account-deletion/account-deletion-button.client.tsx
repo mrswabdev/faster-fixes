@@ -53,7 +53,7 @@ export function AccountDeletionButton() {
 
   const deleteAccountMutation = useMutation(trpc.authenticated.account.delete.mutationOptions({
     onSuccess: async () => {
-      toast.success("Your account has been deleted successfully");
+      toast.success("Ihr Konto wurde erfolgreich gelöscht");
       setOpen(false);
 
       // Sign out and redirect
@@ -66,7 +66,7 @@ export function AccountDeletionButton() {
       });
     },
     onError: (error) => {
-      const message = error.message || "An error occurred.";
+      const message = error.message || "Ein Fehler ist aufgetreten.";
       form.setError("root", { message });
     },
   }));
@@ -87,7 +87,7 @@ export function AccountDeletionButton() {
     <AlertDialog open={open} onOpenChange={handleOpenChange}>
       <AlertDialogTrigger asChild>
         <Button variant="destructive" className="w-fit self-end">
-          Delete my account
+          Mein Konto löschen
         </Button>
       </AlertDialogTrigger>
 
@@ -96,12 +96,12 @@ export function AccountDeletionButton() {
           <div className="flex items-center gap-3">
             <AlertTriangleIcon className="text-destructive h-5 w-5" />
             <AlertDialogTitle>
-              Permanently delete your account
+              Konto endgültig löschen
             </AlertDialogTitle>
           </div>
           <AlertDialogDescription className="pt-2">
-            This action is irreversible. All your data will be permanently
-            deleted and you will not be able to recover your account.
+            Diese Aktion ist unwiderruflich. Alle Ihre Daten werden
+            endgültig gelöscht und Ihr Konto kann nicht wiederhergestellt werden.
           </AlertDialogDescription>
         </AlertDialogHeader>
 
@@ -113,7 +113,7 @@ export function AccountDeletionButton() {
             {form.formState.errors.root && (
               <Alert variant="destructive">
                 <AlertCircleIcon />
-                <AlertTitle>Error</AlertTitle>
+                <AlertTitle>Fehler</AlertTitle>
                 <AlertDescription>
                   <p>{form.formState.errors.root.message}</p>
                 </AlertDescription>
@@ -125,10 +125,10 @@ export function AccountDeletionButton() {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Confirm by entering your password</FormLabel>
+                  <FormLabel>Zur Bestätigung Passwort eingeben</FormLabel>
                   <FormControl>
                     <PasswordInput
-                      placeholder="Enter your password"
+                      placeholder="Passwort eingeben"
                       autoComplete="current-password"
                       disabled={deleteAccountMutation.isPending}
                       {...field}
@@ -141,7 +141,7 @@ export function AccountDeletionButton() {
 
             <AlertDialogFooter>
               <AlertDialogCancel disabled={deleteAccountMutation.isPending}>
-                Cancel
+                Abbrechen
               </AlertDialogCancel>
               <Button
                 type="submit"
@@ -149,8 +149,8 @@ export function AccountDeletionButton() {
                 disabled={deleteAccountMutation.isPending}
               >
                 {deleteAccountMutation.isPending
-                  ? "Deleting..."
-                  : "Confirm deletion"}
+                  ? "Wird gelöscht..."
+                  : "Löschen bestätigen"}
               </Button>
             </AlertDialogFooter>
           </form>

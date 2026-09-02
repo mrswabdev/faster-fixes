@@ -5,15 +5,15 @@ import { z } from "zod";
 // at the edge instead so the settings form reports it inline.
 export const JiraLabelSchema = z
   .string()
-  .min(1, "Labels cannot be empty.")
-  .regex(/^\S+$/, "Labels cannot contain spaces.");
+  .min(1, "Labels dürfen nicht leer sein.")
+  .regex(/^\S+$/, "Labels dürfen keine Leerzeichen enthalten.");
 
 export const LinkJiraProjectSchema = z.object({
   projectId: z.string(),
-  jiraProjectId: z.string().min(1, "Select a Jira project."),
+  jiraProjectId: z.string().min(1, "Jira-Projekt auswählen."),
   jiraProjectKey: z.string().min(1),
   jiraProjectName: z.string().min(1),
-  issueTypeId: z.string().min(1, "Select an issue type."),
+  issueTypeId: z.string().min(1, "Issue-Typ auswählen."),
   issueTypeName: z.string().min(1),
   autoCreateIssues: z.boolean(),
   defaultLabels: z.array(JiraLabelSchema),

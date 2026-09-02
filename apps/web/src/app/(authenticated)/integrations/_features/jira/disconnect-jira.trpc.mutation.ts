@@ -16,7 +16,7 @@ export const disconnectJira = protectedProcedure.mutation(async ({ ctx }) => {
   if (!activeOrganization) {
     throw new TRPCError({
       code: "BAD_REQUEST",
-      message: "No active organization.",
+      message: "Keine aktive Organisation.",
     });
   }
 
@@ -33,7 +33,7 @@ export const disconnectJira = protectedProcedure.mutation(async ({ ctx }) => {
   if (!membership) {
     throw new TRPCError({
       code: "FORBIDDEN",
-      message: "Only the organization owner can disconnect Jira.",
+      message: "Nur der Inhaber der Organisation kann Jira trennen.",
     });
   }
 

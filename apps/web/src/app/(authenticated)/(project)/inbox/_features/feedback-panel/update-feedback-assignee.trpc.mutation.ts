@@ -15,7 +15,7 @@ export const updateFeedbackAssignee = protectedProcedure
     });
 
     if (!feedback) {
-      throw new TRPCError({ code: "NOT_FOUND", message: "Feedback not found." });
+      throw new TRPCError({ code: "NOT_FOUND", message: "Feedback nicht gefunden." });
     }
 
     const membership = await prisma.member.findFirst({
@@ -26,7 +26,7 @@ export const updateFeedbackAssignee = protectedProcedure
     });
 
     if (!membership) {
-      throw new TRPCError({ code: "FORBIDDEN", message: "Access denied." });
+      throw new TRPCError({ code: "FORBIDDEN", message: "Zugriff verweigert." });
     }
 
     if (input.assigneeId) {
@@ -38,7 +38,7 @@ export const updateFeedbackAssignee = protectedProcedure
       });
 
       if (!assignee) {
-        throw new TRPCError({ code: "NOT_FOUND", message: "Member not found." });
+        throw new TRPCError({ code: "NOT_FOUND", message: "Mitglied nicht gefunden." });
       }
     }
 

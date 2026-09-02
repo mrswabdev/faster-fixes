@@ -39,7 +39,7 @@ export function JiraIssueBadge({
             projectId,
           }),
         });
-        toast.success("Jira issue creation queued.");
+        toast.success("Erstellung des Jira-Issues wurde eingereiht.");
       },
       onError: (error) => toast.error(error.message),
     }),
@@ -71,7 +71,7 @@ export function JiraIssueBadge({
       disabled={createIssueMutation.isPending}
     >
       <JiraIcon className="mr-1 size-3.5" />
-      Create Jira issue
+      Jira-Issue erstellen
     </Button>
   );
 }

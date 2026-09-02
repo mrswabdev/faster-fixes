@@ -32,9 +32,9 @@ export function InboxContent() {
           <EmptyMedia variant="icon">
             <FolderOpen />
           </EmptyMedia>
-          <EmptyTitle>Select a project</EmptyTitle>
+          <EmptyTitle>Projekt auswählen</EmptyTitle>
           <EmptyDescription>
-            Choose a project from the sidebar to view its feedback inbox.
+            Wählen Sie in der Seitenleiste ein Projekt aus, um dessen Feedback-Postfach anzuzeigen.
           </EmptyDescription>
         </EmptyHeader>
       </Empty>
@@ -43,7 +43,7 @@ export function InboxContent() {
 
   return (
     <DashboardPageContent
-      breadcrumbs={[{ label: "Inbox" }]}
+      breadcrumbs={[{ label: "Postfach" }]}
     >
       <InboxTabs />
     </DashboardPageContent>

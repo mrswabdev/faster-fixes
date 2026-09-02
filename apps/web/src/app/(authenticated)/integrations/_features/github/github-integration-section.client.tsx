@@ -35,10 +35,10 @@ export function GitHubIntegrationSection() {
           <EmptyMedia variant="icon">
             <AlertTriangle />
           </EmptyMedia>
-          <EmptyTitle>Failed to load integration</EmptyTitle>
+          <EmptyTitle>Integration konnte nicht geladen werden</EmptyTitle>
           <EmptyDescription>
-            An error occurred while loading the GitHub integration. Try
-            refreshing the page.
+            Beim Laden der GitHub-Integration ist ein Fehler aufgetreten.
+            Laden Sie die Seite neu.
           </EmptyDescription>
         </EmptyHeader>
       </Empty>

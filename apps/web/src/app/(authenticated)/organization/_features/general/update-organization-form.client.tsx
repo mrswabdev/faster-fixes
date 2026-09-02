@@ -33,11 +33,11 @@ export function UpdateOrganizationForm() {
     trpc.authenticated.organization.update.mutationOptions({
       onSuccess: async () => {
         await refetchActiveOrg();
-        toast.success("Organization updated successfully");
+        toast.success("Organisation erfolgreich aktualisiert");
       },
       onError: (error) => {
         form.setError("root", {
-          message: error.message || "Error updating organization.",
+          message: error.message || "Fehler beim Aktualisieren der Organisation.",
         });
       },
     }),
@@ -84,7 +84,7 @@ export function UpdateOrganizationForm() {
               <FormLabel>Name</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="Organization name"
+                  placeholder="Name der Organisation"
                   disabled={updateOrganization.isPending}
                   {...field}
                 />
@@ -102,7 +102,7 @@ export function UpdateOrganizationForm() {
           disabled={updateOrganization.isPending}
           className="self-end"
         >
-          {updateOrganization.isPending ? "Updating..." : "Update"}
+          {updateOrganization.isPending ? "Wird aktualisiert..." : "Aktualisieren"}
         </Button>
       </form>
     </Form>

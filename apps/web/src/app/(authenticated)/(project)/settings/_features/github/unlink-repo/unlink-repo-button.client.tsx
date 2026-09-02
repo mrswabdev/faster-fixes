@@ -33,7 +33,7 @@ export function UnlinkRepoButton({ projectId }: UnlinkRepoButtonProps) {
             projectId,
           }),
         });
-        toast.success("Repository unlinked.");
+        toast.success("Repository-Verknüpfung aufgehoben.");
       },
       onError: (error) => toast.error(error.message),
     }),
@@ -44,24 +44,24 @@ export function UnlinkRepoButton({ projectId }: UnlinkRepoButtonProps) {
       <AlertDialogTrigger asChild>
         <Button variant="outline" size="sm" className="w-fit">
           <Unlink className="size-3" />
-          Unlink repository
+          Repository-Verknüpfung aufheben
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Unlink repository?</AlertDialogTitle>
+          <AlertDialogTitle>Repository-Verknüpfung aufheben?</AlertDialogTitle>
           <AlertDialogDescription>
-            New feedback will no longer create GitHub issues. Existing issues
-            will not be deleted.
+            Neues Feedback erstellt keine GitHub-Issues mehr. Bestehende
+            Issues werden nicht gelöscht.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel>Abbrechen</AlertDialogCancel>
           <AlertDialogAction
             onClick={() => unlinkMutation.mutate({ projectId })}
             variant="destructive"
           >
-            Unlink
+            Verknüpfung aufheben
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

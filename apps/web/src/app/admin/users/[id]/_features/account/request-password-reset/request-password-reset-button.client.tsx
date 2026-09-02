@@ -27,16 +27,16 @@ export const RequestPasswordResetButton = ({
   const requestPasswordResetMutation =
     useMutation(trpc.admin.users.password.requestReset.mutationOptions({
       onSuccess: () => {
-        toast.success("Success", {
+        toast.success("Erfolg", {
           description:
-            "A password reset email has been sent to the user",
+            "Eine E-Mail zum Zurücksetzen des Passworts wurde an den Benutzer gesendet",
         });
       },
       onError: (error) => {
-        toast.error("Error", {
+        toast.error("Fehler", {
           description:
             error.message ||
-            "Failed to send password reset link",
+            "Link zum Zurücksetzen des Passworts konnte nicht gesendet werden",
         });
       },
     }));
@@ -52,28 +52,29 @@ export const RequestPasswordResetButton = ({
           variant="outline"
           disabled={requestPasswordResetMutation.isPending}
         >
-          Reset password
+          Passwort zurücksetzen
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>
-            Send a password reset link?
+Link zum Zurücksetzen des Passworts senden?
           </AlertDialogTitle>
           <AlertDialogDescription>
-            An email with a password reset link will be sent to the user. The
-            user will then be able to create a new password.
+            Es wird eine E-Mail mit einem Link zum Zurücksetzen des Passworts an
+            den Benutzer gesendet. Dieser kann anschließend ein neues Passwort
+            festlegen.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel>Abbrechen</AlertDialogCancel>
           <AlertDialogAction
             onClick={handleRequestReset}
             disabled={requestPasswordResetMutation.isPending}
           >
             {requestPasswordResetMutation.isPending
-              ? "Sending..."
-              : "Send"}
+              ? "Wird gesendet..."
+              : "Senden"}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

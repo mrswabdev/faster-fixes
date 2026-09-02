@@ -56,10 +56,10 @@ export function ProfileForm() {
     useMutation(trpc.authenticated.account.profile.update.mutationOptions({
       onSuccess: async () => {
         await refetchSession({ query: { disableCookieCache: true } });
-        toast.success("Profile updated successfully");
+        toast.success("Profil erfolgreich aktualisiert");
       },
       onError: (error) => {
-        const message = error.message || "An error occurred.";
+        const message = error.message || "Ein Fehler ist aufgetreten.";
         form.setError("root", { message });
       },
     }));
@@ -77,7 +77,7 @@ export function ProfileForm() {
         {form.formState.errors.root && (
           <Alert variant="destructive">
             <AlertCircleIcon />
-            <AlertTitle>Error</AlertTitle>
+            <AlertTitle>Fehler</AlertTitle>
             <AlertDescription>
               <p>{form.formState.errors.root.message}</p>
             </AlertDescription>
@@ -89,9 +89,9 @@ export function ProfileForm() {
           name="firstName"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>First name</FormLabel>
+              <FormLabel>Vorname</FormLabel>
               <FormControl>
-                <Input placeholder="Enter your first name" {...field} />
+                <Input placeholder="Vorname eingeben" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -103,9 +103,9 @@ export function ProfileForm() {
           name="lastName"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Last name</FormLabel>
+              <FormLabel>Nachname</FormLabel>
               <FormControl>
-                <Input placeholder="Enter your last name" {...field} />
+                <Input placeholder="Nachname eingeben" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -118,8 +118,8 @@ export function ProfileForm() {
           className="self-end"
         >
           {updateProfileMutation.isPending
-            ? "Updating..."
-            : "Update profile"}
+            ? "Wird aktualisiert..."
+            : "Profil aktualisieren"}
         </Button>
       </form>
     </Form>

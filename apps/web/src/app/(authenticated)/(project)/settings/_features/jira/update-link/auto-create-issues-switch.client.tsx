@@ -26,7 +26,7 @@ export function AutoCreateIssuesSwitch({
             projectId,
           }),
         });
-        toast.success("Settings updated.");
+        toast.success("Einstellungen aktualisiert.");
       },
       onError: (error) => toast.error(error.message),
     }),
@@ -35,7 +35,7 @@ export function AutoCreateIssuesSwitch({
   return (
     <div className="flex items-center justify-between">
       <Label htmlFor="jira-auto-create" className="text-sm">
-        Auto-create issues from feedback
+        Issues automatisch aus Feedback erstellen
       </Label>
       <Switch
         id="jira-auto-create"

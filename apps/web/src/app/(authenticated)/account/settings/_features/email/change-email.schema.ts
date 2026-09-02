@@ -2,7 +2,7 @@ import z from "zod";
 
 export const ChangeEmailSchema = z.object({
   newEmail: z
-    .email("Please enter a valid email address")
+    .email("Bitte geben Sie eine gültige E-Mail-Adresse ein")
     .trim()
     .toLowerCase(),
 });

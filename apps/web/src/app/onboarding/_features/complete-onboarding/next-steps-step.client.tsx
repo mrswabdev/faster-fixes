@@ -15,29 +15,29 @@ export function NextStepsStep({ onFinish }: NextStepsStepProps) {
       </div>
 
       <div className="flex flex-col gap-2">
-        <h1 className="text-2xl font-bold">You&apos;re all set</h1>
+        <h1 className="text-2xl font-bold">Alles bereit</h1>
         <p className="text-muted-foreground text-sm">
-          Your project is ready. Here&apos;s what to do next.
+          Ihr Projekt ist bereit. Hier sind die nächsten Schritte.
         </p>
       </div>
 
       <ul className="text-muted-foreground flex flex-col gap-2 text-left text-sm">
         <li className="flex items-center gap-2">
           <Circle className="size-3.5 shrink-0" />
-          Deploy your website with the widget installed
+          Website mit installiertem Widget veröffentlichen
         </li>
         <li className="flex items-center gap-2">
           <Circle className="size-3.5 shrink-0" />
-          Invite your first reviewer from the dashboard
+          Ersten Reviewer über das Dashboard einladen
         </li>
         <li className="flex items-center gap-2">
           <Circle className="size-3.5 shrink-0" />
-          Start collecting feedback
+          Mit dem Sammeln von Feedback beginnen
         </li>
       </ul>
 
       <Button onClick={onFinish} className="w-full">
-        Go to dashboard
+        Zum Dashboard
         <ArrowRight className="size-4" />
       </Button>
     </div>

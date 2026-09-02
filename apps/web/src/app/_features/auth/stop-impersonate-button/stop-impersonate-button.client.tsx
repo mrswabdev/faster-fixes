@@ -26,16 +26,16 @@ export const StopImpersonateButton = () => {
 
   const stopImpersonateMutation = useMutation(trpc.auth.stopImpersonate.mutationOptions({
     onSuccess: async () => {
-      toast.success("Success", {
-        description: "You have returned to your admin account",
+      toast.success("Erfolgreich", {
+        description: "Sie sind zu Ihrem Admin-Konto zurückgekehrt",
       });
       await refetchSession();
       router.push("/admin");
     },
     onError: (error) => {
-      toast.error("Error", {
+      toast.error("Fehler", {
         description:
-          error.message || "Failed to stop impersonation",
+          error.message || "Beenden der Identitätsübernahme fehlgeschlagen",
       });
     },
   }));
@@ -59,7 +59,7 @@ export const StopImpersonateButton = () => {
             size="icon"
             variant="destructive"
             disabled={stopImpersonateMutation.isPending}
-            title="Stop impersonation"
+            title="Identitätsübernahme beenden"
           >
             <LogOut className="size-4" />
           </Button>
@@ -67,23 +67,23 @@ export const StopImpersonateButton = () => {
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>
-              Stop impersonation?
+              Identitätsübernahme beenden?
             </AlertDialogTitle>
             <AlertDialogDescription>
-              You will return to your admin account. Access to the account of
-              user {session?.user?.email} will be revoked.
+              Sie kehren zu Ihrem Admin-Konto zurück. Der Zugriff auf das Konto
+              von Benutzer {session?.user?.email} wird widerrufen.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel>Abbrechen</AlertDialogCancel>
             <AlertDialogAction
               onClick={handleStopImpersonate}
               disabled={stopImpersonateMutation.isPending}
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
             >
               {stopImpersonateMutation.isPending
-                ? "Stopping..."
-                : "Stop impersonation"}
+                ? "Wird beendet..."
+                : "Identitätsübernahme beenden"}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

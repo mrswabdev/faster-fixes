@@ -26,7 +26,7 @@ export function SlackEnabledSwitch({
             projectId,
           }),
         });
-        toast.success("Settings updated.");
+        toast.success("Einstellungen aktualisiert.");
       },
       onError: (error) => toast.error(error.message),
     }),
@@ -35,7 +35,7 @@ export function SlackEnabledSwitch({
   return (
     <div className="flex items-center justify-between">
       <Label htmlFor="slack-enabled" className="text-sm">
-        Post feedback notifications to Slack
+        Feedback-Benachrichtigungen an Slack senden
       </Label>
       <Switch
         id="slack-enabled"

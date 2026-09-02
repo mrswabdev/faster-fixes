@@ -3,7 +3,7 @@ import { OrganizationTabs } from "./_features/organization-tabs.client";
 
 export default function organizationPage() {
   return (
-    <DashboardPageContent breadcrumbs={[{ label: "Organization" }]}>
+    <DashboardPageContent breadcrumbs={[{ label: "Organisation" }]}>
       <OrganizationTabs />
     </DashboardPageContent>
   );

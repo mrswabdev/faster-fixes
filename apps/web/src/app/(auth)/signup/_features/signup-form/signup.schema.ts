@@ -3,12 +3,12 @@ import { z } from "zod";
 
 export const SignupSchema = z
   .object({
-    email: z.email("Invalid email address"),
+    email: z.email("Ungültige E-Mail-Adresse"),
     password: PasswordSchema,
     confirmPassword: z.string(),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords do not match",
+    message: "Passwörter stimmen nicht überein",
     path: ["confirmPassword"],
   });
 

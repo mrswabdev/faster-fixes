@@ -15,7 +15,7 @@ export const unlinkRepo = protectedProcedure
     });
 
     if (!project) {
-      throw new TRPCError({ code: "NOT_FOUND", message: "Project not found." });
+      throw new TRPCError({ code: "NOT_FOUND", message: "Projekt nicht gefunden." });
     }
 
     const membership = await prisma.member.findFirst({
@@ -29,7 +29,7 @@ export const unlinkRepo = protectedProcedure
     if (!membership) {
       throw new TRPCError({
         code: "FORBIDDEN",
-        message: "Only owners and admins can unlink repositories.",
+        message: "Nur Inhaber und Admins können Repositories trennen.",
       });
     }
 

@@ -73,15 +73,15 @@ export function ThreadSection({ feedbackId }: ThreadSectionProps) {
     const next = [...files];
     for (const file of Array.from(picked)) {
       if (next.length >= MAX_FILES) {
-        setFileError(`At most ${MAX_FILES} files per reply`);
+        setFileError(`Maximal ${MAX_FILES} Dateien pro Antwort`);
         break;
       }
       if (!(ALLOWED_TYPES as readonly string[]).includes(file.type)) {
-        setFileError("Only images and PDF are allowed");
+        setFileError("Nur Bilder und PDF sind erlaubt");
         continue;
       }
       if (file.size > MAX_SIZE) {
-        setFileError("File too large (max 10 MB)");
+        setFileError("Datei zu groß (max. 10 MB)");
         continue;
       }
       next.push(file);
@@ -109,7 +109,7 @@ export function ThreadSection({ feedbackId }: ThreadSectionProps) {
     if (files.length > 0) {
       const result = await upload(files, { metadata: { feedbackId } });
       if (result.failedFiles.length > 0) {
-        setFileError("Some attachments failed to upload. Please try again.");
+        setFileError("Einige Anhänge konnten nicht hochgeladen werden. Bitte erneut versuchen.");
         return;
       }
       attachments = result.files.map((f) => ({
@@ -128,15 +128,15 @@ export function ThreadSection({ feedbackId }: ThreadSectionProps) {
   return (
     <div>
       <h4 className="text-muted-foreground mb-2 text-xs font-medium uppercase">
-        Replies
+        Antworten
       </h4>
 
       {commentsQuery.isLoading ? (
         <div className="text-muted-foreground flex items-center gap-2 py-2 text-xs">
-          <Loader2 className="size-3.5 animate-spin" /> Loading replies…
+          <Loader2 className="size-3.5 animate-spin" /> Antworten werden geladen…
         </div>
       ) : comments.length === 0 ? (
-        <p className="text-muted-foreground py-1 text-xs">No replies yet.</p>
+        <p className="text-muted-foreground py-1 text-xs">Noch keine Antworten.</p>
       ) : (
         <div className="flex flex-col gap-3">
           {comments.map((comment) => (
@@ -145,7 +145,7 @@ export function ThreadSection({ feedbackId }: ThreadSectionProps) {
                 <span className="text-xs font-semibold">
                   {comment.authorName ??
                     (comment.authorType === "member"
-                      ? "Former member"
+                      ? "Ehemaliges Mitglied"
                       : "Reviewer")}
                 </span>
                 <Badge
@@ -207,7 +207,7 @@ export function ThreadSection({ feedbackId }: ThreadSectionProps) {
         <Textarea
           value={body}
           onChange={(e) => setBody(e.target.value)}
-          placeholder="Reply to the reviewer…"
+          placeholder="Dem Reviewer antworten…"
           rows={2}
           disabled={isBusy}
         />
@@ -229,7 +229,7 @@ export function ThreadSection({ feedbackId }: ThreadSectionProps) {
                     setFiles((prev) => prev.filter((_, idx) => idx !== i))
                   }
                   disabled={isBusy}
-                  aria-label={`Remove ${file.name}`}
+                  aria-label={`${file.name} entfernen`}
                 >
                   <X className="size-3" />
                 </button>
@@ -252,7 +252,7 @@ export function ThreadSection({ feedbackId }: ThreadSectionProps) {
             disabled={isBusy}
           >
             <Paperclip className="size-4" />
-            Attach files
+            Dateien anhängen
           </Button>
           <input
             ref={fileInputRef}
@@ -272,7 +272,7 @@ export function ThreadSection({ feedbackId }: ThreadSectionProps) {
             disabled={isBusy || !body.trim()}
           >
             {isBusy && <Loader2 className="size-4 animate-spin" />}
-            Reply
+            Antworten
           </Button>
         </div>
       </div>

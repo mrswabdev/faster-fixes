@@ -26,7 +26,7 @@ export const getStripeSubscription = protectedProcedure
     } catch (error) {
       throw new TRPCError({
         code: "INTERNAL_SERVER_ERROR",
-        message: "Failed to fetch Stripe subscription",
+        message: "Stripe-Abonnement konnte nicht abgerufen werden",
         cause: error,
       });
     }

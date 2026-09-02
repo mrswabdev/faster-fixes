@@ -38,7 +38,7 @@ export function ChannelPicker({
             projectId,
           }),
         });
-        toast.success("Channel updated.");
+        toast.success("Channel aktualisiert.");
       },
       onError: (error) => toast.error(error.message),
     }),
@@ -46,7 +46,7 @@ export function ChannelPicker({
 
   return (
     <div className="flex flex-col gap-2">
-      <Label className="text-sm">Notification channel</Label>
+      <Label className="text-sm">Benachrichtigungs-Channel</Label>
       <Select
         value={channelId}
         onValueChange={(value) => {
@@ -60,7 +60,7 @@ export function ChannelPicker({
         }}
       >
         <SelectTrigger>
-          <SelectValue placeholder="Select a channel" />
+          <SelectValue placeholder="Channel auswählen" />
         </SelectTrigger>
         <SelectContent>
           {channels.map((channel) => (

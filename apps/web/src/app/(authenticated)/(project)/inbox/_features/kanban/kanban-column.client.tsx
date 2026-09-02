@@ -71,7 +71,7 @@ export function KanbanColumnBody({
     >
       {items.length === 0 ? (
         <div className="text-muted-foreground py-8 text-center text-sm">
-          No items
+          Keine Einträge
         </div>
       ) : (
         items.map((feedback) => (

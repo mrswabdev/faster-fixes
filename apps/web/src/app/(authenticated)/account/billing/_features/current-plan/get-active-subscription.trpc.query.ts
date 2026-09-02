@@ -12,7 +12,7 @@ export const getActiveSubscription = protectedProcedure.query(
     } catch (error) {
       throw new TRPCError({
         code: "INTERNAL_SERVER_ERROR",
-        message: "Failed to fetch active subscription",
+        message: "Aktives Abonnement konnte nicht geladen werden",
         cause: error,
       });
     }

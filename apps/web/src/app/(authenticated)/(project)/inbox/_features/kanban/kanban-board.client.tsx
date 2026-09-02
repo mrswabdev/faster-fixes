@@ -29,9 +29,9 @@ type KanbanBoardProps = {
 };
 
 const COLUMNS = [
-  { id: "new", title: "New" },
-  { id: "in_progress", title: "In Progress" },
-  { id: "resolved", title: "Resolved" },
+  { id: "new", title: "Neu" },
+  { id: "in_progress", title: "In Arbeit" },
+  { id: "resolved", title: "Erledigt" },
 ] as const;
 
 function sortFeedback(items: FeedbackItem[], sort: string): FeedbackItem[] {
@@ -169,7 +169,7 @@ export function KanbanBoard({
     <div className="flex flex-col gap-4">
       <div className="flex items-center justify-between">
         <p className="text-muted-foreground text-sm">
-          {totalCount} {totalCount === 1 ? "item" : "items"}
+          {totalCount} {totalCount === 1 ? "Eintrag" : "Einträge"}
         </p>
       </div>
 

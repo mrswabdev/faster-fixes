@@ -39,7 +39,7 @@ export function ReviewersTable({ projectId, reviewers }: ReviewersTableProps) {
           <TableHead>Name</TableHead>
           <TableHead>Status</TableHead>
           <TableHead>Feedback</TableHead>
-          <TableHead>Share link</TableHead>
+          <TableHead>Freigabe-Link</TableHead>
           <TableHead />
         </TableRow>
       </TableHeader>
@@ -49,9 +49,9 @@ export function ReviewersTable({ projectId, reviewers }: ReviewersTableProps) {
             <TableCell className="font-medium">{reviewer.name}</TableCell>
             <TableCell>
               {reviewer.isActive ? (
-                <Badge variant="default">Active</Badge>
+                <Badge variant="default">Aktiv</Badge>
               ) : (
-                <Badge variant="secondary">Revoked</Badge>
+                <Badge variant="secondary">Entzogen</Badge>
               )}
             </TableCell>
             <TableCell>{reviewer.feedbackCount}</TableCell>
@@ -64,12 +64,12 @@ export function ReviewersTable({ projectId, reviewers }: ReviewersTableProps) {
                 {copied === reviewer.id ? (
                   <>
                     <Check className="text-success size-3" />
-                    Copied
+                    Kopiert
                   </>
                 ) : (
                   <>
                     <Copy className="size-3" />
-                    Copy link
+                    Link kopieren
                   </>
                 )}
               </Button>

@@ -47,15 +47,15 @@ export function DeleteOrganizationSection() {
       });
 
       if (result.error) {
-        toast.error(result.error.message || "Error deleting organization.");
+        toast.error(result.error.message || "Fehler beim Löschen der Organisation.");
         return;
       }
 
-      toast.success("Organization deleted successfully");
+      toast.success("Organisation erfolgreich gelöscht");
       setOpen(false);
       router.push(defaultRedirect);
     } catch {
-      toast.error("An unexpected error occurred.");
+      toast.error("Ein unerwarteter Fehler ist aufgetreten.");
     } finally {
       setIsPending(false);
     }
@@ -67,8 +67,8 @@ export function DeleteOrganizationSection() {
         <AlertTriangleIcon />
         <AlertDescription>
           {isDefault
-            ? "The default organization cannot be deleted."
-            : "Deleting the organization is irreversible. All associated data will be lost."}
+            ? "Die Standardorganisation kann nicht gelöscht werden."
+            : "Das Löschen der Organisation ist unwiderruflich. Alle zugehörigen Daten gehen verloren."}
         </AlertDescription>
       </Alert>
 
@@ -79,7 +79,7 @@ export function DeleteOrganizationSection() {
             className="w-fit self-end"
             disabled={isDefault}
           >
-            Delete organization
+            Organisation löschen
           </Button>
         </AlertDialogTrigger>
 
@@ -87,22 +87,22 @@ export function DeleteOrganizationSection() {
           <AlertDialogHeader>
             <div className="flex items-center gap-3">
               <AlertTriangleIcon className="text-destructive h-5 w-5" />
-              <AlertDialogTitle>Delete organization</AlertDialogTitle>
+              <AlertDialogTitle>Organisation löschen</AlertDialogTitle>
             </div>
             <AlertDialogDescription className="pt-2">
-              This action is irreversible. All data for the organization{" "}
-              <strong>{activeOrg?.name}</strong> will be permanently deleted.
+              Diese Aktion ist unwiderruflich. Alle Daten der Organisation{" "}
+              <strong>{activeOrg?.name}</strong> werden endgültig gelöscht.
             </AlertDialogDescription>
           </AlertDialogHeader>
 
           <AlertDialogFooter>
-            <AlertDialogCancel disabled={isPending}>Cancel</AlertDialogCancel>
+            <AlertDialogCancel disabled={isPending}>Abbrechen</AlertDialogCancel>
             <Button
               variant="destructive"
               disabled={isPending}
               onClick={handleDelete}
             >
-              {isPending ? "Deleting..." : "Confirm deletion"}
+              {isPending ? "Wird gelöscht..." : "Löschen bestätigen"}
             </Button>
           </AlertDialogFooter>
         </AlertDialogContent>

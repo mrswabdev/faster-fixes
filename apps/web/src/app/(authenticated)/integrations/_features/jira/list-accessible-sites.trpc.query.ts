@@ -21,7 +21,7 @@ export const listAccessibleJiraSites = protectedProcedure.query(
     if (!activeOrganization) {
       throw new TRPCError({
         code: "BAD_REQUEST",
-        message: "No active organization.",
+        message: "Keine aktive Organisation.",
       });
     }
 
@@ -36,7 +36,7 @@ export const listAccessibleJiraSites = protectedProcedure.query(
     if (!membership) {
       throw new TRPCError({
         code: "FORBIDDEN",
-        message: "Only owners and admins can configure Jira.",
+        message: "Nur Inhaber und Admins können Jira konfigurieren.",
       });
     }
 

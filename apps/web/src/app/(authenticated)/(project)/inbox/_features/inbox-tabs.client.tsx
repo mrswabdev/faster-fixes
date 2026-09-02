@@ -77,11 +77,11 @@ export function InboxTabs() {
           <TabsList>
             <TabsTrigger value="board">
               <Inbox className="mr-1.5 size-4" />
-              Board
+              Übersicht
             </TabsTrigger>
             <TabsTrigger value="archive">
               <Archive className="mr-1.5 size-4" />
-              Archive
+              Archiv
             </TabsTrigger>
           </TabsList>
 
@@ -123,9 +123,9 @@ export function InboxTabs() {
                   <EmptyMedia variant="icon">
                     <AlertCircle />
                   </EmptyMedia>
-                  <EmptyTitle>Failed to load feedback</EmptyTitle>
+                  <EmptyTitle>Feedback konnte nicht geladen werden</EmptyTitle>
                   <EmptyDescription>
-                    Something went wrong. Please try again later.
+                    Etwas ist schiefgelaufen. Bitte versuchen Sie es später erneut.
                   </EmptyDescription>
                 </EmptyHeader>
               </Empty>
@@ -136,9 +136,9 @@ export function InboxTabs() {
                   <EmptyMedia variant="icon">
                     <Inbox />
                   </EmptyMedia>
-                  <EmptyTitle>No feedback yet</EmptyTitle>
+                  <EmptyTitle>Noch kein Feedback</EmptyTitle>
                   <EmptyDescription>
-                    Feedback submitted by reviewers will appear here.
+                    Von Reviewern eingereichtes Feedback erscheint hier.
                   </EmptyDescription>
                 </EmptyHeader>
               </Empty>

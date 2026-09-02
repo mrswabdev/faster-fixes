@@ -59,7 +59,7 @@ const columns: ColumnDef<GetPaginatedUsersOutput["users"][number]>[] = [
   {
     accessorKey: "email",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Email" />
+      <DataTableColumnHeader column={column} title="E-Mail" />
     ),
     cell: ({ getValue }) => {
       const email = getValue<string>();
@@ -69,11 +69,11 @@ const columns: ColumnDef<GetPaginatedUsersOutput["users"][number]>[] = [
   {
     accessorKey: "createdAt",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Created at" />
+      <DataTableColumnHeader column={column} title="Erstellt am" />
     ),
     cell: ({ row, getValue }) => {
       const date = new Date(getValue<string>());
-      return <div>{date.toLocaleDateString("en-US")}</div>;
+      return <div>{date.toLocaleDateString("de-DE")}</div>;
     },
     enableSorting: true,
   },
@@ -206,8 +206,8 @@ export const UsersTable = () => {
       setSearch={setSearchInput}
       isLoading={isLoading}
       isError={isError}
-      errorMessage="An error occurred"
-      searchInputPlaceholder="Search for a user..."
+      errorMessage="Ein Fehler ist aufgetreten"
+      searchInputPlaceholder="Nach einem Benutzer suchen..."
       onSortingChange={handleSortingChange}
       exportConfig={{
         enabled: true,

@@ -25,14 +25,14 @@ export default async function AdminUserDetailsPage(props: PageParams) {
     },
   });
 
-  const pageTitle = user ? `${user.name} details` : "User";
+  const pageTitle = user ? `${user.name} Details` : "Benutzer";
 
   return (
     <DashboardPageContent
       title={pageTitle}
       breadcrumbs={[
         { label: "Dashboard", link: "/admin" },
-        { label: "Users", link: "/admin/users" },
+        { label: "Nutzer", link: "/admin/users" },
         { label: pageTitle, },
       ]}
     >

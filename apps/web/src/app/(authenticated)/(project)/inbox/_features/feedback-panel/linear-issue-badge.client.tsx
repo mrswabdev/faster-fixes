@@ -40,7 +40,7 @@ export function LinearIssueBadge({
             projectId,
           }),
         });
-        toast.success("Linear issue creation queued.");
+        toast.success("Erstellung des Linear-Issues wurde eingereiht.");
       },
       onError: (error) => toast.error(error.message),
     }),
@@ -72,7 +72,7 @@ export function LinearIssueBadge({
       disabled={createIssueMutation.isPending}
     >
       <LinearIcon className="mr-1 size-3.5" />
-      Create Linear issue
+      Linear-Issue erstellen
     </Button>
   );
 }

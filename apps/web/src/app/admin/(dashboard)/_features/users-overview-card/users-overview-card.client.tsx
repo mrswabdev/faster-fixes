@@ -26,14 +26,14 @@ export function UsersOverviewCard() {
           <CardContent>
             <div className="text-2xl font-bold">{data?.totalCount}</div>
             <p className="text-muted-foreground mb-4 text-xs">
-              Total users
+              Nutzer insgesamt
             </p>
 
             {/* New users this month section */}
             <div className="space-y-3 border-t pt-4">
               <div className="flex items-center justify-between">
                 <span className="text-muted-foreground text-xs">
-                  New this month
+                  Neu diesen Monat
                 </span>
                 <span className="text-sm font-semibold">
                   {data?.newUsersThisMonth}
@@ -41,7 +41,7 @@ export function UsersOverviewCard() {
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-muted-foreground text-xs">
-                  vs last month
+                  ggü. Vormonat
                 </span>
                 <span
                   className={cn(
@@ -71,17 +71,17 @@ function UsersOverviewCardLoading() {
           <Skeleton className="h-8 w-24" />
         </div>
         <p className="text-muted-foreground mb-4 text-xs">
-          Total users
+          Nutzer insgesamt
         </p>
 
         {/* New users section skeleton */}
         <div className="space-y-3 border-t pt-4">
           <div className="flex items-center justify-between">
-            <span className="text-muted-foreground text-xs">New this month</span>
+            <span className="text-muted-foreground text-xs">Neu diesen Monat</span>
             <Skeleton className="h-5 w-8" />
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-muted-foreground text-xs">vs last month</span>
+            <span className="text-muted-foreground text-xs">ggü. Vormonat</span>
             <Skeleton className="h-4 w-12" />
           </div>
         </div>
@@ -95,7 +95,7 @@ function UsersOverviewCardError() {
     <Card className="border-destructive/50">
       <CardContent className="pt-6">
         <p className="text-destructive text-sm">
-          Failed to load statistics
+          Statistiken konnten nicht geladen werden
         </p>
       </CardContent>
     </Card>

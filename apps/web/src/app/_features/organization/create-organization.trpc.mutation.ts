@@ -15,7 +15,7 @@ export const createOrganization = protectedProcedure
     if (!orgCheck.allowed) {
       throw new TRPCError({
         code: "FORBIDDEN",
-        message: `You've reached the organizations limit for your plan (${orgCheck.denial.metadata.current}/${orgCheck.denial.metadata.limit}). Upgrade to get more.`,
+        message: `Sie haben das Limit an Organisationen für Ihren Plan erreicht (${orgCheck.denial.metadata.current}/${orgCheck.denial.metadata.limit}). Führen Sie ein Upgrade durch, um mehr zu erhalten.`,
         cause: orgCheck.denial,
       });
     }

@@ -48,7 +48,7 @@ export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
     trpc.auth.resetPassword.mutationOptions({
       onError: (error) => {
         const message =
-          error.message || "Password reset failed. Please try again.";
+          error.message || "Zurücksetzen des Passworts fehlgeschlagen. Bitte versuchen Sie es erneut.";
         form.setError("root", { message });
       },
       onSuccess: () => {
@@ -68,7 +68,7 @@ export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
         {form.formState.errors.root && (
           <Alert variant="destructive">
             <AlertCircleIcon />
-            <AlertTitle>Error</AlertTitle>
+            <AlertTitle>Fehler</AlertTitle>
             <AlertDescription>
               <p>{form.formState.errors.root.message}</p>
             </AlertDescription>
@@ -81,7 +81,7 @@ export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>New password</FormLabel>
+              <FormLabel>Neues Passwort</FormLabel>
               <FormControl>
                 <PasswordInput
                   placeholder="••••••••"
@@ -100,7 +100,7 @@ export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
           name="confirmPassword"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Confirm password</FormLabel>
+              <FormLabel>Passwort bestätigen</FormLabel>
               <FormControl>
                 <PasswordInput
                   placeholder="••••••••"
@@ -120,7 +120,7 @@ export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
           disabled={resetPasswordMutation.isPending}
           size="lg"
         >
-          {resetPasswordMutation.isPending ? "Resetting..." : "Reset password"}
+          {resetPasswordMutation.isPending ? "Wird zurückgesetzt..." : "Passwort zurücksetzen"}
         </Button>
       </form>
     </Form>

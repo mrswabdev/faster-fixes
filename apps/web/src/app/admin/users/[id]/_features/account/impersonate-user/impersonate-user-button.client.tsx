@@ -34,17 +34,17 @@ export const ImpersonateUserButton = ({
   const impersonateUserMutation =
     useMutation(trpc.admin.users.impersonate.mutationOptions({
       onSuccess: async () => {
-        toast.success("Success", {
-          description: `You are now signed in as ${userEmail}`,
+        toast.success("Erfolg", {
+          description: `Sie sind jetzt als ${userEmail} angemeldet`,
         });
         await refetchSession();
         router.push("/");
       },
       onError: (error) => {
-        toast.error("Error", {
+        toast.error("Fehler", {
           description:
             error.message ||
-            "Failed to impersonate this user",
+            "Anmeldung als dieser Benutzer fehlgeschlagen",
         });
       },
     }));
@@ -57,28 +57,28 @@ export const ImpersonateUserButton = ({
     <AlertDialog>
       <AlertDialogTrigger asChild>
         <Button variant="outline" disabled={impersonateUserMutation.isPending}>
-          Impersonate
+          Als Benutzer anmelden
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>
-            Are you sure you want to impersonate this user?
+Sind Sie sicher, dass Sie sich als dieser Benutzer anmelden möchten?
           </AlertDialogTitle>
           <AlertDialogDescription>
-            You will be signed in as {userEmail}. You will be able to use the
-            application as this user.
+            Sie werden als {userEmail} angemeldet. Sie können die Anwendung
+            dann als dieser Benutzer nutzen.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel>Abbrechen</AlertDialogCancel>
           <AlertDialogAction
             onClick={handleImpersonate}
             disabled={impersonateUserMutation.isPending}
           >
             {impersonateUserMutation.isPending
-              ? "Impersonating..."
-              : "Impersonate"}
+              ? "Wird angemeldet..."
+              : "Als Benutzer anmelden"}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

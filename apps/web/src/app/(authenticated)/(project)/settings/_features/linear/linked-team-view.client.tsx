@@ -22,9 +22,9 @@ export function LinkedTeamView({
       {link.linkHealthIssue && (
         <Alert>
           <AlertDescription>
-            Some Linear settings reference deleted states or labels. Re-pick
-            them in the team settings on Linear, then save again to clear this
-            warning.
+            Einige Linear-Einstellungen verweisen auf gelöschte Status oder
+            Labels. Wählen Sie diese in den Team-Einstellungen bei Linear
+            erneut aus und speichern Sie, um diese Warnung zu entfernen.
           </AlertDescription>
         </Alert>
       )}

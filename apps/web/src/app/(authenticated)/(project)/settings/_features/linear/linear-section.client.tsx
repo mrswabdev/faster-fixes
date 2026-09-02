@@ -23,10 +23,10 @@ export function LinearSection({ projectId }: LinearSectionProps) {
     return (
       <div className="flex flex-col gap-2">
         <p className="text-muted-foreground text-sm">
-          Linear integration is available on paid plans.
+          Die Linear-Integration ist in kostenpflichtigen Tarifen verfügbar.
         </p>
         <Button className="w-fit" asChild>
-          <a href="/account/billing">Upgrade your plan</a>
+          <a href="/account/billing">Tarif upgraden</a>
         </Button>
       </div>
     );
@@ -57,17 +57,19 @@ function LinearSectionInner({ orgId, projectId }: LinearSectionInnerProps) {
     Errored: (
       <Alert variant="destructive">
         <AlertDescription>
-          Failed to load Linear integration. Try refreshing the page.
+          Linear-Integration konnte nicht geladen werden. Laden Sie die
+          Seite neu.
         </AlertDescription>
       </Alert>
     ),
     Empty: (
       <div className="flex flex-col gap-2">
         <p className="text-muted-foreground text-sm">
-          Connect Linear in organization settings to link a team.
+          Verbinden Sie Linear in den Organisationseinstellungen, um ein
+          Team zu verknüpfen.
         </p>
         <Button variant="link" className="w-fit px-0" asChild>
-          <a href="/integrations">Go to integrations</a>
+          <a href="/integrations">Zu den Integrationen</a>
         </Button>
       </div>
     ),
@@ -103,7 +105,8 @@ function LinkOrPickTeam({ projectId, workspaceUrlKey }: LinkOrPickTeamProps) {
     Errored: (
       <Alert variant="destructive">
         <AlertDescription>
-          Failed to load Linear team link. Try refreshing the page.
+          Linear-Team-Verknüpfung konnte nicht geladen werden. Laden Sie
+          die Seite neu.
         </AlertDescription>
       </Alert>
     ),

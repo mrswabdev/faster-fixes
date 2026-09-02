@@ -34,7 +34,7 @@ export function AssigneeSelect({
     <div>
       <div className="mb-2 flex items-center justify-between">
         <h4 className="text-muted-foreground text-xs font-medium uppercase">
-          Assignee
+          Zugewiesen an
         </h4>
         {currentMemberId && value !== currentMemberId && (
           <Button
@@ -44,7 +44,7 @@ export function AssigneeSelect({
             onClick={() => updateAssignee(feedbackId, currentMemberId)}
           >
             <UserPlus className="mr-1 size-3" />
-            Assign to me
+            Mir zuweisen
           </Button>
         )}
       </div>
@@ -58,7 +58,7 @@ export function AssigneeSelect({
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="unassigned">Unassigned</SelectItem>
+          <SelectItem value="unassigned">Nicht zugewiesen</SelectItem>
           {members.map((member) => (
             <SelectItem key={member.id} value={member.id}>
               <div className="flex items-center gap-2">
@@ -73,7 +73,7 @@ export function AssigneeSelect({
                     {member.name?.charAt(0)?.toUpperCase() ?? "?"}
                   </AvatarFallback>
                 </Avatar>
-                {member.name ?? "Unknown"}
+                {member.name ?? "Unbekannt"}
               </div>
             </SelectItem>
           ))}

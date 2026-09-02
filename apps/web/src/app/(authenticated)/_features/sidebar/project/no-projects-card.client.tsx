@@ -13,10 +13,10 @@ export function NoProjectsCard() {
         </div>
         <div className="flex flex-col gap-1">
           <p className="text-sidebar-foreground text-sm font-medium">
-            No projects yet
+            Noch keine Projekte
           </p>
           <p className="text-muted-foreground text-xs">
-            Create your first project to start collecting feedback.
+            Erstellen Sie Ihr erstes Projekt, um mit dem Sammeln von Feedback zu beginnen.
           </p>
         </div>
         <CreateProjectDialog />

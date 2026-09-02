@@ -13,7 +13,7 @@ type Props = React.ComponentProps<"button"> &
 export function ManageConsentButton({
   variant = "link",
   size = "sm",
-  children = "Privacy preferences",
+  children = "Datenschutzeinstellungen",
   ...props
 }: Props) {
   const { setIsPrivacyDialogOpen } = useConsentManager();

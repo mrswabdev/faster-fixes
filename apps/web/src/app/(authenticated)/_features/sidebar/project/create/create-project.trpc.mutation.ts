@@ -24,7 +24,7 @@ export const createProject = planAwareProcedure
     if (!membership) {
       throw new TRPCError({
         code: "FORBIDDEN",
-        message: "You do not have permission to create a project.",
+        message: "Sie haben keine Berechtigung, ein Projekt zu erstellen.",
       });
     }
 

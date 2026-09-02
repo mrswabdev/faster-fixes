@@ -23,19 +23,19 @@ export const UserFeedback = ({
   message = "This is a sample feedback message.",
 }: UserFeedbackProps) => {
   return (
-    <Html lang="en" dir="ltr">
+    <Html lang="de" dir="ltr">
       <Tailwind config={emailTailwindConfig}>
         <Head />
         <Body className="bg-secondary py-[40px] font-sans">
           <Container className="mx-auto max-w-[600px] bg-card px-[40px] py-[40px]">
             <Section>
               <Text className="mt-0 mb-[24px] text-[24px] font-bold text-foreground">
-                New feedback
+                Neues Feedback
               </Text>
 
               <Text className="mt-0 mb-[24px] text-[16px] leading-[24px] text-foreground">
-                <strong>{senderName}</strong> ({senderEmail}) sent
-                feedback:
+                <strong>{senderName}</strong> ({senderEmail}) hat Feedback
+                gesendet:
               </Text>
 
               <Section className="mb-[32px] rounded-[8px] bg-muted px-[24px] py-[16px]">
@@ -47,7 +47,8 @@ export const UserFeedback = ({
               <Hr className="my-[32px] border-border" />
 
               <Text className="mt-0 mb-[8px] text-[12px] text-muted-foreground">
-                This message was sent via the application feedback form.
+                Diese Nachricht wurde über das Feedback-Formular der
+                Anwendung gesendet.
               </Text>
             </Section>
           </Container>

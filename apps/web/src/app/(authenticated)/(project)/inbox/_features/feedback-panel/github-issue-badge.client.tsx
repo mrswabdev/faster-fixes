@@ -33,7 +33,7 @@ export function GitHubIssueBadge({
           queryKey:
             trpc.authenticated.projects.feedback.list.queryKey({ projectId }),
         });
-        toast.success("GitHub issue creation queued.");
+        toast.success("Erstellung des GitHub-Issues wurde eingereiht.");
       },
       onError: (error) => toast.error(error.message),
     }),
@@ -66,7 +66,7 @@ export function GitHubIssueBadge({
       disabled={createIssueMutation.isPending}
     >
       <GithubIcon className="mr-1 size-3.5" />
-      Create GitHub issue
+      GitHub-Issue erstellen
     </Button>
   );
 }

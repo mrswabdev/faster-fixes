@@ -30,26 +30,26 @@ export function HardDeleteDialog({
       <AlertDialogTrigger asChild>
         <Button variant="destructive" size="sm" disabled={disabled}>
           <Trash2 className="mr-1 size-3" />
-          Delete {count > 1 ? `(${count})` : ""}
+          Löschen {count > 1 ? `(${count})` : ""}
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Permanently delete feedback</AlertDialogTitle>
+          <AlertDialogTitle>Feedback dauerhaft löschen</AlertDialogTitle>
           <AlertDialogDescription>
-            This will permanently delete {count}{" "}
-            {count === 1 ? "feedback item" : "feedback items"} and{" "}
-            {count === 1 ? "its" : "their"} associated screenshots. This action
-            cannot be undone.
+            Dadurch werden {count}{" "}
+            {count === 1 ? "Feedback-Eintrag" : "Feedback-Einträge"} und{" "}
+            {count === 1 ? "der zugehörige Screenshot" : "die zugehörigen Screenshots"} dauerhaft
+            gelöscht. Diese Aktion kann nicht rückgängig gemacht werden.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel>Abbrechen</AlertDialogCancel>
           <AlertDialogAction
             onClick={onConfirm}
             className="bg-destructive text-white hover:bg-destructive/90"
           >
-            Delete permanently
+            Dauerhaft löschen
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

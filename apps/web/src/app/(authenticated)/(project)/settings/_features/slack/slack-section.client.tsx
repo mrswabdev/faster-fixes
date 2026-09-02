@@ -23,10 +23,10 @@ export function SlackSection({ projectId }: SlackSectionProps) {
     return (
       <div className="flex flex-col gap-2">
         <p className="text-muted-foreground text-sm">
-          Slack integration is available on paid plans.
+          Die Slack-Integration ist in kostenpflichtigen Tarifen verfügbar.
         </p>
         <Button className="w-fit" asChild>
-          <a href="/account/billing">Upgrade your plan</a>
+          <a href="/account/billing">Tarif upgraden</a>
         </Button>
       </div>
     );
@@ -55,17 +55,19 @@ function SlackSectionInner({ orgId, projectId }: SlackSectionInnerProps) {
     Errored: (
       <Alert variant="destructive">
         <AlertDescription>
-          Failed to load Slack integration. Try refreshing the page.
+          Slack-Integration konnte nicht geladen werden. Laden Sie die
+          Seite neu.
         </AlertDescription>
       </Alert>
     ),
     Empty: (
       <div className="flex flex-col gap-2">
         <p className="text-muted-foreground text-sm">
-          Connect Slack in organization settings to pick a channel.
+          Verbinden Sie Slack in den Organisationseinstellungen, um einen
+          Channel auszuwählen.
         </p>
         <Button variant="link" className="w-fit px-0" asChild>
-          <a href="/integrations">Go to integrations</a>
+          <a href="/integrations">Zu den Integrationen</a>
         </Button>
       </div>
     ),
@@ -93,7 +95,8 @@ function PickChannel({ projectId }: PickChannelProps) {
     Errored: (
       <Alert variant="destructive">
         <AlertDescription>
-          Failed to load Slack channel link. Try refreshing the page.
+          Slack-Channel-Verknüpfung konnte nicht geladen werden. Laden Sie
+          die Seite neu.
         </AlertDescription>
       </Alert>
     ),
@@ -103,13 +106,15 @@ function PickChannel({ projectId }: PickChannelProps) {
         Errored: (
           <Alert variant="destructive">
             <AlertDescription>
-              Failed to load Slack channels. Try refreshing the page.
+              Slack-Channels konnten nicht geladen werden. Laden Sie die
+              Seite neu.
             </AlertDescription>
           </Alert>
         ),
         Empty: (
           <p className="text-muted-foreground text-sm">
-            No channels available. Invite the bot to a channel in Slack first.
+            Keine Channels verfügbar. Laden Sie den Bot zunächst in einen
+            Channel in Slack ein.
           </p>
         ),
         Success: ({ data: channels }) => (

@@ -27,7 +27,7 @@ import { toast } from "sonner";
 import z from "zod";
 
 const InviteMemberFormSchema = z.object({
-  email: z.string().email("Invalid email address"),
+  email: z.string().email("Ungültige E-Mail-Adresse"),
 });
 
 type InviteMemberFormInputs = z.infer<typeof InviteMemberFormSchema>;
@@ -63,12 +63,12 @@ export function InviteMemberDialog({
         await queryClient.invalidateQueries(
           trpc.authenticated.organization.invitation.get.queryFilter(),
         );
-        toast.success("Invitation sent successfully");
+        toast.success("Einladung erfolgreich gesendet");
         handleOpenChange(false);
       },
       onError: (error) => {
         form.setError("root", {
-          message: error.message || "Error sending invitation.",
+          message: error.message || "Fehler beim Senden der Einladung.",
         });
       },
     }),
@@ -88,9 +88,10 @@ export function InviteMemberDialog({
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Invite a member</DialogTitle>
+          <DialogTitle>Mitglied einladen</DialogTitle>
           <DialogDescription>
-            Send an email invitation to add a new member to your organization.
+            Senden Sie eine E-Mail-Einladung, um ein neues Mitglied zu Ihrer
+            Organisation hinzuzufügen.
           </DialogDescription>
         </DialogHeader>
 
@@ -110,7 +111,7 @@ export function InviteMemberDialog({
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email address</FormLabel>
+                  <FormLabel>E-Mail-Adresse</FormLabel>
                   <FormControl>
                     <Input
                       type="email"
@@ -131,10 +132,10 @@ export function InviteMemberDialog({
                 onClick={() => handleOpenChange(false)}
                 disabled={createInvitation.isPending}
               >
-                Cancel
+                Abbrechen
               </Button>
               <Button type="submit" disabled={createInvitation.isPending}>
-                {createInvitation.isPending ? "Sending..." : "Send invitation"}
+                {createInvitation.isPending ? "Wird gesendet..." : "Einladung senden"}
               </Button>
             </DialogFooter>
           </form>

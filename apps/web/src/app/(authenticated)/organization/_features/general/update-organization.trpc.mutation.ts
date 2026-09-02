@@ -22,7 +22,7 @@ export const updateOrganization = protectedProcedure
       throw new TRPCError({
         code: "FORBIDDEN",
         message:
-          "You do not have permission to edit this organization.",
+          "Sie haben keine Berechtigung, diese Organisation zu bearbeiten.",
       });
     }
 

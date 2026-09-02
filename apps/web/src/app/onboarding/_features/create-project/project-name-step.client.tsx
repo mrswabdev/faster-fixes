@@ -18,19 +18,19 @@ export function ProjectNameStep({
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-2">
-        <h1 className="text-2xl font-bold">What&apos;s your project called?</h1>
+        <h1 className="text-2xl font-bold">Wie heißt Ihr Projekt?</h1>
         <p className="text-muted-foreground text-sm">
-          A project represents the client website where you&apos;ll collect feedback.
+          Ein Projekt repräsentiert die Kunden-Website, auf der Sie Feedback sammeln.
         </p>
       </div>
 
       <div className="flex flex-col gap-2">
         <label htmlFor="project-name" className="text-sm font-medium">
-          Project name
+          Projektname
         </label>
         <Input
           id="project-name"
-          placeholder="Client Site XYZ"
+          placeholder="Kunden-Website XYZ"
           value={name}
           onChange={(e) => onNameChange(e.target.value)}
           onKeyDown={(e) => {
@@ -45,7 +45,7 @@ export function ProjectNameStep({
         disabled={!name.trim()}
         className="self-end"
       >
-        Continue
+        Weiter
         <ArrowRight className="size-4" />
       </Button>
     </div>

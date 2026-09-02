@@ -63,7 +63,7 @@ export function RegenerateApiKeySection({
       {newApiKey && (
         <div className="border-destructive/50 bg-destructive/10 rounded-md border p-3">
           <p className="text-destructive mb-2 text-xs font-medium">
-            New key — copy it now, it won&apos;t be shown again.
+            Neuer Token — jetzt kopieren, er wird nicht erneut angezeigt.
           </p>
           <div className="flex items-center gap-2">
             <code className="flex-1 font-mono text-sm break-all">
@@ -84,27 +84,29 @@ export function RegenerateApiKeySection({
         <DialogTrigger asChild>
           <Button variant="outline" className="self-end">
             <RefreshCw className="size-4" />
-            Regenerate API key
+            API-Token neu generieren
           </Button>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Regenerate API key?</DialogTitle>
+            <DialogTitle>API-Token neu generieren?</DialogTitle>
             <DialogDescription>
-              The old key will be immediately invalidated. The widget will no
-              longer be able to submit feedback until the new key is configured.
+              Der alte Token wird sofort ungültig. Das Widget kann erst
+              wieder Feedback senden, wenn der neue Token konfiguriert ist.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
             <Button variant="outline" onClick={() => setRegenOpen(false)}>
-              Cancel
+              Abbrechen
             </Button>
             <Button
               variant="destructive"
               disabled={regenerateApiKey.isPending}
               onClick={() => regenerateApiKey.mutate({ projectId })}
             >
-              {regenerateApiKey.isPending ? "Regenerating..." : "Regenerate"}
+              {regenerateApiKey.isPending
+                ? "Wird generiert..."
+                : "Neu generieren"}
             </Button>
           </DialogFooter>
         </DialogContent>

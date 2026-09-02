@@ -26,7 +26,7 @@ export const acceptInvitation = protectedProcedure
       }
       throw new TRPCError({
         code: "INTERNAL_SERVER_ERROR",
-        message: "Error accepting invitation.",
+        message: "Fehler beim Annehmen der Einladung.",
       });
     }
   });

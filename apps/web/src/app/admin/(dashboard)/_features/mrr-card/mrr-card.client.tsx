@@ -15,7 +15,7 @@ export function MrrCard() {
     Errored: <MrrCardError />,
     Success: ({ data }) => {
       const formatEur = (value: number) =>
-        new Intl.NumberFormat("fr-FR", {
+        new Intl.NumberFormat("de-DE", {
           style: "currency",
           currency: "EUR",
         }).format(value);
@@ -30,9 +30,9 @@ export function MrrCard() {
         <Card>
           <CardContent>
             <div className="text-2xl font-bold">{formattedGrossRevenue}</div>
-            <p className="text-muted-foreground text-xs">Gross revenue</p>
+            <p className="text-muted-foreground text-xs">Bruttoumsatz</p>
             <p className="text-muted-foreground mb-4 text-xs">
-              {formattedNetRevenue} net
+              {formattedNetRevenue} netto
             </p>
 
             {/* Breakdown section */}
@@ -76,7 +76,7 @@ function MrrCardLoading() {
     <Card>
       <CardContent>
         <Skeleton className="h-8 w-24" />
-        <p className="text-muted-foreground text-xs">Gross revenue</p>
+        <p className="text-muted-foreground text-xs">Bruttoumsatz</p>
         <Skeleton className="mb-4 mt-1 h-4 w-20" />
 
         <div className="space-y-3 border-t pt-4">
@@ -105,7 +105,7 @@ function MrrCardError() {
     <Card className="border-destructive/50">
       <CardContent className="pt-6">
         <p className="text-destructive text-sm">
-          Failed to load statistics
+          Statistiken konnten nicht geladen werden
         </p>
       </CardContent>
     </Card>

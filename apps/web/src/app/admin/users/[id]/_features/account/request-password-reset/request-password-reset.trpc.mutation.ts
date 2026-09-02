@@ -27,7 +27,7 @@ export const requestPasswordReset = adminProcedure
       if (!user) {
         throw new TRPCError({
           code: "NOT_FOUND",
-          message: "User not found",
+          message: "Benutzer nicht gefunden",
         });
       }
 
@@ -39,7 +39,7 @@ export const requestPasswordReset = adminProcedure
       if (!hasCredentialProvider) {
         throw new TRPCError({
           code: "BAD_REQUEST",
-          message: "User does not have a credential-based account",
+          message: "Benutzer hat kein passwortbasiertes Konto",
         });
       }
 
@@ -55,7 +55,7 @@ export const requestPasswordReset = adminProcedure
       if (!response) {
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",
-          message: "Failed to request password reset",
+          message: "Passwort-Zurücksetzung konnte nicht angefordert werden",
         });
       }
 
@@ -71,7 +71,7 @@ export const requestPasswordReset = adminProcedure
         message:
           error instanceof Error
             ? error.message
-            : "Failed to request password reset",
+            : "Passwort-Zurücksetzung konnte nicht angefordert werden",
       });
     }
   });

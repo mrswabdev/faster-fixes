@@ -16,7 +16,7 @@ export const listAccessibleRepos = protectedProcedure.query(async ({ ctx }) => {
   if (!activeOrganization) {
     throw new TRPCError({
       code: "BAD_REQUEST",
-      message: "No active organization.",
+      message: "Keine aktive Organisation.",
     });
   }
 
@@ -31,7 +31,7 @@ export const listAccessibleRepos = protectedProcedure.query(async ({ ctx }) => {
   if (!membership) {
     throw new TRPCError({
       code: "FORBIDDEN",
-      message: "Only owners and admins can list repositories.",
+      message: "Nur Inhaber und Admins können Repositories auflisten.",
     });
   }
 

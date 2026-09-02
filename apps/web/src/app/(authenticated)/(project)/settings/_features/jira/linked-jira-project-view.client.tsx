@@ -12,15 +12,15 @@ import { DefaultLabelsEditor } from "./update-link/default-labels-editor.client"
 // clears itself on the next weekly run.
 const LINK_HEALTH_MESSAGES: Record<string, string> = {
   stale_project:
-    "The linked Jira project is no longer reachable. Unlink and pick it again to resume creating issues.",
+    "Das verknüpfte Jira-Projekt ist nicht mehr erreichbar. Verknüpfung aufheben und erneut auswählen, um wieder Issues zu erstellen.",
   stale_issue_type:
-    "Jira rejected the issue type for this link, usually because a required field was added. Unlink and pick the issue type again.",
+    "Jira hat den Issue-Typ für diese Verknüpfung abgelehnt, meist weil ein Pflichtfeld hinzugekommen ist. Verknüpfung aufheben und den Issue-Typ erneut auswählen.",
   webhook_refresh_failed:
-    "Faster Fixes could not renew this link's Jira webhook, so status changes made in Jira are not syncing back. It is retried weekly; unlink and relink to fix it now.",
+    "Faster Fixes konnte den Jira-Webhook dieser Verknüpfung nicht erneuern, daher werden Statusänderungen aus Jira nicht zurücksynchronisiert. Es wird wöchentlich erneut versucht; Verknüpfung aufheben und neu verknüpfen, um es sofort zu beheben.",
 };
 
 const FALLBACK_LINK_HEALTH_MESSAGE =
-  "This link needs attention. Unlink and pick the Jira project again to clear this warning.";
+  "Diese Verknüpfung erfordert eine Prüfung. Verknüpfung aufheben und das Jira-Projekt erneut auswählen, um diese Warnung zu entfernen.";
 
 type LinkedJiraProjectViewProps = {
   projectId: string;
@@ -55,7 +55,7 @@ export function LinkedJiraProjectView({
           <ExternalLink className="ml-1 inline size-3" />
         </a>
         <p className="text-muted-foreground text-sm">
-          Issue type: {link.issueTypeName}
+          Issue-Typ: {link.issueTypeName}
         </p>
       </div>
 

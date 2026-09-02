@@ -38,7 +38,7 @@ export function EmailInformation({ userId }: EmailInformationProps) {
     ),
     Errored: (
       <div className="text-sm text-red-600">
-        Failed to retrieve email
+E-Mail konnte nicht abgerufen werden
       </div>
     ),
     Empty: <div />,
@@ -61,8 +61,8 @@ export function EmailInformation({ userId }: EmailInformationProps) {
                 </TooltipTrigger>
                 <TooltipContent>
                   {emailData.emailVerified
-                    ? "Email verified"
-                    : "Email not verified"}
+                    ? "E-Mail bestätigt"
+                    : "E-Mail nicht bestätigt"}
                 </TooltipContent>
               </Tooltip>
               <span>{emailData.email}</span>

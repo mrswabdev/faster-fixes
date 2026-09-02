@@ -3,7 +3,7 @@
 import { cn } from "@workspace/ui/lib/utils";
 import { Check } from "lucide-react";
 
-const STEPPER_LABELS = ["Project", "Website", "Install"] as const;
+const STEPPER_LABELS = ["Projekt", "Website", "Installation"] as const;
 
 type StepIndicatorProps = {
   step: number;

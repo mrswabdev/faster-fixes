@@ -12,6 +12,7 @@ import {
   CardTitle,
 } from "@workspace/ui/components/card";
 import { format } from "date-fns";
+import { de } from "date-fns/locale";
 import { Loader2 } from "lucide-react";
 import { SubscriptionCreateDialog } from "./subscription-create-dialog.client";
 import { SubscriptionEditDialog } from "./subscription-edit-dialog.client";
@@ -34,8 +35,8 @@ export function SubscriptionCard({ userId }: SubscriptionCardProps) {
     return (
       <Card className="">
         <CardHeader>
-          <p className="text-muted-foreground text-sm">Subscription</p>
-          <CardTitle>Loading...</CardTitle>
+          <p className="text-muted-foreground text-sm">Abonnement</p>
+          <CardTitle>Wird geladen...</CardTitle>
         </CardHeader>
         <CardContent className="flex items-center justify-center py-8">
           <Loader2 className="h-6 w-6 animate-spin" />
@@ -47,9 +48,9 @@ export function SubscriptionCard({ userId }: SubscriptionCardProps) {
   return (
     <Card className="">
       <CardHeader>
-        <p className="text-muted-foreground text-sm">Subscription</p>
+        <p className="text-muted-foreground text-sm">Abonnement</p>
 
-        <CardTitle>{subscription ? subscription.plan : "Not subscribed"}</CardTitle>
+        <CardTitle>{subscription ? subscription.plan : "Kein Abonnement"}</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         {subscription ? (
@@ -70,9 +71,9 @@ export function SubscriptionCard({ userId }: SubscriptionCardProps) {
               </div>
               {subscription.periodEnd && (
                 <div>
-                  <p className="text-muted-foreground text-sm">Until</p>
+                  <p className="text-muted-foreground text-sm">Bis</p>
                   <p className="font-medium">
-                    {format(new Date(subscription.periodEnd), "PPP")}
+                    {format(new Date(subscription.periodEnd), "PPP", { locale: de })}
                   </p>
                 </div>
               )}
@@ -81,7 +82,7 @@ export function SubscriptionCard({ userId }: SubscriptionCardProps) {
         ) : (
           <div className="space-y-4">
             <p className="text-muted-foreground text-sm">
-              No active subscription
+Kein aktives Abonnement
             </p>
           </div>
         )}

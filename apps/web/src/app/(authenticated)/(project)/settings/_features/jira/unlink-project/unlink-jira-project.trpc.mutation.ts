@@ -19,7 +19,7 @@ export const unlinkJiraProject = protectedProcedure
     });
 
     if (!project) {
-      throw new TRPCError({ code: "NOT_FOUND", message: "Project not found." });
+      throw new TRPCError({ code: "NOT_FOUND", message: "Projekt nicht gefunden." });
     }
 
     const membership = await prisma.member.findFirst({
@@ -33,7 +33,7 @@ export const unlinkJiraProject = protectedProcedure
     if (!membership) {
       throw new TRPCError({
         code: "FORBIDDEN",
-        message: "Only owners and admins can unlink Jira projects.",
+        message: "Nur Inhaber und Admins können Jira-Projekte trennen.",
       });
     }
 

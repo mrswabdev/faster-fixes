@@ -54,7 +54,7 @@ export function UpdateProjectForm({ projectId }: UpdateProjectFormProps) {
         queryClient.invalidateQueries({
           queryKey: trpc.authenticated.projects.list.queryKey(),
         });
-        toast.success("Project updated");
+        toast.success("Projekt aktualisiert");
       },
       onError: (error) => {
         form.setError("root", { message: error.message });
@@ -99,7 +99,7 @@ export function UpdateProjectForm({ projectId }: UpdateProjectFormProps) {
         )}
 
         <div className="flex flex-col gap-2">
-          <Label className="text-sm font-medium">Project ID</Label>
+          <Label className="text-sm font-medium">Projekt-ID</Label>
           <CopyableText className="bg-muted w-fit rounded-md px-3 py-1.5 font-mono text-sm">
             {project?.publicId ?? "..."}
           </CopyableText>
@@ -112,7 +112,7 @@ export function UpdateProjectForm({ projectId }: UpdateProjectFormProps) {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Project name</FormLabel>
+              <FormLabel>Projektname</FormLabel>
               <FormControl>
                 <Input disabled={updateProject.isPending} {...field} />
               </FormControl>
@@ -135,9 +135,9 @@ export function UpdateProjectForm({ projectId }: UpdateProjectFormProps) {
                 />
               </FormControl>
               <FormDescription>
-                Subdomains, www., and protocol variants are matched
-                automatically. Localhost is always allowed for local
-                development.
+                Subdomains, www. und Protokoll-Varianten werden automatisch
+                zugeordnet. Localhost ist für die lokale Entwicklung immer
+                erlaubt.
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -152,10 +152,11 @@ export function UpdateProjectForm({ projectId }: UpdateProjectFormProps) {
               <FieldLabel htmlFor="widget-enabled-switch">
                 <Field orientation="horizontal">
                   <FieldContent>
-                    <FieldTitle>Widget enabled</FieldTitle>
+                    <FieldTitle>Widget aktiviert</FieldTitle>
                     <FieldDescription>
-                      Show the feedback widget on your site. Disable to hide it
-                      without removing the snippet.
+                      Zeigt das Feedback-Widget auf Ihrer Website an.
+                      Deaktivieren, um es auszublenden, ohne den Snippet zu
+                      entfernen.
                     </FieldDescription>
                   </FieldContent>
                   <FormControl>
@@ -178,7 +179,7 @@ export function UpdateProjectForm({ projectId }: UpdateProjectFormProps) {
           disabled={updateProject.isPending}
           className="self-end"
         >
-          {updateProject.isPending ? "Updating..." : "Update"}
+          {updateProject.isPending ? "Wird aktualisiert..." : "Aktualisieren"}
         </Button>
       </form>
     </Form>

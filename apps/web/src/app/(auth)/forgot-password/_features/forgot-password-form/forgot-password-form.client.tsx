@@ -40,7 +40,7 @@ export function ForgotPasswordForm() {
     trpc.auth.forgotPassword.mutationOptions({
       onError: (error) => {
         const message =
-          error.message || "Unable to send reset email. Please try again.";
+          error.message || "E-Mail zum Zurücksetzen konnte nicht gesendet werden. Bitte versuchen Sie es erneut.";
         form.setError("root", { message });
       },
       onSuccess: () => {
@@ -64,7 +64,7 @@ export function ForgotPasswordForm() {
         {form.formState.errors.root && (
           <Alert variant="destructive">
             <AlertCircleIcon />
-            <AlertTitle>Error</AlertTitle>
+            <AlertTitle>Fehler</AlertTitle>
             <AlertDescription>
               <p>{form.formState.errors.root.message}</p>
             </AlertDescription>
@@ -75,9 +75,9 @@ export function ForgotPasswordForm() {
         {isSuccess && (
           <Alert variant="success">
             <CheckCircle2 />
-            <AlertTitle>Success</AlertTitle>
+            <AlertTitle>Erfolgreich</AlertTitle>
             <AlertDescription>
-              <p>A password reset email has been sent to your email address.</p>
+              <p>Eine E-Mail zum Zurücksetzen des Passworts wurde an Ihre E-Mail-Adresse gesendet.</p>
             </AlertDescription>
           </Alert>
         )}
@@ -88,7 +88,7 @@ export function ForgotPasswordForm() {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>E-Mail</FormLabel>
               <FormControl>
                 <Input
                   type="email"
@@ -109,18 +109,18 @@ export function ForgotPasswordForm() {
           disabled={forgotPasswordMutation.isPending || isSuccess}
           size="lg"
         >
-          {forgotPasswordMutation.isPending ? "Sending..." : "Send reset link"}
+          {forgotPasswordMutation.isPending ? "Wird gesendet..." : "Link zum Zurücksetzen senden"}
         </Button>
       </form>
 
       {/* Back to Login Link */}
       <div className="mt-4 text-center text-sm">
-        <span className="text-muted-foreground">Remember your password? </span>
+        <span className="text-muted-foreground">Passwort wieder eingefallen? </span>
         <Link
           href={loginUrl}
           className="text-primary font-medium hover:underline"
         >
-          Sign in
+          Anmelden
         </Link>
       </div>
     </Form>

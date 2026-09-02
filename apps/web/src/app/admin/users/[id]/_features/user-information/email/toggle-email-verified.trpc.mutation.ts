@@ -17,7 +17,7 @@ export const toggleEmailVerified = adminProcedure
     if (!user) {
       throw new TRPCError({
         code: "NOT_FOUND",
-        message: "User not found",
+        message: "Benutzer nicht gefunden",
       });
     }
 

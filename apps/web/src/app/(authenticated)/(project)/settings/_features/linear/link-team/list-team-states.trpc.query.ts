@@ -18,7 +18,7 @@ export const listLinearTeamStates = protectedProcedure
     });
 
     if (!member) {
-      throw new TRPCError({ code: "FORBIDDEN", message: "Access denied." });
+      throw new TRPCError({ code: "FORBIDDEN", message: "Zugriff verweigert." });
     }
 
     const installation = await prisma.linearInstallation.findUnique({
@@ -29,7 +29,7 @@ export const listLinearTeamStates = protectedProcedure
     if (!installation) {
       throw new TRPCError({
         code: "BAD_REQUEST",
-        message: "Linear is not connected.",
+        message: "Linear ist nicht verbunden.",
       });
     }
 

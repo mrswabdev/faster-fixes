@@ -37,14 +37,14 @@ export function CreateUserDialog() {
   const createUserMutation = useMutation(
     trpc.admin.users.create.mutationOptions({
       onSuccess: () => {
-        toast.success("User created successfully");
+        toast.success("Benutzer erfolgreich erstellt");
         setOpen(false);
         form.reset();
         queryClient.invalidateQueries(trpc.admin.users.list.queryFilter());
       },
       onError: (error) => {
         toast.error(
-          error.message || "Failed to create user",
+          error.message || "Benutzer konnte nicht erstellt werden",
         );
       },
     }),
@@ -70,14 +70,14 @@ export function CreateUserDialog() {
       <DialogTrigger asChild>
         <Button variant="outline" size="sm">
           <Plus />
-          Add user
+          Benutzer hinzufügen
         </Button>
       </DialogTrigger>
       <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>Create a new user</DialogTitle>
+          <DialogTitle>Neuen Benutzer erstellen</DialogTitle>
           <DialogDescription>
-            Fill in the user details. A temporary password will be generated.
+            Geben Sie die Benutzerdaten ein. Es wird ein temporäres Passwort erzeugt.
           </DialogDescription>
         </DialogHeader>
 
@@ -88,7 +88,7 @@ export function CreateUserDialog() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email *</FormLabel>
+                  <FormLabel>E-Mail *</FormLabel>
                   <FormControl>
                     <Input
                       type="email"
@@ -125,7 +125,7 @@ export function CreateUserDialog() {
               name="firstName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>First name</FormLabel>
+                  <FormLabel>Vorname</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="John"
@@ -143,7 +143,7 @@ export function CreateUserDialog() {
               name="lastName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Last name</FormLabel>
+                  <FormLabel>Nachname</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Doe"
@@ -163,8 +163,8 @@ export function CreateUserDialog() {
                 pending={createUserMutation.isPending}
               >
                 {createUserMutation.isPending
-                  ? "Creating..."
-                  : "Create user"}
+                  ? "Wird erstellt..."
+                  : "Benutzer erstellen"}
               </ActionButton>
             </DialogFooter>
           </form>

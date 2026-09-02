@@ -33,7 +33,7 @@ export function JiraConnected({ installation }: JiraConnectedProps) {
           queryKey:
             trpc.authenticated.integrations.jira.getInstallation.queryKey(),
         });
-        toast.success("Jira disconnected.");
+        toast.success("Jira-Verbindung getrennt.");
       },
       onError: (error) => {
         toast.error(error.message);
@@ -48,11 +48,11 @@ export function JiraConnected({ installation }: JiraConnectedProps) {
       <div className="flex flex-col">
         <span className="font-medium">{installation.siteName}</span>
         <span className="text-muted-foreground text-sm">
-          Connected
+          Verbunden
           {installation.installedByName
-            ? ` by ${installation.installedByName}`
+            ? ` von ${installation.installedByName}`
             : ""}{" "}
-          on{" "}
+          am{" "}
           {new Date(installation.createdAt).toLocaleDateString("en-US", {
             month: "short",
             day: "numeric",
@@ -64,14 +64,15 @@ export function JiraConnected({ installation }: JiraConnectedProps) {
       {needsReconnect ? (
         <div className="flex flex-col gap-2 rounded-md border border-destructive/50 p-3">
           <span className="text-sm font-medium text-destructive">
-            Reconnection required
+            Erneute Verbindung erforderlich
           </span>
           <span className="text-muted-foreground text-sm">
-            The Jira authorization is no longer valid, likely because the
-            authorizing user lost access. Reconnect to resume syncing.
+            Die Jira-Autorisierung ist nicht mehr gültig, vermutlich weil
+            der autorisierende Nutzer den Zugriff verloren hat. Erneut
+            verbinden, um die Synchronisierung fortzusetzen.
           </span>
           <Button size="sm" className="self-start" asChild>
-            <a href="/api/jira/install">Reconnect</a>
+            <a href="/api/jira/install">Erneut verbinden</a>
           </Button>
         </div>
       ) : null}
@@ -79,7 +80,7 @@ export function JiraConnected({ installation }: JiraConnectedProps) {
       <div className="flex gap-2">
         <Button variant="outline" size="sm" asChild>
           <a href={installation.siteUrl} target="_blank" rel="noopener noreferrer">
-            Open in Jira
+            In Jira öffnen
             <ExternalLink className="ml-1 size-3" />
           </a>
         </Button>
@@ -87,21 +88,22 @@ export function JiraConnected({ installation }: JiraConnectedProps) {
         <AlertDialog>
           <AlertDialogTrigger asChild>
             <Button variant="destructive" size="sm">
-              Disconnect
+              Trennen
             </Button>
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
-              <AlertDialogTitle>Disconnect Jira?</AlertDialogTitle>
+              <AlertDialogTitle>Jira-Verbindung trennen?</AlertDialogTitle>
               <AlertDialogDescription>
-                This will remove the connection and unlink all projects from this
-                Jira site. Existing Jira issues will not be deleted.
+                Dadurch wird die Verbindung entfernt und alle Projekte
+                werden von dieser Jira-Site getrennt. Bestehende
+                Jira-Issues werden nicht gelöscht.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogCancel>Abbrechen</AlertDialogCancel>
               <AlertDialogAction onClick={() => disconnectMutation.mutate()}>
-                Disconnect
+                Trennen
               </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>

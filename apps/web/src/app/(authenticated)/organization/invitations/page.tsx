@@ -4,7 +4,7 @@ import { ReceivedInvitationsList } from "./_features/received-invitations-list.c
 export default function InvitationsPage() {
   return (
     <DashboardPageContent
-      breadcrumbs={[{ label: "organization" }, { label: "Invitations" }]}
+      breadcrumbs={[{ label: "Organisation" }, { label: "Einladungen" }]}
     >
       <ReceivedInvitationsList />
     </DashboardPageContent>

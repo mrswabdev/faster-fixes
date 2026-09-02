@@ -10,10 +10,10 @@ import {
 } from "@workspace/ui/components/select";
 
 const STATUS_OPTIONS = [
-  { value: "new", label: "New" },
-  { value: "in_progress", label: "In Progress" },
-  { value: "resolved", label: "Resolved" },
-  { value: "closed", label: "Archived" },
+  { value: "new", label: "Neu" },
+  { value: "in_progress", label: "In Arbeit" },
+  { value: "resolved", label: "Erledigt" },
+  { value: "closed", label: "Archiviert" },
 ];
 
 type StatusSelectProps = {

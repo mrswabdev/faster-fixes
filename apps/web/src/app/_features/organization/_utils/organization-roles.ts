@@ -1,7 +1,7 @@
 export const ORGANIZATION_ROLES = {
-  owner: "Owner",
+  owner: "Inhaber",
   admin: "Admin",
-  member: "Member",
+  member: "Mitglied",
 } as const;
 
 export type OrganizationRole = keyof typeof ORGANIZATION_ROLES;

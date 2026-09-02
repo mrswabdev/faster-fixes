@@ -17,7 +17,7 @@ export const setProjectSlackChannel = planAwareProcedure
     });
 
     if (!project) {
-      throw new TRPCError({ code: "NOT_FOUND", message: "Project not found." });
+      throw new TRPCError({ code: "NOT_FOUND", message: "Projekt nicht gefunden." });
     }
 
     const membership = await prisma.member.findFirst({
@@ -31,7 +31,7 @@ export const setProjectSlackChannel = planAwareProcedure
     if (!membership) {
       throw new TRPCError({
         code: "FORBIDDEN",
-        message: "Only owners and admins can set the Slack channel.",
+        message: "Nur Inhaber und Admins können den Slack-Kanal festlegen.",
       });
     }
 
@@ -43,7 +43,7 @@ export const setProjectSlackChannel = planAwareProcedure
     if (!installation) {
       throw new TRPCError({
         code: "NOT_FOUND",
-        message: "No Slack workspace connected.",
+        message: "Kein Slack-Workspace verbunden.",
       });
     }
 

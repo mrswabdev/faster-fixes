@@ -37,7 +37,7 @@ export function RevokeReviewerButton({
         queryClient.invalidateQueries(
           trpc.authenticated.projects.reviewer.list.queryOptions({ projectId }),
         );
-        toast.success("Reviewer revoked");
+        toast.success("Reviewer-Zugriff entzogen");
       },
       onError: (error) => {
         toast.error(error.message);
@@ -54,25 +54,25 @@ export function RevokeReviewerButton({
           className="text-destructive hover:text-destructive"
         >
           <UserX className="size-4" />
-          Revoke
+          Entziehen
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Revoke reviewer</AlertDialogTitle>
+          <AlertDialogTitle>Reviewer-Zugriff entziehen</AlertDialogTitle>
           <AlertDialogDescription>
-            Are you sure you want to revoke access for{" "}
-            <span className="font-medium">{reviewerName}</span>? They will no
-            longer be able to submit feedback.
+            Möchten Sie den Zugriff für{" "}
+            <span className="font-medium">{reviewerName}</span> wirklich
+            entziehen? Feedback kann danach nicht mehr eingereicht werden.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel>Abbrechen</AlertDialogCancel>
           <AlertDialogAction
             onClick={() => revokeReviewer.mutate({ reviewerId })}
             variant="destructive"
           >
-            Revoke
+            Entziehen
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

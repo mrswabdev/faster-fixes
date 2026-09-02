@@ -37,7 +37,7 @@ export function DeleteReviewerButton({
         queryClient.invalidateQueries(
           trpc.authenticated.projects.reviewer.list.queryOptions({ projectId }),
         );
-        toast.success("Reviewer deleted");
+        toast.success("Reviewer gelöscht");
       },
       onError: (error) => {
         toast.error(error.message);
@@ -54,25 +54,26 @@ export function DeleteReviewerButton({
           className="text-destructive hover:text-destructive"
         >
           <Trash2 className="size-4" />
-          Delete
+          Löschen
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Delete reviewer</AlertDialogTitle>
+          <AlertDialogTitle>Reviewer löschen</AlertDialogTitle>
           <AlertDialogDescription>
-            Are you sure you want to permanently delete{" "}
-            <span className="font-medium">{reviewerName}</span>? This action
-            cannot be undone and all associated feedback will be lost.
+            Möchten Sie{" "}
+            <span className="font-medium">{reviewerName}</span> wirklich
+            endgültig löschen? Diese Aktion kann nicht rückgängig gemacht
+            werden und das gesamte zugehörige Feedback geht verloren.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel>Abbrechen</AlertDialogCancel>
           <AlertDialogAction
             onClick={() => deleteReviewer.mutate({ reviewerId })}
             variant="destructive"
           >
-            Delete
+            Löschen
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

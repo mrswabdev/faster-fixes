@@ -17,7 +17,7 @@ export function ActiveSubscriptionsCard() {
       const formattedChurn =
         data?.churnRate == null
           ? "—"
-          : new Intl.NumberFormat("fr-FR", {
+          : new Intl.NumberFormat("de-DE", {
               style: "percent",
               maximumFractionDigits: 1,
             }).format(data.churnRate);
@@ -28,14 +28,14 @@ export function ActiveSubscriptionsCard() {
             <div className="flex items-baseline gap-2">
               <div className="text-2xl font-bold">{data?.totalCount}</div>
               <span className="text-muted-foreground text-xs">
-                ({data?.conversionRate}% of users)
+                ({data?.conversionRate}% der Nutzer)
               </span>
             </div>
             <p className="text-muted-foreground text-xs">
-              Active subscriptions
+              Aktive Abonnements
             </p>
             <p className="text-muted-foreground mb-4 text-xs">
-              {formattedChurn} monthly churn
+              {formattedChurn} monatliche Abwanderung
             </p>
 
             {/* Breakdown section */}
@@ -82,7 +82,7 @@ function ActiveSubscriptionsCardLoading() {
           <Skeleton className="h-8 w-20" />
           <Skeleton className="h-4 w-24" />
         </div>
-        <p className="text-muted-foreground text-xs">Active subscriptions</p>
+        <p className="text-muted-foreground text-xs">Aktive Abonnements</p>
         <Skeleton className="mb-4 mt-1 h-4 w-28" />
 
         <div className="space-y-3 border-t pt-4">
@@ -105,7 +105,7 @@ function ActiveSubscriptionsCardError() {
     <Card className="border-destructive/50">
       <CardContent className="pt-6">
         <p className="text-destructive text-sm">
-          Failed to load statistics
+          Statistiken konnten nicht geladen werden
         </p>
       </CardContent>
     </Card>

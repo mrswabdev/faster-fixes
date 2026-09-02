@@ -28,10 +28,10 @@ export function InvitationActionsDropdown({
         await queryClient.invalidateQueries(
           trpc.authenticated.organization.invitation.get.queryFilter(),
         );
-        toast.success("Invitation canceled");
+        toast.success("Einladung storniert");
       },
       onError: (error) => {
-        toast.error(error.message || "Error canceling invitation.");
+        toast.error(error.message || "Fehler beim Stornieren der Einladung.");
       },
     }),
   );
@@ -53,7 +53,7 @@ export function InvitationActionsDropdown({
           variant="destructive"
         >
           <X className="size-4" />
-          Cancel invitation
+          Einladung stornieren
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

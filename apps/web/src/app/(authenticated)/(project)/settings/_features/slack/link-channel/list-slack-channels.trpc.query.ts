@@ -17,7 +17,7 @@ export const listSlackChannels = protectedProcedure.query(async ({ ctx }) => {
   if (!activeOrganization) {
     throw new TRPCError({
       code: "BAD_REQUEST",
-      message: "No active organization.",
+      message: "Keine aktive Organisation.",
     });
   }
 
@@ -32,7 +32,7 @@ export const listSlackChannels = protectedProcedure.query(async ({ ctx }) => {
   if (!membership) {
     throw new TRPCError({
       code: "FORBIDDEN",
-      message: "Only owners and admins can list Slack channels.",
+      message: "Nur Inhaber und Admins können Slack-Kanäle auflisten.",
     });
   }
 
@@ -44,7 +44,7 @@ export const listSlackChannels = protectedProcedure.query(async ({ ctx }) => {
   if (!installation) {
     throw new TRPCError({
       code: "NOT_FOUND",
-      message: "No Slack workspace connected.",
+      message: "Kein Slack-Workspace verbunden.",
     });
   }
 

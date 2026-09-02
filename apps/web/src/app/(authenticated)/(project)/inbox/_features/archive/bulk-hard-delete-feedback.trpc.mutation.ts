@@ -16,14 +16,14 @@ export const bulkHardDeleteFeedback = protectedProcedure
     });
 
     if (feedbackItems.length === 0) {
-      throw new TRPCError({ code: "NOT_FOUND", message: "Feedback not found." });
+      throw new TRPCError({ code: "NOT_FOUND", message: "Feedback nicht gefunden." });
     }
 
     const nonClosed = feedbackItems.find((f) => f.status !== "closed");
     if (nonClosed) {
       throw new TRPCError({
         code: "BAD_REQUEST",
-        message: "Only archived feedback can be permanently deleted.",
+        message: "Nur archiviertes Feedback kann dauerhaft gelöscht werden.",
       });
     }
 
@@ -37,7 +37,7 @@ export const bulkHardDeleteFeedback = protectedProcedure
     });
 
     if (!membership) {
-      throw new TRPCError({ code: "FORBIDDEN", message: "Access denied." });
+      throw new TRPCError({ code: "FORBIDDEN", message: "Zugriff verweigert." });
     }
 
     const screenshotIds = feedbackItems

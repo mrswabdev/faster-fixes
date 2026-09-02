@@ -15,9 +15,9 @@ type BulkActionToolbarProps = {
 };
 
 const STATUS_OPTIONS = [
-  { value: "new", label: "New" },
-  { value: "in_progress", label: "In Progress" },
-  { value: "resolved", label: "Resolved" },
+  { value: "new", label: "Neu" },
+  { value: "in_progress", label: "In Arbeit" },
+  { value: "resolved", label: "Erledigt" },
 ] as const;
 
 export function BulkActionToolbar({
@@ -31,7 +31,7 @@ export function BulkActionToolbar({
   return (
     <div className="bg-muted/50 animate-in fade-in flex flex-wrap items-center gap-2 rounded-lg border p-2 duration-200">
       <Badge variant="secondary">
-        <span className="tabular-nums">{selectedItems.length}</span> selected
+        <span className="tabular-nums">{selectedItems.length}</span> ausgewählt
       </Badge>
 
       <CopySelectedMarkdown items={selectedItems} />
@@ -42,7 +42,7 @@ export function BulkActionToolbar({
       />
 
       <div className="flex items-center gap-1">
-        <span className="text-muted-foreground ml-2 text-xs">Move to:</span>
+        <span className="text-muted-foreground ml-2 text-xs">Verschieben nach:</span>
         {STATUS_OPTIONS.map((option) => (
           <Button
             key={option.value}
@@ -64,7 +64,7 @@ export function BulkActionToolbar({
         className="h-7 text-xs"
       >
         <Archive className="mr-1 size-3" />
-        Archive
+        Archivieren
       </Button>
 
       <Button
@@ -74,7 +74,7 @@ export function BulkActionToolbar({
         className="ml-auto h-7 text-xs"
       >
         <X className="mr-1 size-3" />
-        Clear
+        Auswahl aufheben
       </Button>
     </div>
   );

@@ -15,7 +15,7 @@ export const disconnectSlack = protectedProcedure.mutation(async ({ ctx }) => {
   if (!activeOrganization) {
     throw new TRPCError({
       code: "BAD_REQUEST",
-      message: "No active organization.",
+      message: "Keine aktive Organisation.",
     });
   }
 
@@ -30,7 +30,7 @@ export const disconnectSlack = protectedProcedure.mutation(async ({ ctx }) => {
   if (!membership) {
     throw new TRPCError({
       code: "FORBIDDEN",
-      message: "Only owners and admins can disconnect Slack.",
+      message: "Nur Inhaber und Admins können Slack trennen.",
     });
   }
 

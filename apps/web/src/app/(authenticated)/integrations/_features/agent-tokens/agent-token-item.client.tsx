@@ -25,7 +25,7 @@ type AgentTokenItemProps = {
 };
 
 function formatDate(date: Date | string | null): string {
-  if (!date) return "Never";
+  if (!date) return "Nie";
   return new Date(date).toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",
@@ -38,11 +38,11 @@ function formatScopes(scopes: string[]): string {
     .map((s) => {
       switch (s) {
         case "feedbacks:read":
-          return "Read";
+          return "Lesen";
         case "feedbacks:update_status":
-          return "Update status";
+          return "Status aktualisieren";
         case "feedbacks:create":
-          return "Create";
+          return "Erstellen";
         default:
           return s;
       }
@@ -67,7 +67,7 @@ export function AgentTokenItem({ token }: AgentTokenItemProps) {
     trpc.authenticated.integrations.agentToken.revoke.mutationOptions({
       onSuccess: () => {
         invalidateTokens();
-        toast.success("Token revoked");
+        toast.success("Token entzogen");
       },
       onError: (error) => toast.error(error.message),
     }),
@@ -77,7 +77,7 @@ export function AgentTokenItem({ token }: AgentTokenItemProps) {
     trpc.authenticated.integrations.agentToken.delete.mutationOptions({
       onSuccess: () => {
         invalidateTokens();
-        toast.success("Token deleted");
+        toast.success("Token gelöscht");
       },
       onError: (error) => toast.error(error.message),
     }),
@@ -93,14 +93,14 @@ export function AgentTokenItem({ token }: AgentTokenItemProps) {
           ff_agent_••••{token.tokenLastFour}
         </code>
         <div className="text-muted-foreground text-xs">
-          {formatScopes(token.scopes)} · Last used{" "}
+          {formatScopes(token.scopes)} · Zuletzt verwendet{" "}
           {formatDate(token.lastUsedAt)}
         </div>
       </div>
 
       <div className="flex items-center gap-2">
         <Badge variant={token.isActive ? "default" : "destructive"}>
-          {token.isActive ? "Active" : "Revoked"}
+          {token.isActive ? "Aktiv" : "Entzogen"}
         </Badge>
 
         <div className="flex shrink-0 gap-1">
@@ -113,14 +113,14 @@ export function AgentTokenItem({ token }: AgentTokenItemProps) {
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
-                  <AlertDialogTitle>Revoke token?</AlertDialogTitle>
+                  <AlertDialogTitle>Token entziehen?</AlertDialogTitle>
                   <AlertDialogDescription>
-                    This will immediately invalidate the token. Any agent using
-                    it will lose access.
+                    Dadurch wird der Token sofort ungültig. Jeder Agent, der
+                    ihn verwendet, verliert den Zugriff.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogCancel>Abbrechen</AlertDialogCancel>
                   <AlertDialogAction
                     onClick={() =>
                       revokeToken.mutate({
@@ -130,7 +130,7 @@ export function AgentTokenItem({ token }: AgentTokenItemProps) {
                     }
                     variant="destructive"
                   >
-                    Revoke
+                    Entziehen
                   </AlertDialogAction>
                 </AlertDialogFooter>
               </AlertDialogContent>
@@ -145,14 +145,14 @@ export function AgentTokenItem({ token }: AgentTokenItemProps) {
             </AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>
-                <AlertDialogTitle>Delete token?</AlertDialogTitle>
+                <AlertDialogTitle>Token löschen?</AlertDialogTitle>
                 <AlertDialogDescription>
-                  This will permanently delete the token. This action cannot be
-                  undone.
+                  Dadurch wird der Token endgültig gelöscht. Diese Aktion
+                  kann nicht rückgängig gemacht werden.
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogCancel>Abbrechen</AlertDialogCancel>
                 <AlertDialogAction
                   onClick={() =>
                     deleteToken.mutate({
@@ -162,7 +162,7 @@ export function AgentTokenItem({ token }: AgentTokenItemProps) {
                   }
                   variant="destructive"
                 >
-                  Delete
+                  Löschen
                 </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>

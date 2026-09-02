@@ -23,7 +23,7 @@ import { cn } from "@workspace/ui/lib/utils";
 import { DownloadIcon } from "lucide-react";
 
 function getMonthName(date: Date): string {
-  return date.toLocaleDateString("en-US", {
+  return date.toLocaleDateString("de-DE", {
     month: "long",
     year: "numeric",
   });
@@ -58,7 +58,7 @@ export function PastInvoicesCard() {
     Loading: (
       <Card>
         <CardHeader>
-          <CardTitle>Invoices</CardTitle>
+          <CardTitle>Rechnungen</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="max-h-80 overflow-y-auto pr-1">
@@ -70,9 +70,9 @@ export function PastInvoicesCard() {
     Errored: (
       <Card>
         <CardHeader>
-          <CardTitle>Error</CardTitle>
+          <CardTitle>Fehler</CardTitle>
           <CardDescription>
-            An error occurred while loading your invoices
+            Beim Laden Ihrer Rechnungen ist ein Fehler aufgetreten
           </CardDescription>
         </CardHeader>
       </Card>
@@ -82,9 +82,9 @@ export function PastInvoicesCard() {
         <CardContent className="pt-6">
           <Empty>
             <EmptyHeader>
-              <EmptyTitle>No invoices</EmptyTitle>
+              <EmptyTitle>Keine Rechnungen</EmptyTitle>
               <EmptyDescription>
-                You don&apos;t have any invoices yet
+                Sie haben noch keine Rechnungen
               </EmptyDescription>
             </EmptyHeader>
           </Empty>
@@ -98,7 +98,7 @@ export function PastInvoicesCard() {
       return (
         <Card>
           <CardHeader>
-            <CardTitle>Invoices</CardTitle>
+            <CardTitle>Rechnungen</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="max-h-96 overflow-y-auto pr-1">
@@ -137,7 +137,7 @@ export function PastInvoicesCard() {
                           className="flex items-center gap-2"
                         >
                           <DownloadIcon className="size-4" />
-                          Download
+                          Herunterladen
                         </a>
                       </Button>
                     )}

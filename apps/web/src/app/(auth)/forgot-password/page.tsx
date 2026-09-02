@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { ForgotPasswordForm } from "./_features/forgot-password-form/forgot-password-form.client";
 
 export const metadata: Metadata = {
-  title: "Forgot Password",
-  description: "Reset your password.",
+  title: "Passwort vergessen",
+  description: "Setzen Sie Ihr Passwort zurück.",
 };
 
 export default async function ForgotPasswordPage() {
@@ -12,9 +12,9 @@ export default async function ForgotPasswordPage() {
       <div className="w-full max-w-sm">
         <div className="space-y-6">
           <div className="space-y-2 text-center">
-            <h1 className="text-2xl font-bold">Reset your password</h1>
+            <h1 className="text-2xl font-bold">Passwort zurücksetzen</h1>
             <p className="text-muted-foreground">
-              Enter your email address and we&apos;ll send you a reset link.
+              Geben Sie Ihre E-Mail-Adresse ein und wir senden Ihnen einen Link zum Zurücksetzen.
             </p>
           </div>
 

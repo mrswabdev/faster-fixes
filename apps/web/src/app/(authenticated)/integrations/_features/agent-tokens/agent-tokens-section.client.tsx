@@ -42,10 +42,10 @@ export function AgentTokensSection() {
           <EmptyMedia variant="icon">
             <AlertTriangle />
           </EmptyMedia>
-          <EmptyTitle>Failed to load tokens</EmptyTitle>
+          <EmptyTitle>Token konnten nicht geladen werden</EmptyTitle>
           <EmptyDescription>
-            An error occurred while loading your agent tokens. Try refreshing
-            the page.
+            Beim Laden Ihrer Agent-Token ist ein Fehler aufgetreten. Laden
+            Sie die Seite neu.
           </EmptyDescription>
         </EmptyHeader>
       </Empty>
@@ -56,9 +56,10 @@ export function AgentTokensSection() {
           <EmptyMedia variant="icon">
             <KeyRound />
           </EmptyMedia>
-          <EmptyTitle>No agent tokens</EmptyTitle>
+          <EmptyTitle>Keine Agent-Token</EmptyTitle>
           <EmptyDescription>
-            Create a token to authenticate the Faster Fixes MCP server.
+            Erstellen Sie einen Token, um den Faster Fixes MCP-Server zu
+            authentifizieren.
           </EmptyDescription>
         </EmptyHeader>
         <CreateAgentTokenDialog />

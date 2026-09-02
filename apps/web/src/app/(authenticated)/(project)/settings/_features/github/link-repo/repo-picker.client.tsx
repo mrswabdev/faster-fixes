@@ -32,7 +32,7 @@ export function RepoPicker({ projectId, repos }: RepoPickerProps) {
             projectId,
           }),
         });
-        toast.success("Repository linked.");
+        toast.success("Repository verknüpft.");
       },
       onError: (error) => toast.error(error.message),
     }),
@@ -56,7 +56,7 @@ export function RepoPicker({ projectId, repos }: RepoPickerProps) {
     <div className="flex flex-col gap-4">
       <Select value={selectedRepo} onValueChange={setSelectedRepo}>
         <SelectTrigger>
-          <SelectValue placeholder="Select a repository" />
+          <SelectValue placeholder="Repository auswählen" />
         </SelectTrigger>
         <SelectContent>
           {repos.map((repo) => (
@@ -66,7 +66,7 @@ export function RepoPicker({ projectId, repos }: RepoPickerProps) {
           ))}
           {repos.length === 0 && (
             <SelectItem value="_empty" disabled>
-              No repositories available
+              Keine Repositories verfügbar
             </SelectItem>
           )}
         </SelectContent>
@@ -77,7 +77,7 @@ export function RepoPicker({ projectId, repos }: RepoPickerProps) {
         disabled={!selectedRepo || linkMutation.isPending}
         className="w-fit"
       >
-        Link repository
+        Repository verknüpfen
       </Button>
     </div>
   );

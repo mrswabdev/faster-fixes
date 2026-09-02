@@ -26,7 +26,7 @@ export const createJiraIssueForFeedback = protectedProcedure
     if (!feedback) {
       throw new TRPCError({
         code: "NOT_FOUND",
-        message: "Feedback not found.",
+        message: "Feedback nicht gefunden.",
       });
     }
 
@@ -38,20 +38,20 @@ export const createJiraIssueForFeedback = protectedProcedure
     });
 
     if (!membership) {
-      throw new TRPCError({ code: "FORBIDDEN", message: "Access denied." });
+      throw new TRPCError({ code: "FORBIDDEN", message: "Zugriff verweigert." });
     }
 
     if (feedback.jiraIssueLink) {
       throw new TRPCError({
         code: "CONFLICT",
-        message: "A Jira issue already exists for this feedback.",
+        message: "Für dieses Feedback existiert bereits ein Jira-Issue.",
       });
     }
 
     if (!feedback.project.jiraLink) {
       throw new TRPCError({
         code: "BAD_REQUEST",
-        message: "No Jira project linked to this project.",
+        message: "Kein Jira-Projekt mit diesem Projekt verknüpft.",
       });
     }
 

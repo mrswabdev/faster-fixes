@@ -17,7 +17,7 @@ export const linkLinearTeam = planAwareProcedure
     });
 
     if (!project) {
-      throw new TRPCError({ code: "NOT_FOUND", message: "Project not found." });
+      throw new TRPCError({ code: "NOT_FOUND", message: "Projekt nicht gefunden." });
     }
 
     const membership = await prisma.member.findFirst({
@@ -31,7 +31,7 @@ export const linkLinearTeam = planAwareProcedure
     if (!membership) {
       throw new TRPCError({
         code: "FORBIDDEN",
-        message: "Only owners and admins can link Linear teams.",
+        message: "Nur Inhaber und Admins können Linear-Teams verknüpfen.",
       });
     }
 
@@ -42,7 +42,7 @@ export const linkLinearTeam = planAwareProcedure
     if (!installation) {
       throw new TRPCError({
         code: "BAD_REQUEST",
-        message: "No Linear installation found. Connect Linear first.",
+        message: "Keine Linear-Installation gefunden. Verbinden Sie zuerst Linear.",
       });
     }
 

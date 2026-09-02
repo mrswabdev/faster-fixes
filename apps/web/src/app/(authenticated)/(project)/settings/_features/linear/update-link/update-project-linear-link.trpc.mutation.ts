@@ -17,7 +17,7 @@ export const updateProjectLinearLink = planAwareProcedure
     });
 
     if (!project) {
-      throw new TRPCError({ code: "NOT_FOUND", message: "Project not found." });
+      throw new TRPCError({ code: "NOT_FOUND", message: "Projekt nicht gefunden." });
     }
 
     const membership = await prisma.member.findFirst({
@@ -31,7 +31,7 @@ export const updateProjectLinearLink = planAwareProcedure
     if (!membership) {
       throw new TRPCError({
         code: "FORBIDDEN",
-        message: "Only owners and admins can update the Linear link.",
+        message: "Nur Inhaber und Admins können die Linear-Verknüpfung aktualisieren.",
       });
     }
 

@@ -31,7 +31,7 @@ export async function AccountCard({ userId }: AccountCardProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Compte utilisateur</CardTitle>
+        <CardTitle>Benutzerkonto</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="flex flex-col gap-2">

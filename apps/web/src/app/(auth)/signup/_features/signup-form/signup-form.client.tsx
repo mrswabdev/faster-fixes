@@ -42,7 +42,7 @@ export function SignupForm() {
   const signupMutation = useMutation(trpc.auth.signup.mutationOptions({
     onError: (error) => {
       const message =
-        error.message || "Account creation failed. Please try again.";
+        error.message || "Kontoerstellung fehlgeschlagen. Bitte versuchen Sie es erneut.";
       form.setError("root", { message });
     },
     onSuccess: (() => {
@@ -61,15 +61,15 @@ export function SignupForm() {
         {success && (
           <Alert variant="success">
             <CheckCircleIcon />
-            <AlertTitle>Success</AlertTitle>
+            <AlertTitle>Erfolgreich</AlertTitle>
             <AlertDescription>
-              <p>A confirmation email has been sent to your address.</p>
+              <p>Eine Bestätigungs-E-Mail wurde an Ihre Adresse gesendet.</p>
               <SendVerificationEmailButton
                 email={form.getValues("email")}
                 size="sm"
                 className="mt-2"
               >
-                Resend confirmation email
+                Bestätigungs-E-Mail erneut senden
               </SendVerificationEmailButton>
             </AlertDescription>
           </Alert>
@@ -79,7 +79,7 @@ export function SignupForm() {
         {form.formState.errors.root && (
           <Alert variant="destructive">
             <AlertCircleIcon />
-            <AlertTitle>Error</AlertTitle>
+            <AlertTitle>Fehler</AlertTitle>
             <AlertDescription>
               <p>{form.formState.errors.root.message}</p>
             </AlertDescription>
@@ -92,7 +92,7 @@ export function SignupForm() {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>E-Mail</FormLabel>
               <FormControl>
                 <Input
                   type="email"
@@ -112,7 +112,7 @@ export function SignupForm() {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Password</FormLabel>
+              <FormLabel>Passwort</FormLabel>
               <FormControl>
                 <PasswordInput
                   placeholder="••••••••"
@@ -131,7 +131,7 @@ export function SignupForm() {
           name="confirmPassword"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Confirm password</FormLabel>
+              <FormLabel>Passwort bestätigen</FormLabel>
               <FormControl>
                 <PasswordInput
                   placeholder="••••••••"
@@ -151,7 +151,7 @@ export function SignupForm() {
           disabled={signupMutation.isPending}
           size="lg"
         >
-          {signupMutation.isPending ? "Creating account..." : "Sign up"}
+          {signupMutation.isPending ? "Konto wird erstellt..." : "Registrieren"}
         </Button>
       </form>
     </Form>

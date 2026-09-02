@@ -12,13 +12,13 @@ import { ProfileForm } from "./_features/profile/profile-form.client";
 export default function ParametersPage() {
   return (
     <DashboardPageContent
-      breadcrumbs={[{ label: "My Account" }, { label: "Settings" }]}
+      breadcrumbs={[{ label: "Mein Konto" }, { label: "Einstellungen" }]}
     >
       <div className="flex flex-col gap-12">
         <DashboardSection
-          title="User Profile"
-          description="Update your personal information"
-          cardTitle="Personal Information"
+          title="Benutzerprofil"
+          description="Aktualisieren Sie Ihre persönlichen Daten"
+          cardTitle="Persönliche Daten"
           cardClassName="lg:max-w-md"
         >
           <div className="flex flex-col gap-6">
@@ -29,35 +29,35 @@ export default function ParametersPage() {
         </DashboardSection>
 
         <DashboardSection
-          title="Email Address"
-          description="Change the email address associated with your account"
-          cardTitle="Sign-in email"
+          title="E-Mail-Adresse"
+          description="Ändern Sie die mit Ihrem Konto verknüpfte E-Mail-Adresse"
+          cardTitle="Anmelde-E-Mail"
           cardClassName="lg:max-w-md"
         >
           <EmailForm />
         </DashboardSection>
 
         <DashboardSection
-          title="Password"
-          description="Change your password to secure your account"
-          cardTitle="Account security"
+          title="Passwort"
+          description="Ändern Sie Ihr Passwort, um Ihr Konto zu schützen"
+          cardTitle="Kontosicherheit"
           cardClassName="lg:max-w-md"
         >
           <PasswordForm />
         </DashboardSection>
 
         <DashboardSection
-          title="Delete account"
-          description="Permanently delete your account and all your data"
-          cardTitle="Danger zone"
+          title="Konto löschen"
+          description="Löschen Sie Ihr Konto und alle Ihre Daten endgültig"
+          cardTitle="Gefahrenzone"
           cardClassName="lg:max-w-md"
         >
           <div className="flex flex-col gap-4">
             <Alert variant="destructive">
               <AlertTriangleIcon />
               <AlertDescription>
-                Warning: deleting your account is irreversible. All your data
-                will be permanently deleted and cannot be recovered.
+                Achtung: Das Löschen Ihres Kontos ist unwiderruflich. Alle Ihre
+                Daten werden endgültig gelöscht und können nicht wiederhergestellt werden.
               </AlertDescription>
             </Alert>
             <AccountDeletionButton />

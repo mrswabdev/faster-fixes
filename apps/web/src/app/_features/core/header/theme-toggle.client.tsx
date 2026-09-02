@@ -15,7 +15,7 @@ export const ThemeToggle = ({ ...props }: ThemeToggleProps) => {
 
   return (
     <Button
-      aria-label="Toggle bold"
+      aria-label="Design umschalten"
       onClick={() => handleThemeChange(theme === "light" ? "dark" : "light")}
       {...props}
     >

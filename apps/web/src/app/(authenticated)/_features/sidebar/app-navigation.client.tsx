@@ -15,7 +15,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const applicationItems = [
-  { label: "Integrations", href: "/integrations" as const, icon: Blocks },
+  { label: "Integrationen", href: "/integrations" as const, icon: Blocks },
 ];
 
 export function AppNavigation() {
@@ -26,7 +26,7 @@ export function AppNavigation() {
   return (
     <>
       <SidebarGroup>
-        <SidebarGroupLabel>Application</SidebarGroupLabel>
+        <SidebarGroupLabel>Anwendung</SidebarGroupLabel>
         <SidebarMenu>
           {applicationItems.map((item) => (
             <SidebarMenuItem key={item.href}>
@@ -46,20 +46,20 @@ export function AppNavigation() {
       </SidebarGroup>
 
       <SidebarGroup>
-        <SidebarGroupLabel>My Account</SidebarGroupLabel>
+        <SidebarGroupLabel>Mein Konto</SidebarGroupLabel>
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton
               asChild
               isActive={pathname.startsWith("/account/settings")}
-              tooltip="Settings"
+              tooltip="Einstellungen"
             >
               <Link
                 href="/account/settings"
                 onClick={() => setOpenMobile(false)}
               >
                 <Settings2 />
-                <span>Settings</span>
+                <span>Einstellungen</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -69,7 +69,7 @@ export function AppNavigation() {
               <SidebarMenuButton
                 asChild
                 isActive={pathname.startsWith("/account/billing")}
-                tooltip={isFreePlan ? "Upgrade" : "Billing"}
+                tooltip={isFreePlan ? "Upgrade" : "Abrechnung"}
               >
                 <Link
                   href="/account/billing"
@@ -80,7 +80,7 @@ export function AppNavigation() {
                   ) : (
                     <CreditCard />
                   )}
-                  <span>{isFreePlan ? "Upgrade" : "Billing"}</span>
+                  <span>{isFreePlan ? "Upgrade" : "Abrechnung"}</span>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>

@@ -75,10 +75,10 @@ export function OrganizationMembersTab() {
     trpc.authenticated.organization.leave.mutationOptions({
       onSuccess: async () => {
         await refetchActiveOrg();
-        toast.success("You have left the organization");
+        toast.success("Sie haben die Organisation verlassen");
       },
       onError: (error) => {
-        toast.error(error.message || "Error leaving the organization.");
+        toast.error(error.message || "Fehler beim Verlassen der Organisation.");
       },
     }),
   );
@@ -93,11 +93,11 @@ export function OrganizationMembersTab() {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Member</TableHead>
-            <TableHead>Email</TableHead>
-            <TableHead>Role</TableHead>
+            <TableHead>Mitglied</TableHead>
+            <TableHead>E-Mail</TableHead>
+            <TableHead>Rolle</TableHead>
             <TableHead>Status</TableHead>
-            <TableHead className="w-[80px]">Actions</TableHead>
+            <TableHead className="w-[80px]">Aktionen</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -141,7 +141,7 @@ export function OrganizationMembersTab() {
                 </TableCell>
                 <TableCell>
                   <Badge variant="outline" className="text-muted-foreground">
-                    Active
+                    Aktiv
                   </Badge>
                 </TableCell>
                 <TableCell>
@@ -153,7 +153,7 @@ export function OrganizationMembersTab() {
                       onClick={handleLeave}
                     >
                       <LogOut className="mr-1 size-4" />
-                      Leave
+                      Verlassen
                     </Button>
                   )}
                   {canManage && !isCurrentUser && !isMemberOwner && (
@@ -193,7 +193,7 @@ export function OrganizationMembersTab() {
                 </Badge>
               </TableCell>
               <TableCell>
-                <Badge variant="secondary">Pending</Badge>
+                <Badge variant="secondary">Ausstehend</Badge>
               </TableCell>
               <TableCell>
                 <InvitationActionsDropdown invitationId={invitation.id} />
@@ -207,7 +207,7 @@ export function OrganizationMembersTab() {
                 colSpan={5}
                 className="text-muted-foreground py-8 text-center"
               >
-                No members
+                Keine Mitglieder
               </TableCell>
             </TableRow>
           )}

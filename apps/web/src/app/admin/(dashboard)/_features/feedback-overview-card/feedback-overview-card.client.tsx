@@ -17,11 +17,11 @@ export function FeedbackOverviewCard() {
       <Card>
         <CardContent>
           <div className="text-2xl font-bold">{data?.totalCount}</div>
-          <p className="text-muted-foreground mb-4 text-xs">Total feedback</p>
+          <p className="text-muted-foreground mb-4 text-xs">Feedback insgesamt</p>
 
           <div className="space-y-3 border-t pt-4">
             <div className="flex items-center justify-between">
-              <span className="text-muted-foreground text-xs">Resolved</span>
+              <span className="text-muted-foreground text-xs">Gelöst</span>
               <div className="flex items-center gap-2">
                 <span className="text-sm font-semibold">
                   {data?.resolvedCount}
@@ -32,7 +32,7 @@ export function FeedbackOverviewCard() {
               </div>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-muted-foreground text-xs">Avg per user</span>
+              <span className="text-muted-foreground text-xs">Ø pro Nutzer</span>
               <span className="text-sm font-semibold">{data?.avgPerUser}</span>
             </div>
           </div>
@@ -47,15 +47,15 @@ function FeedbackOverviewCardLoading() {
     <Card>
       <CardContent>
         <Skeleton className="h-8 w-24" />
-        <p className="text-muted-foreground mb-4 text-xs">Total feedback</p>
+        <p className="text-muted-foreground mb-4 text-xs">Feedback insgesamt</p>
 
         <div className="space-y-3 border-t pt-4">
           <div className="flex items-center justify-between">
-            <span className="text-muted-foreground text-xs">Resolved</span>
+            <span className="text-muted-foreground text-xs">Gelöst</span>
             <Skeleton className="h-5 w-16" />
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-muted-foreground text-xs">Avg per user</span>
+            <span className="text-muted-foreground text-xs">Ø pro Nutzer</span>
             <Skeleton className="h-5 w-8" />
           </div>
         </div>
@@ -68,7 +68,7 @@ function FeedbackOverviewCardError() {
   return (
     <Card className="border-destructive/50">
       <CardContent className="pt-6">
-        <p className="text-destructive text-sm">Failed to load statistics</p>
+        <p className="text-destructive text-sm">Statistiken konnten nicht geladen werden</p>
       </CardContent>
     </Card>
   );

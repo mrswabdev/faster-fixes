@@ -71,7 +71,7 @@ export function CreateProjectDialog({ children }: CreateProjectDialogProps) {
       },
       onError: (error) => {
         form.setError("root", {
-          message: error.message || "Error creating project.",
+          message: error.message || "Fehler beim Erstellen des Projekts.",
         });
       },
     }),
@@ -115,16 +115,16 @@ export function CreateProjectDialog({ children }: CreateProjectDialogProps) {
           {children ?? (
             <Button size="sm" className="w-full">
               <Plus className="size-4" />
-              New project
+              Neues Projekt
             </Button>
           )}
         </DialogTrigger>
         <DialogContent className="sm:max-w-lg">
           <DialogHeader>
-            <DialogTitle>New project</DialogTitle>
+            <DialogTitle>Neues Projekt</DialogTitle>
             <DialogDescription>
-              A project corresponds to a client site where you want to collect
-              feedback.
+              Ein Projekt entspricht einer Kunden-Website, auf der Sie Feedback
+              sammeln möchten.
             </DialogDescription>
           </DialogHeader>
 
@@ -144,10 +144,10 @@ export function CreateProjectDialog({ children }: CreateProjectDialogProps) {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Project name</FormLabel>
+                    <FormLabel>Projektname</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Client Site XYZ"
+                        placeholder="Kunden-Website XYZ"
                         disabled={createProject.isPending}
                         {...field}
                       />
@@ -162,7 +162,7 @@ export function CreateProjectDialog({ children }: CreateProjectDialogProps) {
                 name="domain"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Project domain</FormLabel>
+                    <FormLabel>Projekt-Domain</FormLabel>
                     <FormControl>
                       <Input
                         placeholder="client.com"
@@ -171,9 +171,9 @@ export function CreateProjectDialog({ children }: CreateProjectDialogProps) {
                       />
                     </FormControl>
                     <FormDescription>
-                      The domain of your client&apos;s site. Subdomains, www.,
-                      and protocol variants are matched automatically. Localhost
-                      is always allowed for local development.
+                      Die Domain der Website Ihres Kunden. Subdomains, www.-
+                      und Protokoll-Varianten werden automatisch erkannt.
+                      Localhost ist für die lokale Entwicklung immer erlaubt.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -185,7 +185,7 @@ export function CreateProjectDialog({ children }: CreateProjectDialogProps) {
                 disabled={createProject.isPending}
                 className="self-end"
               >
-                {createProject.isPending ? "Creating..." : "Create project"}
+                {createProject.isPending ? "Wird erstellt..." : "Projekt erstellen"}
               </Button>
             </form>
           </Form>
@@ -195,10 +195,10 @@ export function CreateProjectDialog({ children }: CreateProjectDialogProps) {
       <Dialog open={!!createdProjectId} onOpenChange={handleCreatedDialogClose}>
         <DialogContent className="sm:max-w-lg">
           <DialogHeader>
-            <DialogTitle>Project created</DialogTitle>
+            <DialogTitle>Projekt erstellt</DialogTitle>
             <DialogDescription>
-              Use this Project ID to install the widget. You can find it anytime
-              in project settings.
+              Verwenden Sie diese Projekt-ID zur Installation des Widgets. Sie
+              finden sie jederzeit in den Projekteinstellungen.
             </DialogDescription>
           </DialogHeader>
 
@@ -216,7 +216,7 @@ export function CreateProjectDialog({ children }: CreateProjectDialogProps) {
           </div>
 
           <Button onClick={handleCreatedDialogClose} className="w-full">
-            Done
+            Fertig
           </Button>
         </DialogContent>
       </Dialog>

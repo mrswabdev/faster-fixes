@@ -19,7 +19,7 @@ export const updateProjectLink = planAwareProcedure
     if (!link) {
       throw new TRPCError({
         code: "NOT_FOUND",
-        message: "No GitHub link found for this project.",
+        message: "Keine GitHub-Verknüpfung für dieses Projekt gefunden.",
       });
     }
 
@@ -34,7 +34,7 @@ export const updateProjectLink = planAwareProcedure
     if (!membership) {
       throw new TRPCError({
         code: "FORBIDDEN",
-        message: "Only owners and admins can update repository settings.",
+        message: "Nur Inhaber und Admins können Repository-Einstellungen aktualisieren.",
       });
     }
 

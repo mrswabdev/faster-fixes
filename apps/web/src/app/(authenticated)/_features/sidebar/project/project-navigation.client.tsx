@@ -28,14 +28,14 @@ export function ProjectNavigation() {
   if (!activeProject) return null;
 
   const items = [
-    { label: "Inbox", href: "/inbox" as const, icon: Inbox },
-    { label: "Reviewers", href: "/reviewers" as const, icon: Users },
-    { label: "Settings", href: "/settings" as const, icon: Settings2 },
+    { label: "Posteingang", href: "/inbox" as const, icon: Inbox },
+    { label: "Reviewer", href: "/reviewers" as const, icon: Users },
+    { label: "Einstellungen", href: "/settings" as const, icon: Settings2 },
   ];
 
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Project</SidebarGroupLabel>
+      <SidebarGroupLabel>Projekt</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
           <SidebarMenuItem key={item.href}>

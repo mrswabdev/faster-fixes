@@ -16,7 +16,7 @@ export const deleteMember = protectedProcedure
     if (!member) {
       throw new TRPCError({
         code: "NOT_FOUND",
-        message: "Member not found.",
+        message: "Mitglied nicht gefunden.",
       });
     }
 
@@ -32,14 +32,14 @@ export const deleteMember = protectedProcedure
       throw new TRPCError({
         code: "FORBIDDEN",
         message:
-          "You do not have permission to remove this member.",
+          "Sie haben keine Berechtigung, dieses Mitglied zu entfernen.",
       });
     }
 
     if (member.role === "owner") {
       throw new TRPCError({
         code: "FORBIDDEN",
-        message: "Cannot remove the owner of the organization.",
+        message: "Der Inhaber der Organisation kann nicht entfernt werden.",
       });
     }
 

@@ -24,13 +24,13 @@ import { ThemeToggle } from "./theme-toggle.client";
 
 const GITHUB_REPO_URL = "https://github.com/manucoffin/faster-fixes";
 
-const leadingNavLinks = [{ href: "/docs", label: "Documentation" }] satisfies {
+const leadingNavLinks = [{ href: "/docs", label: "Dokumentation" }] satisfies {
   href: string;
   label: string;
 }[];
 
 const trailingNavLinks = [
-  { href: "/pricing", label: "Pricing" },
+  { href: "/pricing", label: "Preise" },
   // { href: "/open-source", label: "Open source" },
   // { href: "/blog", label: "Blog" },
 ] satisfies { href: string; label: string }[];
@@ -41,32 +41,32 @@ const integrationLinks = [
   {
     href: "/integrations/github",
     label: "GitHub",
-    description: "Auto-create issues from feedback, sync status both ways.",
+    description: "Erstellt automatisch Issues aus Feedback, synchronisiert den Status in beide Richtungen.",
     icon: <GithubIcon className="size-4 shrink-0" />,
   },
   {
     href: "/integrations/linear",
     label: "Linear",
     description:
-      "Auto-create Linear issues from feedback, sync status both ways.",
+      "Erstellt automatisch Linear-Issues aus Feedback, synchronisiert den Status in beide Richtungen.",
     icon: <LinearIcon className="size-4 shrink-0" />,
   },
   {
     href: "/integrations/jira",
     label: "Jira",
-    description: "Auto-create Jira Cloud issues, sync status both ways.",
+    description: "Erstellt automatisch Jira-Cloud-Issues, synchronisiert den Status in beide Richtungen.",
     icon: <JiraIcon className="size-4 shrink-0" />,
   },
   {
     href: "/integrations/slack",
     label: "Slack",
-    description: "Get notified in Slack when feedback arrives or changes.",
+    description: "Benachrichtigt Sie in Slack, wenn Feedback eingeht oder sich ändert.",
     icon: <SlackIcon className="size-4 shrink-0" />,
   },
   {
     href: "/integrations/mcp",
-    label: "MCP server",
-    description: "Fetch, fix, and resolve feedback from your coding agent.",
+    label: "MCP-Server",
+    description: "Ruft Feedback aus Ihrem Coding-Agent ab, behebt und löst es.",
     icon: <McpIcon className="size-4 shrink-0" />,
   },
 ] satisfies {
@@ -114,7 +114,7 @@ export async function Header() {
                 ))}
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="bg-transparent px-0 text-sm font-normal hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent data-[state=open]:hover:bg-transparent data-[state=open]:focus:bg-transparent">
-                    Integrations
+                    Integrationen
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid w-[320px] gap-1 p-2">
@@ -171,7 +171,7 @@ export async function Header() {
               href={GITHUB_REPO_URL}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="GitHub repository"
+              aria-label="GitHub-Repository"
             >
               <GithubIcon className="size-5" />
             </a>
@@ -183,7 +183,7 @@ export async function Header() {
             </Button>
           ) : (
             <Button asChild>
-              <Link href={signupUrl}>Get started</Link>
+              <Link href={signupUrl}>Loslegen</Link>
             </Button>
           )}
         </div>

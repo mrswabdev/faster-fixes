@@ -27,27 +27,29 @@ export const JiraReconnectRequired = ({
   integrationsLink = `${baseUrl}/integrations`,
 }: JiraReconnectRequiredProps) => {
   return (
-    <Html lang="en" dir="ltr">
+    <Html lang="de" dir="ltr">
       <Tailwind config={emailTailwindConfig}>
         <Head />
         <Body className="bg-secondary py-[40px] font-sans">
           <Container className="mx-auto max-w-[600px] bg-card px-[40px] py-[40px]">
             <Section>
               <Text className="mt-0 mb-[24px] text-[24px] font-bold text-foreground">
-                Jira sync has stopped
+                Jira-Synchronisierung wurde gestoppt
               </Text>
 
               <Text className="mt-0 mb-[24px] text-[16px] leading-[24px] text-foreground">
-                The Jira authorization for <strong>{organizationName}</strong> is
-                no longer valid, so Faster Fixes has stopped syncing with{" "}
-                <strong>{siteName}</strong>. This usually happens when the person
-                who connected Jira loses access to the site or revokes the
-                authorization.
+                Die Jira-Autorisierung für <strong>{organizationName}</strong>{" "}
+                ist nicht mehr gültig, daher hat AgencyDock Feedback die
+                Synchronisierung mit <strong>{siteName}</strong> gestoppt. Das
+                passiert in der Regel, wenn die Person, die Jira verbunden hat,
+                den Zugriff auf die Seite verliert oder die Autorisierung
+                widerruft.
               </Text>
 
               <Text className="mt-0 mb-[32px] text-[16px] leading-[24px] text-foreground">
-                Reconnect to resume syncing. Your linked projects and their
-                settings are preserved.
+                Verbinden Sie Jira erneut, um die Synchronisierung fortzusetzen.
+                Ihre verknüpften Projekte und deren Einstellungen bleiben
+                erhalten.
               </Text>
 
               <Section className="mb-[32px] text-center">
@@ -55,13 +57,13 @@ export const JiraReconnectRequired = ({
                   href={integrationsLink}
                   className="box-border bg-primary px-[32px] py-[12px] text-[16px] font-medium text-primary-foreground no-underline"
                 >
-                  Reconnect Jira
+                  Jira erneut verbinden
                 </Button>
               </Section>
 
               <Text className="mt-0 mb-[24px] text-[14px] leading-[20px] text-muted-foreground">
-                If you can&apos;t click the button, copy and paste this link into
-                your browser:
+                Falls Sie den Button nicht anklicken können, kopieren Sie
+                diesen Link in Ihren Browser:
               </Text>
 
               <Text className="mt-0 mb-[32px] text-[14px] break-all text-muted-foreground">
@@ -71,8 +73,8 @@ export const JiraReconnectRequired = ({
               <Hr className="my-[32px] border-border" />
 
               <Text className="mt-0 mb-[8px] text-[12px] text-muted-foreground">
-                Feedback is still collected while Jira is disconnected. Only the
-                mirroring to Jira issues is paused.
+                Feedback wird weiterhin erfasst, während Jira getrennt ist. Nur
+                die Spiegelung in Jira-Issues ist pausiert.
               </Text>
             </Section>
           </Container>

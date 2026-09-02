@@ -10,10 +10,10 @@ export const LinearPrioritySchema = z.union([
 
 export const LinkLinearTeamSchema = z.object({
   projectId: z.string(),
-  teamId: z.string().min(1, "Select a team."),
+  teamId: z.string().min(1, "Team auswählen."),
   teamKey: z.string().min(1),
   teamName: z.string().min(1),
-  defaultStateId: z.string().min(1, "Select a default state."),
+  defaultStateId: z.string().min(1, "Standardstatus auswählen."),
   defaultLabelIds: z.array(z.string()),
   defaultPriority: LinearPrioritySchema,
   autoCreateIssues: z.boolean(),

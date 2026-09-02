@@ -21,7 +21,7 @@ export const bulkUpdateFeedbackStatus = protectedProcedure
     });
 
     if (!firstFeedback) {
-      throw new TRPCError({ code: "NOT_FOUND", message: "Feedback not found." });
+      throw new TRPCError({ code: "NOT_FOUND", message: "Feedback nicht gefunden." });
     }
 
     const membership = await prisma.member.findFirst({
@@ -32,7 +32,7 @@ export const bulkUpdateFeedbackStatus = protectedProcedure
     });
 
     if (!membership) {
-      throw new TRPCError({ code: "FORBIDDEN", message: "Access denied." });
+      throw new TRPCError({ code: "FORBIDDEN", message: "Zugriff verweigert." });
     }
 
     await prisma.feedback.updateMany({

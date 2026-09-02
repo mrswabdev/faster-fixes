@@ -33,13 +33,13 @@ export function MobileNav({
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button variant="ghost" size="icon" aria-label="Open menu">
+        <Button variant="ghost" size="icon" aria-label="Menü öffnen">
           <MenuIcon className="size-5" />
         </Button>
       </SheetTrigger>
       <SheetContent side="left">
         <SheetHeader>
-          <SheetTitle>Menu</SheetTitle>
+          <SheetTitle>Menü</SheetTitle>
         </SheetHeader>
         <nav className="flex flex-col gap-1 p-4">
           {links.map((link) => (
@@ -56,7 +56,7 @@ export function MobileNav({
           {integrationLinks && integrationLinks.length > 0 && (
             <div className="mt-4">
               <p className="text-muted-foreground px-3 pb-1 text-xs font-semibold tracking-wider uppercase">
-                Integrations
+                Integrationen
               </p>
               {integrationLinks.map((link) => (
                 <Link

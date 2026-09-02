@@ -62,9 +62,9 @@ export function FeedbackDetailPanel({
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent className="overflow-y-auto sm:max-w-lg">
         <SheetHeader>
-          <SheetTitle className="sr-only">Feedback detail</SheetTitle>
+          <SheetTitle className="sr-only">Feedback-Details</SheetTitle>
           <SheetDescription className="sr-only">
-            View and manage feedback details
+            Feedback-Details ansehen und verwalten
           </SheetDescription>
         </SheetHeader>
 
@@ -86,7 +86,7 @@ export function FeedbackDetailPanel({
           {/* Comment */}
           <div>
             <h4 className="text-muted-foreground mb-1 text-xs font-medium uppercase">
-              Comment
+              Kommentar
             </h4>
             <p className="text-sm leading-relaxed whitespace-pre-wrap">
               {feedback.comment}
@@ -143,19 +143,19 @@ export function FeedbackDetailPanel({
                 <div className="text-muted-foreground flex flex-col gap-0.5 text-xs">
                   {feedback.clickX != null && feedback.clickY != null && (
                     <span>
-                      Click: ({Math.round(feedback.clickX)},{" "}
+                      Klick: ({Math.round(feedback.clickX)},{" "}
                       {Math.round(feedback.clickY)})
                     </span>
                   )}
                   {feedback.selector && (
-                    <span>Selector: {feedback.selector}</span>
+                    <span>Selektor: {feedback.selector}</span>
                   )}
                 </div>
               </div>
             ) : (
               <div className="text-muted-foreground flex flex-col items-center gap-2 rounded-md border border-dashed py-8">
                 <ImageOff className="size-8 opacity-50" />
-                <span className="text-xs">No screenshot captured</span>
+                <span className="text-xs">Kein Screenshot vorhanden</span>
               </div>
             )}
           </div>
@@ -214,7 +214,7 @@ export function FeedbackDetailPanel({
           {/* Diagnostics */}
           <div>
             <h4 className="text-muted-foreground mb-2 text-xs font-medium uppercase">
-              Diagnostics
+              Diagnose
             </h4>
             <ViewDiagnosticsDialog
               projectId={projectId}
@@ -250,11 +250,11 @@ export function FeedbackDetailPanel({
           {/* Timestamps */}
           <div className="text-muted-foreground flex flex-col gap-1 text-xs">
             <span>
-              Submitted by {feedback.reviewer.name} on{" "}
+              Eingereicht von {feedback.reviewer.name} am{" "}
               {format(new Date(feedback.createdAt), "MMM d, yyyy")}
             </span>
             <span>
-              Last updated{" "}
+              Zuletzt aktualisiert{" "}
               {formatDistanceToNow(new Date(feedback.updatedAt), {
                 addSuffix: true,
               })}

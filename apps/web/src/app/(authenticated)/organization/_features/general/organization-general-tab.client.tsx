@@ -10,26 +10,26 @@ export function OrganizationGeneralTab() {
     <div className="flex flex-col gap-12">
       <DashboardSection
         title="Logo"
-        description="Change your organization logo"
-        cardTitle="Organization logo"
+        description="Ändern Sie das Logo Ihrer Organisation"
+        cardTitle="Organisationslogo"
         cardClassName="lg:max-w-md"
       >
         <OrganizationLogoUpload />
       </DashboardSection>
 
       <DashboardSection
-        title="General information"
-        description="Update your organization name"
-        cardTitle="Organization information"
+        title="Allgemeine Informationen"
+        description="Aktualisieren Sie den Namen Ihrer Organisation"
+        cardTitle="Organisationsinformationen"
         cardClassName="lg:max-w-md"
       >
         <UpdateOrganizationForm />
       </DashboardSection>
 
       <DashboardSection
-        title="Delete organization"
-        description="Permanently delete this organization and all its data"
-        cardTitle="Danger zone"
+        title="Organisation löschen"
+        description="Löschen Sie diese Organisation und alle ihre Daten endgültig"
+        cardTitle="Gefahrenzone"
         cardClassName="lg:max-w-md"
       >
         <DeleteOrganizationSection />

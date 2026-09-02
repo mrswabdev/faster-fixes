@@ -51,7 +51,7 @@ export function LoginForm() {
           setUnverifiedEmail(form.getValues("email"));
           return;
         }
-        const message = error.message || "Sign in failed. Please try again.";
+        const message = error.message || "Anmeldung fehlgeschlagen. Bitte versuchen Sie es erneut.";
         form.setError("root", { message });
       },
       onSuccess: () => {
@@ -72,15 +72,15 @@ export function LoginForm() {
         {unverifiedEmail && (
           <Alert>
             <MailIcon />
-            <AlertTitle>Email not verified</AlertTitle>
+            <AlertTitle>E-Mail nicht bestätigt</AlertTitle>
             <AlertDescription>
-              <p>Please verify your email address before signing in.</p>
+              <p>Bitte bestätigen Sie Ihre E-Mail-Adresse, bevor Sie sich anmelden.</p>
               <SendVerificationEmailButton
                 email={unverifiedEmail}
                 size="sm"
                 className="mt-2"
               >
-                Resend verification email
+                Bestätigungs-E-Mail erneut senden
               </SendVerificationEmailButton>
             </AlertDescription>
           </Alert>
@@ -90,7 +90,7 @@ export function LoginForm() {
         {form.formState.errors.root && (
           <Alert variant="destructive">
             <AlertCircleIcon />
-            <AlertTitle>Error</AlertTitle>
+            <AlertTitle>Fehler</AlertTitle>
             <AlertDescription>
               <p>{form.formState.errors.root.message}</p>
             </AlertDescription>
@@ -103,7 +103,7 @@ export function LoginForm() {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>E-Mail</FormLabel>
               <FormControl>
                 <Input
                   type="email"
@@ -124,12 +124,12 @@ export function LoginForm() {
           render={({ field }) => (
             <FormItem>
               <div className="flex items-center justify-between">
-                <FormLabel>Password</FormLabel>
+                <FormLabel>Passwort</FormLabel>
                 <Link
                   href={forgotPasswordUrl}
                   className="text-primary text-xs hover:underline"
                 >
-                  Forgot?
+                  Vergessen?
                 </Link>
               </div>
               <FormControl>
@@ -151,7 +151,7 @@ export function LoginForm() {
           disabled={loginMutation.isPending}
           size="lg"
         >
-          {loginMutation.isPending ? "Signing in..." : "Sign in"}
+          {loginMutation.isPending ? "Anmeldung läuft..." : "Anmelden"}
         </Button>
       </form>
     </Form>

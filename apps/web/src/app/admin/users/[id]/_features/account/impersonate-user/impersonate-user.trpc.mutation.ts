@@ -23,7 +23,7 @@ export const impersonateUser = adminProcedure
       throw new TRPCError({
         code: "INTERNAL_SERVER_ERROR",
         message:
-          error instanceof Error ? error.message : "Failed to impersonate user",
+          error instanceof Error ? error.message : "Identitätsübernahme fehlgeschlagen",
       });
     }
   });

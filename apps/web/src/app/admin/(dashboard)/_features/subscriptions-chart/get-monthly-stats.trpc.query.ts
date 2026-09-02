@@ -3,6 +3,7 @@ import { adminProcedure } from "@/server/trpc/trpc";
 import { inferProcedureOutput, TRPCError } from "@trpc/server";
 import { prisma } from "@workspace/db";
 import { endOfMonth, format, startOfMonth, subMonths } from "date-fns";
+import { de } from "date-fns/locale";
 import { GetMonthlyStatsSchema } from "./get-monthly-stats.schema";
 
 /**
@@ -60,8 +61,8 @@ export const getMonthlyStats = adminProcedure
         monthRanges.push({
           start: startOfMonth(currentDate),
           end: endOfMonth(currentDate),
-          label: format(currentDate, "MMM yyyy"),
-          month: format(currentDate, "MMM"),
+          label: format(currentDate, "MMM yyyy", { locale: de }),
+          month: format(currentDate, "MMM", { locale: de }),
         });
         currentDate = subMonths(currentDate, -1); // Move to next month
       }
@@ -97,7 +98,7 @@ export const getMonthlyStats = adminProcedure
     } catch (error) {
       throw new TRPCError({
         code: "INTERNAL_SERVER_ERROR",
-        message: "Failed to get monthly stats",
+        message: "Monatsstatistiken konnten nicht geladen werden",
         cause: error,
       });
     }

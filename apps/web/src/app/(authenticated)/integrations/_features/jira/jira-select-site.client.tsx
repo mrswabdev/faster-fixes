@@ -31,7 +31,7 @@ export function JiraSelectSite() {
           queryKey:
             trpc.authenticated.integrations.jira.getInstallation.queryKey(),
         });
-        toast.success("Jira site connected.");
+        toast.success("Jira-Site verbunden.");
       },
       onError: (error) => {
         toast.error(error.message);
@@ -42,20 +42,21 @@ export function JiraSelectSite() {
   return (
     <div className="flex flex-col gap-4">
       <p className="text-muted-foreground text-sm">
-        Your Atlassian account can access several Jira sites. Choose the one to
-        connect to this organization.
+        Ihr Atlassian-Konto hat Zugriff auf mehrere Jira-Sites. Wählen Sie
+        die, die mit dieser Organisation verbunden werden soll.
       </p>
 
       {matchQueryStatus(sitesQuery, {
         Loading: <Skeleton className="h-16 w-full" />,
         Errored: (
           <p className="text-destructive text-sm">
-            Failed to load your Jira sites. Try refreshing the page.
+            Ihre Jira-Sites konnten nicht geladen werden. Laden Sie die
+            Seite neu.
           </p>
         ),
         Empty: (
           <p className="text-muted-foreground text-sm">
-            No accessible Jira sites found.
+            Keine zugänglichen Jira-Sites gefunden.
           </p>
         ),
         Success: ({ data: sites }) => (
@@ -87,7 +88,7 @@ export function JiraSelectSite() {
                 selected && selectMutation.mutate({ cloudId: selected })
               }
             >
-              Connect site
+              Site verbinden
             </Button>
           </>
         ),

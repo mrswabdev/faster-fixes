@@ -19,7 +19,7 @@ export const createAgentToken = protectedProcedure
     });
 
     if (!membership) {
-      throw new TRPCError({ code: "FORBIDDEN", message: "Access denied." });
+      throw new TRPCError({ code: "FORBIDDEN", message: "Zugriff verweigert." });
     }
 
     const raw = "ff_agent_" + crypto.randomBytes(32).toString("hex");

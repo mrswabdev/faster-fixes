@@ -35,7 +35,7 @@ export function LeaveOrganizationSection() {
   const leaveOrganization = useMutation(
     trpc.authenticated.organization.leave.mutationOptions({
       onSuccess: async () => {
-        toast.success("You have left the organization");
+        toast.success("Sie haben die Organisation verlassen");
         setOpen(false);
         await refetchOrganizations();
         const { data: orgs } = await organization.list();
@@ -46,7 +46,7 @@ export function LeaveOrganizationSection() {
         router.push(defaultRedirect);
       },
       onError: (error) => {
-        toast.error(error.message || "Error leaving the organization.");
+        toast.error(error.message || "Fehler beim Verlassen der Organisation.");
       },
     }),
   );
@@ -56,15 +56,15 @@ export function LeaveOrganizationSection() {
       <Alert variant="destructive" className="max-w-sm">
         <LogOut />
         <AlertDescription>
-          By leaving the organization, you will lose access to all its resources
-          and data.
+          Wenn Sie die Organisation verlassen, verlieren Sie den Zugriff auf
+          alle zugehörigen Ressourcen und Daten.
         </AlertDescription>
       </Alert>
 
       <AlertDialog open={open} onOpenChange={setOpen}>
         <AlertDialogTrigger asChild>
           <Button variant="destructive" className="w-fit self-end">
-            Leave organization
+            Organisation verlassen
           </Button>
         </AlertDialogTrigger>
 
@@ -72,18 +72,18 @@ export function LeaveOrganizationSection() {
           <AlertDialogHeader>
             <div className="flex items-center gap-3">
               <LogOut className="text-destructive h-5 w-5" />
-              <AlertDialogTitle>Quitter l&apos;organization</AlertDialogTitle>
+              <AlertDialogTitle>Organisation verlassen</AlertDialogTitle>
             </div>
             <AlertDialogDescription className="pt-2">
-              You are about to leave the organization{" "}
-              <strong>{activeOrg?.name}</strong>. You will no longer have access
-              to its resources.
+              Sie sind dabei, die Organisation{" "}
+              <strong>{activeOrg?.name}</strong> zu verlassen. Sie haben
+              danach keinen Zugriff mehr auf ihre Ressourcen.
             </AlertDialogDescription>
           </AlertDialogHeader>
 
           <AlertDialogFooter>
             <AlertDialogCancel disabled={leaveOrganization.isPending}>
-              Cancel
+              Abbrechen
             </AlertDialogCancel>
             <Button
               variant="destructive"
@@ -95,7 +95,7 @@ export function LeaveOrganizationSection() {
                 });
               }}
             >
-              {leaveOrganization.isPending ? "Leaving..." : "Confirm leave"}
+              {leaveOrganization.isPending ? "Wird verlassen..." : "Verlassen bestätigen"}
             </Button>
           </AlertDialogFooter>
         </AlertDialogContent>

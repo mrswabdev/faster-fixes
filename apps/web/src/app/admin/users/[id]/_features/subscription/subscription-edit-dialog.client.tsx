@@ -42,6 +42,7 @@ import {
 } from "@workspace/ui/components/select";
 import { cn } from "@workspace/ui/lib/utils";
 import { format } from "date-fns";
+import { de } from "date-fns/locale";
 import { CalendarIcon } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -72,7 +73,7 @@ export function SubscriptionEditDialog({
   const updateMutation = useMutation(
     trpc.admin.users.subscription.update.mutationOptions({
       onSuccess: () => {
-        toast.success("Subscription updated successfully");
+        toast.success("Abonnement erfolgreich aktualisiert");
         setOpen(false);
         queryClient.invalidateQueries(
           trpc.admin.users.subscription.get.queryFilter(),
@@ -80,7 +81,7 @@ export function SubscriptionEditDialog({
       },
       onError: (error: any) => {
         toast.error(
-          error.message || "Failed to update subscription",
+          error.message || "Abonnement konnte nicht aktualisiert werden",
         );
       },
     }),
@@ -116,7 +117,7 @@ export function SubscriptionEditDialog({
 
   const onSubmit = async (data: any) => {
     if (!data.id) {
-      toast.error("Missing subscription ID");
+      toast.error("Abonnement-ID fehlt");
       return;
     }
     await updateMutation.mutateAsync(data);
@@ -125,13 +126,13 @@ export function SubscriptionEditDialog({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button>Edit</Button>
+        <Button>Bearbeiten</Button>
       </DialogTrigger>
       <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>Edit subscription</DialogTitle>
+          <DialogTitle>Abonnement bearbeiten</DialogTitle>
           <DialogDescription>
-            Update the subscription details for this user.
+            Aktualisieren Sie die Abonnementdetails für diesen Benutzer.
           </DialogDescription>
         </DialogHeader>
 
@@ -143,7 +144,7 @@ export function SubscriptionEditDialog({
               name="organizationId"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Organization</FormLabel>
+                  <FormLabel>Organisation</FormLabel>
                   <FormControl>
                     <UserOrganizationSelect
                       userId={userId}
@@ -170,7 +171,7 @@ export function SubscriptionEditDialog({
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a status" />
+                        <SelectValue placeholder="Status auswählen" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -200,7 +201,7 @@ export function SubscriptionEditDialog({
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a plan" />
+                        <SelectValue placeholder="Plan auswählen" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -229,7 +230,7 @@ export function SubscriptionEditDialog({
                     />
                   </FormControl>
                   <div className="space-y-1 leading-none">
-                    <FormLabel>Cancel at period end</FormLabel>
+                    <FormLabel>Am Laufzeitende kündigen</FormLabel>
                   </div>
                   <FormMessage />
                 </FormItem>
@@ -244,7 +245,7 @@ export function SubscriptionEditDialog({
                 name="periodStart"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Start date</FormLabel>
+                    <FormLabel>Startdatum</FormLabel>
                     <Popover>
                       <PopoverTrigger asChild>
                         <FormControl>
@@ -256,9 +257,9 @@ export function SubscriptionEditDialog({
                             )}
                           >
                             {field.value ? (
-                              format(field.value, "PPP")
+                              format(field.value, "PPP", { locale: de })
                             ) : (
-                              <span>Pick a date</span>
+                              <span>Datum auswählen</span>
                             )}
                             <CalendarIcon className="ml-auto size-4 opacity-50" />
                           </Button>
@@ -284,7 +285,7 @@ export function SubscriptionEditDialog({
                 name="periodEnd"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>End date</FormLabel>
+                    <FormLabel>Enddatum</FormLabel>
                     <Popover>
                       <PopoverTrigger asChild>
                         <FormControl>
@@ -296,9 +297,9 @@ export function SubscriptionEditDialog({
                             )}
                           >
                             {field.value ? (
-                              format(field.value, "PPP")
+                              format(field.value, "PPP", { locale: de })
                             ) : (
-                              <span>Pick a date</span>
+                              <span>Datum auswählen</span>
                             )}
                             <CalendarIcon className="ml-auto size-4 opacity-50" />
                           </Button>
@@ -327,7 +328,7 @@ export function SubscriptionEditDialog({
                 name="trialStart"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Trial start</FormLabel>
+                    <FormLabel>Testphase-Start</FormLabel>
                     <Popover>
                       <PopoverTrigger asChild>
                         <FormControl>
@@ -339,9 +340,9 @@ export function SubscriptionEditDialog({
                             )}
                           >
                             {field.value ? (
-                              format(field.value, "PPP")
+                              format(field.value, "PPP", { locale: de })
                             ) : (
-                              <span>Pick a date</span>
+                              <span>Datum auswählen</span>
                             )}
                             <CalendarIcon className="ml-auto size-4 opacity-50" />
                           </Button>
@@ -367,7 +368,7 @@ export function SubscriptionEditDialog({
                 name="trialEnd"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Trial end</FormLabel>
+                    <FormLabel>Testphase-Ende</FormLabel>
                     <Popover>
                       <PopoverTrigger asChild>
                         <FormControl>
@@ -379,9 +380,9 @@ export function SubscriptionEditDialog({
                             )}
                           >
                             {field.value ? (
-                              format(field.value, "PPP")
+                              format(field.value, "PPP", { locale: de })
                             ) : (
-                              <span>Pick a date</span>
+                              <span>Datum auswählen</span>
                             )}
                             <CalendarIcon className="ml-auto size-4 opacity-50" />
                           </Button>
@@ -449,7 +450,7 @@ export function SubscriptionEditDialog({
                 disabled={!form.formState.isValid}
                 pending={updateMutation.isPending}
               >
-                {updateMutation.isPending ? "Updating..." : "Update"}
+                {updateMutation.isPending ? "Wird aktualisiert..." : "Aktualisieren"}
               </ActionButton>
             </DialogFooter>
           </form>

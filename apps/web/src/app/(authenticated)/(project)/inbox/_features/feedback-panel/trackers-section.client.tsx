@@ -37,7 +37,7 @@ export function TrackersSection({
   return (
     <div className="flex flex-col gap-2">
       <h4 className="text-muted-foreground text-xs font-medium uppercase">
-        Trackers
+        Tracker
       </h4>
       <div className="flex flex-col gap-2">
         {showGitHub && (

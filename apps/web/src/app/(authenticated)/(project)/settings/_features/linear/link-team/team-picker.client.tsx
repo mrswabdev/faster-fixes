@@ -33,11 +33,11 @@ type TeamPickerProps = {
 };
 
 const PRIORITY_OPTIONS: { value: 0 | 1 | 2 | 3 | 4; label: string }[] = [
-  { value: 0, label: "No priority" },
-  { value: 1, label: "Urgent" },
-  { value: 2, label: "High" },
-  { value: 3, label: "Medium" },
-  { value: 4, label: "Low" },
+  { value: 0, label: "Keine Priorität" },
+  { value: 1, label: "Dringend" },
+  { value: 2, label: "Hoch" },
+  { value: 3, label: "Mittel" },
+  { value: 4, label: "Niedrig" },
 ];
 
 export function TeamPicker({ projectId, teams }: TeamPickerProps) {
@@ -75,7 +75,7 @@ export function TeamPicker({ projectId, teams }: TeamPickerProps) {
             projectId,
           }),
         });
-        toast.success("Team linked.");
+        toast.success("Team verknüpft.");
       },
       onError: (error) => {
         form.setError("root", { message: error.message });
@@ -115,7 +115,7 @@ export function TeamPicker({ projectId, teams }: TeamPickerProps) {
               >
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select a team" />
+                    <SelectValue placeholder="Team auswählen" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
@@ -126,7 +126,7 @@ export function TeamPicker({ projectId, teams }: TeamPickerProps) {
                   ))}
                   {teams.length === 0 && (
                     <SelectItem value="_empty" disabled>
-                      No teams available
+                      Keine Teams verfügbar
                     </SelectItem>
                   )}
                 </SelectContent>
@@ -142,11 +142,11 @@ export function TeamPicker({ projectId, teams }: TeamPickerProps) {
             name="defaultStateId"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Default state for new feedback</FormLabel>
+                <FormLabel>Standardstatus für neues Feedback</FormLabel>
                 <Select value={field.value} onValueChange={field.onChange}>
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select a state" />
+                      <SelectValue placeholder="Status auswählen" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
@@ -168,7 +168,7 @@ export function TeamPicker({ projectId, teams }: TeamPickerProps) {
           name="defaultPriority"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Default priority</FormLabel>
+              <FormLabel>Standardpriorität</FormLabel>
               <Select
                 value={String(field.value)}
                 onValueChange={(value) =>
@@ -198,7 +198,7 @@ export function TeamPicker({ projectId, teams }: TeamPickerProps) {
           disabled={linkMutation.isPending}
           className="w-fit"
         >
-          {linkMutation.isPending ? "Linking..." : "Link team"}
+          {linkMutation.isPending ? "Wird verknüpft..." : "Team verknüpfen"}
         </Button>
       </form>
     </Form>

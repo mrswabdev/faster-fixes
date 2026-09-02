@@ -13,7 +13,7 @@ import { SlackIntegrationSection } from "./_features/slack/slack-integration-sec
 
 export default function IntegrationsPage() {
   return (
-    <DashboardPageContent breadcrumbs={[{ label: "Integrations" }]}>
+    <DashboardPageContent breadcrumbs={[{ label: "Integrationen" }]}>
       <div className="flex flex-col gap-12">
         <DashboardSection
           title={
@@ -22,8 +22,8 @@ export default function IntegrationsPage() {
               GitHub
             </span>
           }
-          description="Connect your GitHub account to automatically create issues from feedback."
-          cardTitle="GitHub integration"
+          description="Verbinden Sie Ihr GitHub-Konto, um automatisch Issues aus Feedback zu erstellen."
+          cardTitle="GitHub-Integration"
           cardClassName="lg:max-w-lg"
         >
           <GitHubIntegrationSection />
@@ -36,8 +36,8 @@ export default function IntegrationsPage() {
               Linear
             </span>
           }
-          description="Connect your Linear workspace to mirror feedback into Linear as issues."
-          cardTitle="Linear integration"
+          description="Verbinden Sie Ihren Linear-Workspace, um Feedback als Issues in Linear zu spiegeln."
+          cardTitle="Linear-Integration"
           cardClassName="lg:max-w-lg"
         >
           <LinearIntegrationSection />
@@ -50,8 +50,8 @@ export default function IntegrationsPage() {
               Jira
             </span>
           }
-          description="Connect your Jira Cloud site to mirror feedback into Jira as issues."
-          cardTitle="Jira integration"
+          description="Verbinden Sie Ihre Jira-Cloud-Site, um Feedback als Issues in Jira zu spiegeln."
+          cardTitle="Jira-Integration"
           cardClassName="lg:max-w-lg"
         >
           <JiraIntegrationSection />
@@ -64,8 +64,8 @@ export default function IntegrationsPage() {
               Slack
             </span>
           }
-          description="Connect your Slack workspace to get a message when new feedback arrives."
-          cardTitle="Slack integration"
+          description="Verbinden Sie Ihren Slack-Workspace, um bei neuem Feedback eine Nachricht zu erhalten."
+          cardTitle="Slack-Integration"
           cardClassName="lg:max-w-lg"
         >
           <SlackIntegrationSection />
@@ -75,21 +75,21 @@ export default function IntegrationsPage() {
           title={
             <span className="flex items-center gap-2.5">
               <McpIcon className="size-6 shrink-0" />
-              MCP Server
+              MCP-Server
             </span>
           }
           description={
             <>
-              API tokens for authenticating the Faster Fixes MCP server.{" "}
+              API-Token zur Authentifizierung des Faster Fixes MCP-Servers.{" "}
               <a
                 href="/docs/mcp/setup"
                 className="text-primary underline underline-offset-4 hover:text-primary/80"
               >
-                Setup guide
+                Einrichtungsanleitung
               </a>
             </>
           }
-          cardTitle="MCP Server"
+          cardTitle="MCP-Server"
           cardClassName="lg:max-w-lg"
         >
           <AgentTokensSection />

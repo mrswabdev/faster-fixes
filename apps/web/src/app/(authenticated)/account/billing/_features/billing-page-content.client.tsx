@@ -19,11 +19,11 @@ export function BillingPageContent({
   if (isFreePlan) {
     return (
       <DashboardPageContent
-        title="Subscribe"
-        breadcrumbs={[{ label: "My Account" }, { label: "Subscribe" }]}
+        title="Abonnieren"
+        breadcrumbs={[{ label: "Mein Konto" }, { label: "Abonnieren" }]}
       >
         <p className="text-muted-foreground mb-6">
-          Select the plan that best fits your needs.
+          Wählen Sie den Plan, der am besten zu Ihren Anforderungen passt.
         </p>
         <div className="max-w-3xl">
           <PlanSelection />
@@ -34,8 +34,8 @@ export function BillingPageContent({
 
   return (
     <DashboardPageContent
-      title="Billing"
-      breadcrumbs={[{ label: "My Account" }, { label: "Billing" }]}
+      title="Abrechnung"
+      breadcrumbs={[{ label: "Mein Konto" }, { label: "Abrechnung" }]}
     >
       <SubscriptionStatusBanner />
 

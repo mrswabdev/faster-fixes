@@ -22,17 +22,17 @@ export default async function ResetPasswordPage(props: PageParams) {
             <div className="space-y-2 text-center">
               <h1 className="flex items-center justify-center gap-2 text-2xl font-bold">
                 <CheckCircle2 className="size-5" />
-                <span>Password reset!</span>
+                <span>Passwort zurückgesetzt!</span>
               </h1>
               <p className="text-muted-foreground">
-                Your password has been reset successfully. You can now sign in
-                with your new password.
+                Ihr Passwort wurde erfolgreich zurückgesetzt. Sie können sich nun mit
+                Ihrem neuen Passwort anmelden.
               </p>
             </div>
 
             <div className="flex justify-center">
               <Button variant="default" className="" asChild>
-                <Link href={loginUrl}>Sign in</Link>
+                <Link href={loginUrl}>Anmelden</Link>
               </Button>
             </div>
           </div>
@@ -40,28 +40,28 @@ export default async function ResetPasswordPage(props: PageParams) {
           <>
             <Alert variant="destructive" className="mb-6">
               <AlertCircle className="size-4" />
-              <AlertTitle>Invalid or expired link</AlertTitle>
+              <AlertTitle>Ungültiger oder abgelaufener Link</AlertTitle>
               <AlertDescription>
-                The reset link you used is invalid or has expired. Please
-                request a new reset link.
+                Der verwendete Link zum Zurücksetzen ist ungültig oder abgelaufen. Bitte
+                fordern Sie einen neuen Link an.
               </AlertDescription>
             </Alert>
 
             <div className="space-y-4">
               <Button className="w-full" asChild>
-                <Link href={forgotPasswordUrl}>Request a new link</Link>
+                <Link href={forgotPasswordUrl}>Neuen Link anfordern</Link>
               </Button>
               <Button variant="outline" className="w-full" asChild>
-                <Link href={loginUrl}>Back to sign in</Link>
+                <Link href={loginUrl}>Zurück zur Anmeldung</Link>
               </Button>
             </div>
           </>
         ) : token ? (
           <div className="space-y-6">
             <div className="space-y-2 text-center">
-              <h1 className="text-2xl font-bold">Reset your password</h1>
+              <h1 className="text-2xl font-bold">Passwort zurücksetzen</h1>
               <p className="text-muted-foreground">
-                Enter your new password below to reset your account password.
+                Geben Sie unten Ihr neues Passwort ein, um das Passwort Ihres Kontos zurückzusetzen.
               </p>
             </div>
 
@@ -71,19 +71,19 @@ export default async function ResetPasswordPage(props: PageParams) {
           <>
             <Alert variant="destructive" className="mb-6">
               <AlertCircle className="size-4" />
-              <AlertTitle>Missing parameter</AlertTitle>
+              <AlertTitle>Fehlender Parameter</AlertTitle>
               <AlertDescription>
-                The reset token is missing. Please use the link provided in your
-                email or request a new link.
+                Das Token zum Zurücksetzen fehlt. Bitte verwenden Sie den Link aus
+                Ihrer E-Mail oder fordern Sie einen neuen Link an.
               </AlertDescription>
             </Alert>
 
             <div className="space-y-4">
               <Button className="w-full" asChild>
-                <Link href={forgotPasswordUrl}>Request a new link</Link>
+                <Link href={forgotPasswordUrl}>Neuen Link anfordern</Link>
               </Button>
               <Button variant="outline" className="w-full" asChild>
-                <Link href={loginUrl}>Back to sign in</Link>
+                <Link href={loginUrl}>Zurück zur Anmeldung</Link>
               </Button>
             </div>
           </>

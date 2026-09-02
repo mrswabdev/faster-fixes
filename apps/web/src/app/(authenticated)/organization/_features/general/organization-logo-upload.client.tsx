@@ -24,7 +24,7 @@ export function OrganizationLogoUpload() {
     trpc.authenticated.organization.updateLogo.mutationOptions(),
   );
 
-  const orgName = activeOrg?.name ?? "organization";
+  const orgName = activeOrg?.name ?? "Organisation";
   const orgLogo = (activeOrg as Record<string, unknown>)?.logo as
     | string
     | undefined;
@@ -58,8 +58,8 @@ export function OrganizationLogoUpload() {
       <UploadButton
         route="organization-logo"
         accept="image/png,image/jpeg,image/webp"
-        label="Change logo"
-        description="PNG, JPEG or WebP. 2 MB max."
+        label="Logo ändern"
+        description="PNG, JPEG oder WebP. Max. 2 MB."
         disabled={!activeOrg || deleteOldLogo.isPending}
         metadata={activeOrg ? { organizationId: activeOrg.id } : undefined}
         onUploadComplete={async ({ key, raw }) => {
@@ -85,13 +85,13 @@ export function OrganizationLogoUpload() {
               data: { logo: key },
             });
 
-            toast.success("Logo updated successfully");
+            toast.success("Logo erfolgreich aktualisiert");
           } catch {
-            toast.error("Error updating logo.");
+            toast.error("Fehler beim Aktualisieren des Logos.");
           }
         }}
         onError={(error) => {
-          toast.error(error.message || "Error uploading logo.");
+          toast.error(error.message || "Fehler beim Hochladen des Logos.");
         }}
       />
     </div>

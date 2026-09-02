@@ -30,13 +30,14 @@ export function ApiKeyMigrationNotice({
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-2">
         <p className="text-muted-foreground text-sm">
-          The widget now authenticates with your Project ID, shown in Project
-          information above. Existing installs that use an API key continue to
-          work.
+          Das Widget authentifiziert sich jetzt mit Ihrer Projekt-ID, die
+          oben unter Projektinformationen angezeigt wird. Bestehende
+          Installationen mit API-Token funktionieren weiterhin.
         </p>
         <p className="text-muted-foreground text-sm">
-          To migrate, update @fasterfixes/react to version 0.0.9 or later and
-          pass your Project ID via the projectId prop.
+          Aktualisieren Sie zur Migration @fasterfixes/react auf Version
+          0.0.9 oder höher und übergeben Sie Ihre Projekt-ID über die Prop
+          projectId.
         </p>
       </div>
 

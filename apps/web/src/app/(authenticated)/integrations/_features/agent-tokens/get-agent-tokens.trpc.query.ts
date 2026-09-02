@@ -17,7 +17,7 @@ export const getAgentTokens = protectedProcedure
     });
 
     if (!membership) {
-      throw new TRPCError({ code: "FORBIDDEN", message: "Access denied." });
+      throw new TRPCError({ code: "FORBIDDEN", message: "Zugriff verweigert." });
     }
 
     const tokens = await prisma.agentToken.findMany({

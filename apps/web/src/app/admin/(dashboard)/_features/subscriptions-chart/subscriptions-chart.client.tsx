@@ -35,7 +35,7 @@ export function SubscriptionsChart() {
       <Card className="lg:col-span-4">
         <CardHeader>
           <div className="flex items-center justify-between">
-            <CardTitle>Subscriptions and users by month</CardTitle>
+            <CardTitle>Abonnements und Nutzer pro Monat</CardTitle>
             <PeriodSelector />
           </div>
         </CardHeader>
@@ -44,15 +44,15 @@ export function SubscriptionsChart() {
             className="h-[300px] w-full"
             config={{
               users: {
-                label: "New users",
+                label: "Neue Nutzer",
                 color: "var(--chart-5)",
               },
               subscriptions: {
-                label: "New subscriptions",
+                label: "Neue Abonnements",
                 color: "var(--chart-1)",
               },
               revenue: {
-                label: "Revenue",
+                label: "Umsatz",
                 color: "var(--chart-2)",
               },
             }}
@@ -75,7 +75,7 @@ export function SubscriptionsChart() {
                 tick={{ fontSize: 12 }}
                 allowDecimals={false}
                 label={{
-                  value: "Users",
+                  value: "Nutzer",
                   angle: -90,
                   position: "insideLeft",
                 }}
@@ -89,7 +89,7 @@ export function SubscriptionsChart() {
                 tick={{ fontSize: 12 }}
                 allowDecimals={false}
                 label={{
-                  value: "Subscriptions",
+                  value: "Abonnements",
                   angle: 90,
                   position: "insideRight",
                 }}
@@ -103,7 +103,7 @@ export function SubscriptionsChart() {
                 tick={{ fontSize: 12 }}
                 allowDecimals={false}
                 label={{
-                  value: "Revenue (€)",
+                  value: "Umsatz (€)",
                   angle: 90,
                   position: "right",
                 }}
@@ -152,14 +152,14 @@ export function SubscriptionsChart() {
                             />
                             <span className="text-muted-foreground">
                               {entry.name === "users"
-                                ? "Users:"
+                                ? "Nutzer:"
                                 : entry.name === "subscriptions"
-                                  ? "Subscriptions:"
-                                  : "Revenue:"}
+                                  ? "Abonnements:"
+                                  : "Umsatz:"}
                             </span>
                             <span className="font-medium">
                               {entry.name === "revenue"
-                                ? new Intl.NumberFormat("fr-FR", {
+                                ? new Intl.NumberFormat("de-DE", {
                                     style: "currency",
                                     currency: "EUR",
                                   }).format(entry.value as number)
@@ -197,11 +197,11 @@ function SubscriptionsChartError() {
   return (
     <Card className="border-destructive/50 lg:col-span-4">
       <CardHeader>
-        <CardTitle>Subscriptions and users by month</CardTitle>
+        <CardTitle>Abonnements und Nutzer pro Monat</CardTitle>
       </CardHeader>
       <CardContent className="pt-6">
         <p className="text-destructive text-sm">
-          Failed to load statistics
+          Statistiken konnten nicht geladen werden
         </p>
       </CardContent>
     </Card>

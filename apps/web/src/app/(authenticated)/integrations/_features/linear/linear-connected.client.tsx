@@ -33,7 +33,7 @@ export function LinearConnected({ installation }: LinearConnectedProps) {
           queryKey:
             trpc.authenticated.integrations.linear.getInstallation.queryKey(),
         });
-        toast.success("Linear disconnected.");
+        toast.success("Linear-Verbindung getrennt.");
       },
       onError: (error) => {
         toast.error(error.message);
@@ -46,11 +46,11 @@ export function LinearConnected({ installation }: LinearConnectedProps) {
       <div className="flex flex-col">
         <span className="font-medium">{installation.linearOrgName}</span>
         <span className="text-muted-foreground text-sm">
-          Connected
+          Verbunden
           {installation.installedByName
-            ? ` by ${installation.installedByName}`
+            ? ` von ${installation.installedByName}`
             : ""}{" "}
-          on{" "}
+          am{" "}
           {new Date(installation.createdAt).toLocaleDateString("en-US", {
             month: "short",
             day: "numeric",
@@ -66,7 +66,7 @@ export function LinearConnected({ installation }: LinearConnectedProps) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Manage on Linear
+            Auf Linear verwalten
             <ExternalLink className="ml-1 size-3" />
           </a>
         </Button>
@@ -74,21 +74,22 @@ export function LinearConnected({ installation }: LinearConnectedProps) {
         <AlertDialog>
           <AlertDialogTrigger asChild>
             <Button variant="destructive" size="sm">
-              Disconnect
+              Trennen
             </Button>
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
-              <AlertDialogTitle>Disconnect Linear?</AlertDialogTitle>
+              <AlertDialogTitle>Linear-Verbindung trennen?</AlertDialogTitle>
               <AlertDialogDescription>
-                This will remove the connection and unlink all teams from your
-                projects. Existing Linear issues will not be deleted.
+                Dadurch wird die Verbindung entfernt und alle Teams werden
+                von Ihren Projekten getrennt. Bestehende Linear-Issues
+                werden nicht gelöscht.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogCancel>Abbrechen</AlertDialogCancel>
               <AlertDialogAction onClick={() => disconnectMutation.mutate()}>
-                Disconnect
+                Trennen
               </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>

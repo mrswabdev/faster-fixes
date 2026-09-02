@@ -28,15 +28,15 @@ export const DeleteUserButton = ({ userId }: DeleteUserButtonProps) => {
 
   const deleteUserMutation = useMutation(trpc.admin.users.delete.mutationOptions({
     onSuccess: () => {
-      toast.success("Success", {
-        description: "User deleted successfully",
+      toast.success("Erfolg", {
+        description: "Benutzer erfolgreich gelöscht",
       });
       queryClient.invalidateQueries(trpc.admin.users.list.queryFilter());
       router.push("/admin/users");
     },
     onError: (error) => {
-      toast.error("Error", {
-        description: error.message || "An error occurred",
+      toast.error("Fehler", {
+        description: error.message || "Ein Fehler ist aufgetreten",
       });
     },
   }));
@@ -52,27 +52,27 @@ export const DeleteUserButton = ({ userId }: DeleteUserButtonProps) => {
           variant="destructive"
           disabled={deleteUserMutation.isPending}
         >
-          Delete account
+          Konto löschen
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>
-            Are you sure you want to delete this user?
+Sind Sie sicher, dass Sie diesen Benutzer löschen möchten?
           </AlertDialogTitle>
           <AlertDialogDescription>
-            This action is irreversible. It will delete the user account and all
-            associated data from our servers.
+            Diese Aktion ist unwiderruflich. Sie löscht das Benutzerkonto und
+            alle zugehörigen Daten von unseren Servern.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel>Abbrechen</AlertDialogCancel>
           <AlertDialogAction
             onClick={handleDelete}
             disabled={deleteUserMutation.isPending}
             className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
           >
-            {deleteUserMutation.isPending ? "Deleting..." : "Delete"}
+            {deleteUserMutation.isPending ? "Wird gelöscht..." : "Löschen"}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

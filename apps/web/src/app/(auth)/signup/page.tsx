@@ -6,8 +6,8 @@ import { redirect } from "next/navigation";
 import { SignupForm } from "./_features/signup-form/signup-form.client";
 
 export const metadata: Metadata = {
-  title: "Sign Up",
-  description: "Create your account",
+  title: "Registrieren",
+  description: "Erstellen Sie Ihr Konto",
 };
 
 export default async function SignupPage() {
@@ -23,20 +23,20 @@ export default async function SignupPage() {
       <div className="w-full max-w-sm">
         <div className="space-y-6">
           <div className="space-y-2 text-center">
-            <h1 className="text-2xl font-bold">Create your account</h1>
+            <h1 className="text-2xl font-bold">Ihr Konto erstellen</h1>
           </div>
 
           <SignupForm />
 
           <div className="text-center text-sm">
             <span className="text-muted-foreground">
-              Already have an account?{" "}
+              Bereits ein Konto?{" "}
             </span>
             <Link
               href="/login"
               className="font-medium text-primary hover:underline"
             >
-              Sign in
+              Anmelden
             </Link>
           </div>
         </div>

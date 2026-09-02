@@ -8,7 +8,7 @@ export const getCurrentEmail = protectedProcedure.query(async ({ ctx }) => {
   if (!userId) {
     throw new TRPCError({
       code: "UNAUTHORIZED",
-      message: "You must be signed in",
+      message: "Sie müssen angemeldet sein",
     });
   }
 
@@ -23,7 +23,7 @@ export const getCurrentEmail = protectedProcedure.query(async ({ ctx }) => {
   if (!user) {
     throw new TRPCError({
       code: "NOT_FOUND",
-      message: "User not found",
+      message: "Benutzer nicht gefunden",
     });
   }
 

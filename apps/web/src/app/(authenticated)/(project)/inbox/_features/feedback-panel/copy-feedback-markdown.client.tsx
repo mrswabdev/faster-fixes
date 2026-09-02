@@ -19,7 +19,7 @@ export function CopyFeedbackMarkdown({ feedback }: CopyFeedbackMarkdownProps) {
 
   return (
     <CopyButton content={markdown} variant="outline" size="sm">
-      Copy markdown
+      Markdown kopieren
     </CopyButton>
   );
 }

@@ -25,7 +25,7 @@ export async function UserInformationCard({
   return (
     <Card className="">
       <CardHeader>
-        <p className="text-muted-foreground text-sm">Informations</p>
+        <p className="text-muted-foreground text-sm">Informationen</p>
         <CardTitle>{username}</CardTitle>
         <EmailInformation userId={userId} />
       </CardHeader>

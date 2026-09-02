@@ -84,7 +84,7 @@ export function JiraProjectPicker({
             projectId,
           }),
         });
-        toast.success("Jira project linked.");
+        toast.success("Jira-Projekt verknüpft.");
       },
       onError: (error) => {
         form.setError("root", { message: error.message });
@@ -108,7 +108,7 @@ export function JiraProjectPicker({
           name="jiraProjectId"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Jira project</FormLabel>
+              <FormLabel>Jira-Projekt</FormLabel>
               <Select
                 value={field.value}
                 onValueChange={(value) => {
@@ -125,7 +125,7 @@ export function JiraProjectPicker({
               >
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select a Jira project" />
+                    <SelectValue placeholder="Jira-Projekt auswählen" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
@@ -136,7 +136,7 @@ export function JiraProjectPicker({
                   ))}
                   {jiraProjects.length === 0 && (
                     <SelectItem value="_empty" disabled>
-                      No Jira projects available
+                      Keine Jira-Projekte verfügbar
                     </SelectItem>
                   )}
                 </SelectContent>
@@ -152,7 +152,7 @@ export function JiraProjectPicker({
             name="issueTypeId"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Issue type</FormLabel>
+                <FormLabel>Issue-Typ</FormLabel>
                 <Select
                   value={field.value}
                   onValueChange={(value) => {
@@ -167,8 +167,8 @@ export function JiraProjectPicker({
                       <SelectValue
                         placeholder={
                           issueTypesQuery.isPending
-                            ? "Loading issue types..."
-                            : "Select an issue type"
+                            ? "Issue-Typen werden geladen..."
+                            : "Issue-Typ auswählen"
                         }
                       />
                     </SelectTrigger>
@@ -198,7 +198,9 @@ export function JiraProjectPicker({
           disabled={linkMutation.isPending}
           className="w-fit"
         >
-          {linkMutation.isPending ? "Linking..." : "Link Jira project"}
+          {linkMutation.isPending
+            ? "Wird verknüpft..."
+            : "Jira-Projekt verknüpfen"}
         </Button>
       </form>
     </Form>

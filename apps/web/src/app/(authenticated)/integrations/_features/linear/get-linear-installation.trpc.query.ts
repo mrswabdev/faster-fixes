@@ -16,7 +16,7 @@ export const getLinearInstallation = protectedProcedure.query(
     if (!activeOrganization) {
       throw new TRPCError({
         code: "BAD_REQUEST",
-        message: "No active organization.",
+        message: "Keine aktive Organisation.",
       });
     }
 
@@ -28,7 +28,7 @@ export const getLinearInstallation = protectedProcedure.query(
     });
 
     if (!membership) {
-      throw new TRPCError({ code: "FORBIDDEN", message: "Access denied." });
+      throw new TRPCError({ code: "FORBIDDEN", message: "Zugriff verweigert." });
     }
 
     const installation = await prisma.linearInstallation.findUnique({

@@ -47,7 +47,7 @@ export function DeleteProjectButton({ projectId }: DeleteProjectButtonProps) {
           queryKey: trpc.authenticated.projects.list.queryKey(),
         });
         router.push("/inbox");
-        toast.success("Project deleted");
+        toast.success("Projekt gelöscht");
       },
       onError: (error) => {
         toast.error(error.message);
@@ -63,20 +63,21 @@ export function DeleteProjectButton({ projectId }: DeleteProjectButtonProps) {
       <AlertDialogTrigger asChild>
         <Button variant="destructive" className="self-end">
           <Trash2 className="size-4" />
-          Delete project
+          Projekt löschen
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Delete project?</AlertDialogTitle>
+          <AlertDialogTitle>Projekt löschen?</AlertDialogTitle>
           <AlertDialogDescription>
-            This action is irreversible. All reviewers, feedback, and associated
-            files will be permanently deleted.
+            Diese Aktion ist unwiderruflich. Alle Reviewer, alles Feedback
+            und alle zugehörigen Dateien werden endgültig gelöscht.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <div className="flex flex-col gap-2">
           <Label htmlFor="confirm-delete">
-            Type <span className="font-semibold">{projectName}</span> to confirm
+            Geben Sie <span className="font-semibold">{projectName}</span> zur
+            Bestätigung ein
           </Label>
           <Input
             id="confirm-delete"
@@ -87,13 +88,13 @@ export function DeleteProjectButton({ projectId }: DeleteProjectButtonProps) {
           />
         </div>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel>Abbrechen</AlertDialogCancel>
           <AlertDialogAction
             onClick={() => deleteProject.mutate({ projectId })}
             variant="destructive"
             disabled={!isConfirmed}
           >
-            Delete
+            Löschen
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

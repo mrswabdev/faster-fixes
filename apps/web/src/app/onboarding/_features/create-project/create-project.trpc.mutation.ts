@@ -19,7 +19,7 @@ export const createOnboardingProject = protectedProcedure
     if (!membership) {
       throw new TRPCError({
         code: "FORBIDDEN",
-        message: "No organization found.",
+        message: "Keine Organisation gefunden.",
       });
     }
 

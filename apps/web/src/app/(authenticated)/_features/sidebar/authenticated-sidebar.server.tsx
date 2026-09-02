@@ -35,10 +35,10 @@ export const AuthenticatedSidebar = async ({
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild tooltip="Documentation">
+            <SidebarMenuButton asChild tooltip="Dokumentation">
               <a href="/docs" target="_blank" rel="noopener noreferrer">
                 <BookOpen />
-                <span>Documentation</span>
+                <span>Dokumentation</span>
                 <ArrowUpRight className="text-muted-foreground size-3.5" />
               </a>
             </SidebarMenuButton>

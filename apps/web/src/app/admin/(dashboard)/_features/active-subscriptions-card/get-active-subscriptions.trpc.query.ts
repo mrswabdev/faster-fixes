@@ -55,7 +55,7 @@ export const getActiveSubscriptions = adminProcedure.query(async () => {
   } catch (error) {
     throw new TRPCError({
       code: "INTERNAL_SERVER_ERROR",
-      message: "Failed to get active subscriptions",
+      message: "Aktive Abonnements konnten nicht geladen werden",
       cause: error,
     });
   }

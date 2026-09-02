@@ -30,7 +30,7 @@ export const getFeedbackOverview = adminProcedure.query(async () => {
   } catch (error) {
     throw new TRPCError({
       code: "INTERNAL_SERVER_ERROR",
-      message: "Failed to get feedback overview",
+      message: "Feedback-Übersicht konnte nicht geladen werden",
       cause: error,
     });
   }

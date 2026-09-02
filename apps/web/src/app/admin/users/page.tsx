@@ -6,11 +6,11 @@ import { CreateUserDialog } from "./_features/create-user/create-user-dialog.cli
 export default function AdminUsersPage() {
   return (
     <DashboardPageContent
-      title="Utilisateurs"
+      title="Nutzer"
       actions={<CreateUserDialog />}
       breadcrumbs={[
         { label: "Dashboard", link: "/admin" },
-        { label: "Users", link: "/admin/users" },
+        { label: "Nutzer", link: "/admin/users" },
       ]}
     >
       <Suspense>

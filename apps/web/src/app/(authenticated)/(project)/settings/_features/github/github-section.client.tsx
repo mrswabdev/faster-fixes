@@ -45,10 +45,10 @@ export function GitHubSection({ projectId }: GitHubSectionProps) {
     return (
       <div className="flex flex-col gap-2">
         <p className="text-muted-foreground text-sm">
-          GitHub integration is available on paid plans.
+          Die GitHub-Integration ist in kostenpflichtigen Tarifen verfügbar.
         </p>
         <Button className="w-fit" asChild>
-          <a href="/account/billing">Upgrade your plan</a>
+          <a href="/account/billing">Tarif upgraden</a>
         </Button>
       </div>
     );
@@ -58,10 +58,11 @@ export function GitHubSection({ projectId }: GitHubSectionProps) {
     return (
       <div className="flex flex-col gap-2">
         <p className="text-muted-foreground text-sm">
-          Connect GitHub in organization settings to enable issue creation.
+          Verbinden Sie GitHub in den Organisationseinstellungen, um die
+          Issue-Erstellung zu aktivieren.
         </p>
         <Button variant="link" className="w-fit px-0" asChild>
-          <a href="/integrations">Go to integrations</a>
+          <a href="/integrations">Zu den Integrationen</a>
         </Button>
       </div>
     );

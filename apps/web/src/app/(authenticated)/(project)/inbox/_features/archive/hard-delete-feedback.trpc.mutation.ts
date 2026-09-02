@@ -16,13 +16,13 @@ export const hardDeleteFeedback = protectedProcedure
     });
 
     if (!feedback) {
-      throw new TRPCError({ code: "NOT_FOUND", message: "Feedback not found." });
+      throw new TRPCError({ code: "NOT_FOUND", message: "Feedback nicht gefunden." });
     }
 
     if (feedback.status !== "closed") {
       throw new TRPCError({
         code: "BAD_REQUEST",
-        message: "Only archived feedback can be permanently deleted.",
+        message: "Nur archiviertes Feedback kann dauerhaft gelöscht werden.",
       });
     }
 
@@ -34,7 +34,7 @@ export const hardDeleteFeedback = protectedProcedure
     });
 
     if (!membership) {
-      throw new TRPCError({ code: "FORBIDDEN", message: "Access denied." });
+      throw new TRPCError({ code: "FORBIDDEN", message: "Zugriff verweigert." });
     }
 
     if (feedback.screenshotId) {

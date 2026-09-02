@@ -32,8 +32,8 @@ export function StatusIndicators({ cancelAtPeriodEnd }: StatusIndicatorsProps) {
           }`}
         >
           {isBeingCanceled
-            ? "Cancels at end of billing period"
-            : "Auto-renewal"}
+            ? "Endet zum Abrechnungszeitraum"
+            : "Automatische Verlängerung"}
         </p>
       </div>
     </div>

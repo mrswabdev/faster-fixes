@@ -12,7 +12,7 @@ export const updateSubscription = adminProcedure
     if (!subscription) {
       throw new TRPCError({
         code: "NOT_FOUND",
-        message: "Subscription not found",
+        message: "Abonnement nicht gefunden",
       });
     }
 

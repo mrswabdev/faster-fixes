@@ -18,7 +18,7 @@ export const revokeUserSessions = adminProcedure
       if (!user) {
         throw new TRPCError({
           code: "UNAUTHORIZED",
-          message: "Session not found",
+          message: "Sitzung nicht gefunden",
         });
       }
 
@@ -33,7 +33,7 @@ export const revokeUserSessions = adminProcedure
       if (!result) {
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",
-          message: "Failed to revoke user sessions",
+          message: "Sitzungen des Benutzers konnten nicht widerrufen werden",
         });
       }
 
@@ -47,7 +47,7 @@ export const revokeUserSessions = adminProcedure
       throw new TRPCError({
         code: "INTERNAL_SERVER_ERROR",
         message:
-          error instanceof Error ? error.message : "Failed to revoke sessions",
+          error instanceof Error ? error.message : "Sitzungen konnten nicht widerrufen werden",
       });
     }
   });

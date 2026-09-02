@@ -27,14 +27,14 @@ export const RevokeUserSessionsButton = ({
   const revokeSessionsMutation =
     useMutation(trpc.admin.users.sessions.revoke.mutationOptions({
       onSuccess: () => {
-        toast.success("Success", {
-          description: "All user sessions have been revoked",
+        toast.success("Erfolg", {
+          description: "Alle Sitzungen des Benutzers wurden widerrufen",
         });
       },
       onError: (error) => {
-        toast.error("Error", {
+        toast.error("Fehler", {
           description:
-            error.message || "Failed to revoke user sessions",
+            error.message || "Sitzungen des Benutzers konnten nicht widerrufen werden",
         });
       },
     }));
@@ -47,29 +47,29 @@ export const RevokeUserSessionsButton = ({
     <AlertDialog>
       <AlertDialogTrigger asChild>
         <Button variant="outline" disabled={revokeSessionsMutation.isPending}>
-          Sign out from all devices
+          Von allen Geräten abmelden
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>
-            Sign out user from all devices?
+Benutzer von allen Geräten abmelden?
           </AlertDialogTitle>
           <AlertDialogDescription>
-            This will sign the user out of all active sessions across all
-            devices. The user will need to sign in again to access their
-            account.
+            Dadurch wird der Benutzer aus allen aktiven Sitzungen auf allen
+            Geräten abgemeldet. Er muss sich erneut anmelden, um wieder
+            Zugriff auf sein Konto zu erhalten.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel>Abbrechen</AlertDialogCancel>
           <AlertDialogAction
             onClick={handleRevoke}
             disabled={revokeSessionsMutation.isPending}
           >
             {revokeSessionsMutation.isPending
-              ? "Signing out..."
-              : "Sign out"}
+              ? "Wird abgemeldet..."
+              : "Abmelden"}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

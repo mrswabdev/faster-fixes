@@ -26,7 +26,7 @@ export const createLinearIssueForFeedback = protectedProcedure
     if (!feedback) {
       throw new TRPCError({
         code: "NOT_FOUND",
-        message: "Feedback not found.",
+        message: "Feedback nicht gefunden.",
       });
     }
 
@@ -38,20 +38,20 @@ export const createLinearIssueForFeedback = protectedProcedure
     });
 
     if (!membership) {
-      throw new TRPCError({ code: "FORBIDDEN", message: "Access denied." });
+      throw new TRPCError({ code: "FORBIDDEN", message: "Zugriff verweigert." });
     }
 
     if (feedback.linearIssueLink) {
       throw new TRPCError({
         code: "CONFLICT",
-        message: "A Linear issue already exists for this feedback.",
+        message: "Für dieses Feedback existiert bereits ein Linear-Issue.",
       });
     }
 
     if (!feedback.project.linearLink) {
       throw new TRPCError({
         code: "BAD_REQUEST",
-        message: "No Linear team linked to this project.",
+        message: "Kein Linear-Team mit diesem Projekt verknüpft.",
       });
     }
 

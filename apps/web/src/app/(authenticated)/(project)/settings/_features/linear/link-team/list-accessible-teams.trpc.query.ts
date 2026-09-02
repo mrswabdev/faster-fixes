@@ -18,7 +18,7 @@ export const listAccessibleLinearTeams = protectedProcedure.query(
     if (!activeOrganization) {
       throw new TRPCError({
         code: "BAD_REQUEST",
-        message: "No active organization.",
+        message: "Keine aktive Organisation.",
       });
     }
 
@@ -33,7 +33,7 @@ export const listAccessibleLinearTeams = protectedProcedure.query(
     if (!membership) {
       throw new TRPCError({
         code: "FORBIDDEN",
-        message: "Only owners and admins can list teams.",
+        message: "Nur Inhaber und Admins können Teams auflisten.",
       });
     }
 

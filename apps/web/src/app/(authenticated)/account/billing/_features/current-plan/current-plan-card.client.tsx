@@ -90,9 +90,9 @@ export function CurrentPlanCard({ organizationId }: CurrentPlanProps) {
     Errored: (
       <Card>
         <CardHeader>
-          <CardTitle>Error</CardTitle>
+          <CardTitle>Fehler</CardTitle>
           <CardDescription>
-            An error occurred while loading your plan
+            Beim Laden Ihres Plans ist ein Fehler aufgetreten
           </CardDescription>
         </CardHeader>
       </Card>
@@ -102,14 +102,14 @@ export function CurrentPlanCard({ organizationId }: CurrentPlanProps) {
         <CardContent className="pt-6">
           <Empty>
             <EmptyHeader>
-              <EmptyTitle>No active subscription</EmptyTitle>
+              <EmptyTitle>Kein aktives Abonnement</EmptyTitle>
               <EmptyDescription>
-                You don&apos;t have an active subscription at the moment
+                Sie haben derzeit kein aktives Abonnement
               </EmptyDescription>
             </EmptyHeader>
             <EmptyContent>
               <UpgradeSubscriptionDialog
-                trigger={<Button>Choose a plan</Button>}
+                trigger={<Button>Plan wählen</Button>}
               />
             </EmptyContent>
           </Empty>
@@ -120,7 +120,7 @@ export function CurrentPlanCard({ organizationId }: CurrentPlanProps) {
       const plan = SUBSCRIPTION_PLANS.find((p) => p.name === subscription.plan);
 
       const formatDate = (date: string | Date) =>
-        new Date(date).toLocaleDateString("en-US", {
+        new Date(date).toLocaleDateString("de-DE", {
           day: "numeric",
           month: "long",
           year: "numeric",
@@ -128,15 +128,15 @@ export function CurrentPlanCard({ organizationId }: CurrentPlanProps) {
 
       const billingPeriodText =
         subscription.periodStart && subscription.periodEnd
-          ? `Period from ${formatDate(subscription.periodStart)} to ${formatDate(subscription.periodEnd)}`
-          : "Billing period unavailable";
+          ? `Zeitraum vom ${formatDate(subscription.periodStart)} bis ${formatDate(subscription.periodEnd)}`
+          : "Abrechnungszeitraum nicht verfügbar";
 
       return (
         <Card>
           <CardHeader>
             <div className="flex items-center justify-between">
               <CardTitle className="text-2xl">
-                Subscription{" "}
+                Abonnement{" "}
                 <span className="capitalize">
                   {plan?.name || subscription.plan}
                 </span>

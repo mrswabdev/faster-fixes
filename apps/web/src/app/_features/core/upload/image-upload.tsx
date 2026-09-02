@@ -209,7 +209,7 @@ export function ImageUpload({
             variant="destructive"
             size="icon-xs"
             onClick={handleRemove}
-            aria-label="Remove"
+            aria-label="Entfernen"
           >
             <X />
           </Button>

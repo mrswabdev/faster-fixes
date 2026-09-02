@@ -35,7 +35,7 @@ export function UnlinkJiraProjectButton({
             projectId,
           }),
         });
-        toast.success("Jira project unlinked.");
+        toast.success("Jira-Projektverknüpfung aufgehoben.");
       },
       onError: (error) => toast.error(error.message),
     }),
@@ -46,25 +46,25 @@ export function UnlinkJiraProjectButton({
       <AlertDialogTrigger asChild>
         <Button variant="outline" size="sm" className="w-fit">
           <Unlink className="size-3" />
-          Unlink Jira project
+          Jira-Projektverknüpfung aufheben
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Unlink Jira project?</AlertDialogTitle>
+          <AlertDialogTitle>Jira-Projektverknüpfung aufheben?</AlertDialogTitle>
           <AlertDialogDescription>
-            New feedback will no longer create Jira issues. Existing issues will
-            not be deleted, and the organization stays connected to the Jira
-            site.
+            Neues Feedback erstellt keine Jira-Issues mehr. Bestehende Issues
+            werden nicht gelöscht, und die Organisation bleibt mit der
+            Jira-Site verbunden.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel>Abbrechen</AlertDialogCancel>
           <AlertDialogAction
             onClick={() => unlinkMutation.mutate({ projectId })}
             variant="destructive"
           >
-            Unlink
+            Verknüpfung aufheben
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

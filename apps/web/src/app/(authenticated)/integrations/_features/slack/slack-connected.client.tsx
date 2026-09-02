@@ -32,7 +32,7 @@ export function SlackConnected({ installation }: SlackConnectedProps) {
           queryKey:
             trpc.authenticated.integrations.slack.getInstallation.queryKey(),
         });
-        toast.success("Slack disconnected.");
+        toast.success("Slack-Verbindung getrennt.");
       },
       onError: (error) => {
         toast.error(error.message);
@@ -45,11 +45,11 @@ export function SlackConnected({ installation }: SlackConnectedProps) {
       <div className="flex flex-col">
         <span className="font-medium">{installation.teamName}</span>
         <span className="text-muted-foreground text-sm">
-          Connected
+          Verbunden
           {installation.installedByName
-            ? ` by ${installation.installedByName}`
+            ? ` von ${installation.installedByName}`
             : ""}{" "}
-          on{" "}
+          am{" "}
           {new Date(installation.createdAt).toLocaleDateString("en-US", {
             month: "short",
             day: "numeric",
@@ -62,21 +62,22 @@ export function SlackConnected({ installation }: SlackConnectedProps) {
         <AlertDialog>
           <AlertDialogTrigger asChild>
             <Button variant="destructive" size="sm">
-              Disconnect
+              Trennen
             </Button>
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
-              <AlertDialogTitle>Disconnect Slack?</AlertDialogTitle>
+              <AlertDialogTitle>Slack-Verbindung trennen?</AlertDialogTitle>
               <AlertDialogDescription>
-                This will remove the connection and stop all Slack
-                notifications. Existing messages in Slack are not deleted.
+                Dadurch wird die Verbindung entfernt und alle
+                Slack-Benachrichtigungen werden gestoppt. Bestehende
+                Nachrichten in Slack werden nicht gelöscht.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogCancel>Abbrechen</AlertDialogCancel>
               <AlertDialogAction onClick={() => disconnectMutation.mutate()}>
-                Disconnect
+                Trennen
               </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>

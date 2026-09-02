@@ -33,9 +33,10 @@ export function SettingsPage() {
           <EmptyMedia variant="icon">
             <FolderOpen />
           </EmptyMedia>
-          <EmptyTitle>Select a project</EmptyTitle>
+          <EmptyTitle>Projekt auswählen</EmptyTitle>
           <EmptyDescription>
-            Choose a project from the sidebar to manage its settings.
+            Wählen Sie ein Projekt aus der Seitenleiste, um dessen
+            Einstellungen zu verwalten.
           </EmptyDescription>
         </EmptyHeader>
       </Empty>
@@ -44,7 +45,7 @@ export function SettingsPage() {
 
   return (
     <DashboardPageContent
-      breadcrumbs={[{ label: "Settings" }]}
+      breadcrumbs={[{ label: "Einstellungen" }]}
     >
       <ProjectSettingsTab projectId={activeProject.id} />
     </DashboardPageContent>

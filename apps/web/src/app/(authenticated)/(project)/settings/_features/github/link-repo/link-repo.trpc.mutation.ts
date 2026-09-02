@@ -17,7 +17,7 @@ export const linkRepo = planAwareProcedure
     });
 
     if (!project) {
-      throw new TRPCError({ code: "NOT_FOUND", message: "Project not found." });
+      throw new TRPCError({ code: "NOT_FOUND", message: "Projekt nicht gefunden." });
     }
 
     const membership = await prisma.member.findFirst({
@@ -31,7 +31,7 @@ export const linkRepo = planAwareProcedure
     if (!membership) {
       throw new TRPCError({
         code: "FORBIDDEN",
-        message: "Only owners and admins can link repositories.",
+        message: "Nur Inhaber und Admins können Repositories verknüpfen.",
       });
     }
 
@@ -42,7 +42,7 @@ export const linkRepo = planAwareProcedure
     if (!installation) {
       throw new TRPCError({
         code: "BAD_REQUEST",
-        message: "No GitHub installation found. Connect GitHub first.",
+        message: "Keine GitHub-Installation gefunden. Verbinden Sie zuerst GitHub.",
       });
     }
 

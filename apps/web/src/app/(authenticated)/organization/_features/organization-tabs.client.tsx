@@ -28,9 +28,9 @@ export function OrganizationTabs() {
     return (
       <div className="flex flex-col gap-12">
         <DashboardSection
-          title="Leave organization"
-          description="Leave this organization if you no longer wish to be a member"
-          cardTitle="Leave organization"
+          title="Organisation verlassen"
+          description="Verlassen Sie diese Organisation, wenn Sie nicht mehr Mitglied sein möchten"
+          cardTitle="Organisation verlassen"
           cardClassName="lg:max-w-md"
         >
           <LeaveOrganizationSection />
@@ -43,8 +43,8 @@ export function OrganizationTabs() {
     <Tabs value={tab} onValueChange={setTab}>
       <div className="flex flex-wrap items-center justify-between gap-2">
         <TabsList>
-          <TabsTrigger value="general">General</TabsTrigger>
-          <TabsTrigger value="members">Members</TabsTrigger>
+          <TabsTrigger value="general">Allgemein</TabsTrigger>
+          <TabsTrigger value="members">Mitglieder</TabsTrigger>
         </TabsList>
 
         {tab === "members" && <InviteMemberButton />}

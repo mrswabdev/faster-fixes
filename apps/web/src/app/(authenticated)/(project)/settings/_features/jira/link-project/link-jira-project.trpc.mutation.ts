@@ -37,7 +37,7 @@ export const linkJiraProject = planAwareProcedure
     if (blockingFields.length > 0) {
       throw new TRPCError({
         code: "BAD_REQUEST",
-        message: `This issue type requires fields Faster Fixes cannot fill: ${blockingFields.join(", ")}. Make them optional in Jira, or choose another issue type.`,
+        message: `Dieser Issue-Typ erfordert Felder, die AgencyDock Feedback nicht ausfüllen kann: ${blockingFields.join(", ")}. Machen Sie diese in Jira optional oder wählen Sie einen anderen Issue-Typ.`,
       });
     }
 

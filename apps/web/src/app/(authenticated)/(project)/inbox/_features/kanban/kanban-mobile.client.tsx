@@ -74,7 +74,7 @@ export function KanbanMobile({
                 }
                 onCheckedChange={() => onToggleSelectAll(col.id, itemIds)}
               />
-              <span className="text-muted-foreground text-xs">Select all</span>
+              <span className="text-muted-foreground text-xs">Alle auswählen</span>
             </div>
 
             {toolbar}
@@ -83,7 +83,7 @@ export function KanbanMobile({
               <div className="flex flex-col gap-2">
                 {items.length === 0 ? (
                   <div className="text-muted-foreground py-8 text-center text-sm">
-                    No items
+                    Keine Einträge
                   </div>
                 ) : (
                   items.map((item) => (

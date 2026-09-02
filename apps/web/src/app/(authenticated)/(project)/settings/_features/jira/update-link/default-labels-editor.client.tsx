@@ -41,7 +41,7 @@ export function DefaultLabelsEditor({
             projectId,
           }),
         });
-        toast.success("Default labels updated.");
+        toast.success("Standard-Labels aktualisiert.");
       },
       onError: (error) => toast.error(error.message),
     }),
@@ -50,7 +50,7 @@ export function DefaultLabelsEditor({
   return (
     <div className="flex flex-col gap-2">
       <Label htmlFor="jira-default-labels" className="text-sm">
-        Default labels
+        Standard-Labels
       </Label>
       <Input
         id="jira-default-labels"
@@ -59,11 +59,11 @@ export function DefaultLabelsEditor({
         placeholder="faster-fixes, triage"
       />
       <p className="text-muted-foreground text-xs">
-        Comma-separated. Labels cannot contain spaces.
+        Durch Komma getrennt. Labels dürfen keine Leerzeichen enthalten.
       </p>
       {invalidLabels.length > 0 && (
         <p className="text-destructive text-xs">
-          Remove spaces from: {invalidLabels.join(", ")}
+          Leerzeichen entfernen aus: {invalidLabels.join(", ")}
         </p>
       )}
       <Button
@@ -75,7 +75,7 @@ export function DefaultLabelsEditor({
           updateMutation.mutate({ projectId, defaultLabels: parsed })
         }
       >
-        {updateMutation.isPending ? "Saving..." : "Save labels"}
+        {updateMutation.isPending ? "Wird gespeichert..." : "Labels speichern"}
       </Button>
     </div>
   );

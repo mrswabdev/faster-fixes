@@ -72,15 +72,15 @@ export function CreateReviewerDialog({
       <DialogTrigger asChild>
         <Button size="sm">
           <Plus className="size-4" />
-          Add reviewer
+          Reviewer hinzufügen
         </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>New reviewer</DialogTitle>
+          <DialogTitle>Neuer Reviewer</DialogTitle>
           <DialogDescription>
-            Enter your client&apos;s name. A unique share link will be
-            generated.
+            Geben Sie den Namen Ihres Kunden ein. Ein eindeutiger
+            Freigabe-Link wird generiert.
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -101,7 +101,7 @@ export function CreateReviewerDialog({
                   <FormLabel>Name</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Marie - CEO"
+                      placeholder="Marie - Geschäftsführerin"
                       disabled={createReviewer.isPending}
                       {...field}
                     />
@@ -115,7 +115,7 @@ export function CreateReviewerDialog({
               disabled={createReviewer.isPending}
               className="self-end"
             >
-              {createReviewer.isPending ? "Creating..." : "Create"}
+              {createReviewer.isPending ? "Wird erstellt..." : "Erstellen"}
             </Button>
           </form>
         </Form>

@@ -24,7 +24,7 @@ export function CopySelectedMarkdown({ items }: CopySelectedMarkdownProps) {
       size="sm"
       className="h-7 text-xs"
     >
-      Copy markdown
+      Markdown kopieren
     </CopyButton>
   );
 }

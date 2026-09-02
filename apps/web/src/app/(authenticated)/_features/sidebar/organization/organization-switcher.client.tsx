@@ -58,7 +58,7 @@ export function OrganizationSwitcher() {
     return <OrganizationSwitcherLoading />;
   }
 
-  const orgName = activeOrg?.name ?? "organization";
+  const orgName = activeOrg?.name ?? "Organisation";
   const orgLogo = (activeOrg as Record<string, unknown>)?.logo as
     | string
     | undefined;
@@ -97,7 +97,7 @@ export function OrganizationSwitcher() {
               align="start"
               sideOffset={4}
             >
-              <DropdownMenuLabel>Organizations</DropdownMenuLabel>
+              <DropdownMenuLabel>Organisationen</DropdownMenuLabel>
               <DropdownMenuGroup>
                 {organizations?.map((org) => {
                   const orgAny = org as Record<string, unknown>;
@@ -134,14 +134,14 @@ export function OrganizationSwitcher() {
               <DropdownMenuSeparator />
               <DropdownMenuItem onSelect={() => setCreateDialogOpen(true)}>
                 <Plus className="mr-2 size-4" />
-                Create organization
+                Organisation erstellen
               </DropdownMenuItem>
 
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild>
                 <Link href="/organization" className="flex items-center">
                   <Settings2 className="mr-2 size-4" />
-                  Settings
+                  Einstellungen
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
@@ -150,7 +150,7 @@ export function OrganizationSwitcher() {
                   className="flex items-center"
                 >
                   <Mail className="mr-2 size-4" />
-                  My invitations
+                  Meine Einladungen
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>

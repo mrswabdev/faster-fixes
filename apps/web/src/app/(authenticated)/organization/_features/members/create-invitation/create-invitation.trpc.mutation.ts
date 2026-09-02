@@ -24,7 +24,7 @@ export const createInvitation = planAwareProcedure
       throw new TRPCError({
         code: "FORBIDDEN",
         message:
-          "You do not have permission to invite members.",
+          "Sie haben keine Berechtigung, Mitglieder einzuladen.",
       });
     }
 
@@ -48,7 +48,7 @@ export const createInvitation = planAwareProcedure
       }
       throw new TRPCError({
         code: "INTERNAL_SERVER_ERROR",
-        message: "Error sending invitation.",
+        message: "Fehler beim Senden der Einladung.",
       });
     }
   });

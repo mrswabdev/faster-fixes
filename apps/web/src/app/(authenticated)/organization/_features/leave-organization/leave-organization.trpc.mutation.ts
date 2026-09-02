@@ -19,7 +19,7 @@ export const leaveOrganization = protectedProcedure
     if (!membership) {
       throw new TRPCError({
         code: "NOT_FOUND",
-        message: "You are not a member of this organization.",
+        message: "Sie sind kein Mitglied dieser Organisation.",
       });
     }
 
@@ -27,7 +27,7 @@ export const leaveOrganization = protectedProcedure
       throw new TRPCError({
         code: "FORBIDDEN",
         message:
-          "The owner cannot leave the organization. Transfer ownership or delete the organization.",
+          "Der Inhaber kann die Organisation nicht verlassen. Übertragen Sie die Inhaberschaft oder löschen Sie die Organisation.",
       });
     }
 

@@ -27,7 +27,7 @@ export function OnboardingWizard() {
         setCurrentStep(2);
       },
       onError: (err) => {
-        setError(err.message || "Something went wrong. Please try again.");
+        setError(err.message || "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.");
       },
     }),
   );

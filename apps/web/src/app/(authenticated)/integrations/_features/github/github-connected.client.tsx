@@ -39,7 +39,7 @@ export function GitHubConnected({ installation }: GitHubConnectedProps) {
           queryKey:
             trpc.authenticated.integrations.github.getInstallation.queryKey(),
         });
-        toast.success("GitHub disconnected.");
+        toast.success("GitHub-Verbindung getrennt.");
       },
       onError: (error) => {
         toast.error(error.message);
@@ -65,7 +65,7 @@ export function GitHubConnected({ installation }: GitHubConnectedProps) {
             <Badge variant="secondary">{installation.accountType}</Badge>
           </div>
           <span className="text-muted-foreground text-sm">
-            Connected{installation.installedByName ? ` by ${installation.installedByName}` : ""} on{" "}
+            Verbunden{installation.installedByName ? ` von ${installation.installedByName}` : ""} am{" "}
             {new Date(installation.createdAt).toLocaleDateString("en-US", {
               month: "short",
               day: "numeric",
@@ -82,7 +82,7 @@ export function GitHubConnected({ installation }: GitHubConnectedProps) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Manage on GitHub
+            Auf GitHub verwalten
             <ExternalLink className="ml-1 size-3" />
           </a>
         </Button>
@@ -90,21 +90,22 @@ export function GitHubConnected({ installation }: GitHubConnectedProps) {
         <AlertDialog>
           <AlertDialogTrigger asChild>
             <Button variant="destructive" size="sm">
-              Disconnect
+              Trennen
             </Button>
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
-              <AlertDialogTitle>Disconnect GitHub?</AlertDialogTitle>
+              <AlertDialogTitle>GitHub-Verbindung trennen?</AlertDialogTitle>
               <AlertDialogDescription>
-                This will remove the connection and unlink all repositories from
-                your projects. Existing GitHub issues will not be deleted.
+                Dadurch wird die Verbindung entfernt und alle Repositories
+                werden von Ihren Projekten getrennt. Bestehende
+                GitHub-Issues werden nicht gelöscht.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogCancel>Abbrechen</AlertDialogCancel>
               <AlertDialogAction onClick={() => disconnectMutation.mutate()}>
-                Disconnect
+                Trennen
               </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>

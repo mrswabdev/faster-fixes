@@ -18,7 +18,7 @@ export const getFeedbackDiagnostics = protectedProcedure
     });
 
     if (!project) {
-      throw new TRPCError({ code: "NOT_FOUND", message: "Project not found." });
+      throw new TRPCError({ code: "NOT_FOUND", message: "Projekt nicht gefunden." });
     }
 
     const membership = await prisma.member.findFirst({
@@ -29,7 +29,7 @@ export const getFeedbackDiagnostics = protectedProcedure
     });
 
     if (!membership) {
-      throw new TRPCError({ code: "FORBIDDEN", message: "Access denied." });
+      throw new TRPCError({ code: "FORBIDDEN", message: "Zugriff verweigert." });
     }
 
     const feedback = await prisma.feedback.findFirst({
@@ -40,7 +40,7 @@ export const getFeedbackDiagnostics = protectedProcedure
     if (!feedback) {
       throw new TRPCError({
         code: "NOT_FOUND",
-        message: "Feedback not found.",
+        message: "Feedback nicht gefunden.",
       });
     }
 

@@ -53,7 +53,7 @@ export const getPastInvoices = protectedProcedure.query(async ({ ctx }) => {
   } catch (error) {
     throw new TRPCError({
       code: "INTERNAL_SERVER_ERROR",
-      message: "Failed to retrieve invoices.",
+      message: "Rechnungen konnten nicht abgerufen werden.",
       cause: error,
     });
   }

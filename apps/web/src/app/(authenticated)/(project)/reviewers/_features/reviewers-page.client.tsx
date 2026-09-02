@@ -33,9 +33,10 @@ export function ReviewersPage() {
           <EmptyMedia variant="icon">
             <FolderOpen />
           </EmptyMedia>
-          <EmptyTitle>Select a project</EmptyTitle>
+          <EmptyTitle>Projekt auswählen</EmptyTitle>
           <EmptyDescription>
-            Choose a project from the sidebar to manage its reviewers.
+            Wählen Sie ein Projekt aus der Seitenleiste, um dessen Reviewer zu
+            verwalten.
           </EmptyDescription>
         </EmptyHeader>
       </Empty>
@@ -44,7 +45,7 @@ export function ReviewersPage() {
 
   return (
     <DashboardPageContent
-      breadcrumbs={[{ label: "Reviewers" }]}
+      breadcrumbs={[{ label: "Reviewer" }]}
     >
       <ReviewersTab projectId={activeProject.id} />
     </DashboardPageContent>

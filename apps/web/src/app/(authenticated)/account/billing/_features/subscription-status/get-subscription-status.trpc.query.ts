@@ -32,7 +32,7 @@ export const getSubscriptionStatus = protectedProcedure.query(
     } catch (error) {
       throw new TRPCError({
         code: "INTERNAL_SERVER_ERROR",
-        message: "Failed to fetch subscription status",
+        message: "Abonnementstatus konnte nicht geladen werden",
         cause: error,
       });
     }

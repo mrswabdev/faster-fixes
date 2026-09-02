@@ -33,7 +33,7 @@ export function UnlinkTeamButton({ projectId }: UnlinkTeamButtonProps) {
             projectId,
           }),
         });
-        toast.success("Team unlinked.");
+        toast.success("Team-Verknüpfung aufgehoben.");
       },
       onError: (error) => toast.error(error.message),
     }),
@@ -44,24 +44,24 @@ export function UnlinkTeamButton({ projectId }: UnlinkTeamButtonProps) {
       <AlertDialogTrigger asChild>
         <Button variant="outline" size="sm" className="w-fit">
           <Unlink className="size-3" />
-          Unlink team
+          Team-Verknüpfung aufheben
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Unlink team?</AlertDialogTitle>
+          <AlertDialogTitle>Team-Verknüpfung aufheben?</AlertDialogTitle>
           <AlertDialogDescription>
-            New feedback will no longer create Linear issues. Existing issues
-            will not be deleted.
+            Neues Feedback erstellt keine Linear-Issues mehr. Bestehende
+            Issues werden nicht gelöscht.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel>Abbrechen</AlertDialogCancel>
           <AlertDialogAction
             onClick={() => unlinkMutation.mutate({ projectId })}
             variant="destructive"
           >
-            Unlink
+            Verknüpfung aufheben
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

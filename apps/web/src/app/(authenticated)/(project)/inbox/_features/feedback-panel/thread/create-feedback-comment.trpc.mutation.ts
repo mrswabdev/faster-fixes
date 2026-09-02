@@ -16,7 +16,7 @@ export const createFeedbackComment = protectedProcedure
       include: { project: { select: { id: true, organizationId: true } } },
     });
     if (!feedback) {
-      throw new TRPCError({ code: "NOT_FOUND", message: "Feedback not found." });
+      throw new TRPCError({ code: "NOT_FOUND", message: "Feedback nicht gefunden." });
     }
 
     const membership = await prisma.member.findFirst({
@@ -26,7 +26,7 @@ export const createFeedbackComment = protectedProcedure
       },
     });
     if (!membership) {
-      throw new TRPCError({ code: "FORBIDDEN", message: "Access denied." });
+      throw new TRPCError({ code: "FORBIDDEN", message: "Zugriff verweigert." });
     }
 
     // The presign route generates keys under this exact prefix; anything else
@@ -34,7 +34,7 @@ export const createFeedbackComment = protectedProcedure
     const expectedPrefix = `feedback-attachments/${feedback.project.id}/`;
     for (const attachment of input.attachments) {
       if (!attachment.key.startsWith(expectedPrefix)) {
-        throw new TRPCError({ code: "FORBIDDEN", message: "Invalid attachment key." });
+        throw new TRPCError({ code: "FORBIDDEN", message: "Ungültiger Anhang-Schlüssel." });
       }
     }
 
