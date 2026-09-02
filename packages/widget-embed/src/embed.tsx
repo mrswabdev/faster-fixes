@@ -3,15 +3,30 @@ import { FeedbackProvider } from "@fasterfixes/react";
 import type { WidgetPosition } from "@fasterfixes/core";
 
 // document.currentScript is only valid during initial synchronous execution,
-// so capture it before any async boundary.
-const script = document.currentScript as HTMLScriptElement | null;
+// so capture it before any async boundary. Page optimizers (e.g. FlyingPress
+// on cached pages) may strip data-* attributes or re-inject the tag, so the
+// query string of the script URL is the survivable config channel and the
+// tag is also findable by its src.
+const script =
+  (document.currentScript as HTMLScriptElement | null) ??
+  document.querySelector<HTMLScriptElement>('script[src*="/widget.js"]');
 const dataset = script?.dataset ?? {};
+const srcParams = (() => {
+  try {
+    return script?.src ? new URL(script.src).searchParams : null;
+  } catch {
+    return null;
+  }
+})();
 
-const projectId = dataset.projectId;
+const projectId = dataset.projectId || srcParams?.get("pid") || undefined;
+const position = dataset.position || srcParams?.get("position") || undefined;
+const color = dataset.color || srcParams?.get("color") || undefined;
 // Default the API origin to wherever this bundle is served from — the embed
 // works against any self-hosted instance without extra configuration.
 const apiOrigin =
   dataset.apiOrigin ||
+  srcParams?.get("origin") ||
   (script?.src ? new URL(script.src).origin : undefined);
 
 const MOUNT_ID = "fasterfixes-widget-root";
@@ -19,7 +34,7 @@ const MOUNT_ID = "fasterfixes-widget-root";
 function mount() {
   if (!projectId) {
     console.warn(
-      "[FasterFixes] Missing data-project-id on the embed <script> tag.",
+      "[FasterFixes] Missing project id — set data-project-id on the embed <script> tag or a ?pid= query param on its src.",
     );
     return;
   }
@@ -33,8 +48,8 @@ function mount() {
     <FeedbackProvider
       projectId={projectId}
       apiOrigin={apiOrigin}
-      color={dataset.color}
-      position={dataset.position as WidgetPosition | undefined}
+      color={color}
+      position={position as WidgetPosition | undefined}
     >
       {null}
     </FeedbackProvider>,
