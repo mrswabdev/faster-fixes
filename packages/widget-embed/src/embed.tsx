@@ -19,7 +19,27 @@ const srcParams = (() => {
   }
 })();
 
-const projectId = dataset.projectId || srcParams?.get("pid") || undefined;
+// Last-resort fallback: remember the id once resolved, so stale cached pages
+// whose optimizer stripped every config channel still mount after the
+// reviewer has visited any working page (the share link always works).
+const STORAGE_KEY_PROJECT = "ff_project_id";
+const storedProjectId = (() => {
+  try {
+    return localStorage.getItem(STORAGE_KEY_PROJECT) ?? undefined;
+  } catch {
+    return undefined;
+  }
+})();
+
+const projectId =
+  dataset.projectId || srcParams?.get("pid") || storedProjectId || undefined;
+if (projectId && projectId !== storedProjectId) {
+  try {
+    localStorage.setItem(STORAGE_KEY_PROJECT, projectId);
+  } catch {
+    // storage unavailable
+  }
+}
 const position = dataset.position || srcParams?.get("position") || undefined;
 const color = dataset.color || srcParams?.get("color") || undefined;
 // Default the API origin to wherever this bundle is served from — the embed
