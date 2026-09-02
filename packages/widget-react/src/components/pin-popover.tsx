@@ -214,7 +214,7 @@ export function PinPopover() {
               display: "inline-block",
             }}
           />
-          <span style={{ fontSize: 12, color: "#71717a" }}>
+          <span style={{ fontSize: 12, color: "#6b7280" }}>
             {currentFeedback.reviewer.name}
           </span>
         </div>

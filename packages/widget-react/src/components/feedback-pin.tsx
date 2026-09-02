@@ -2,7 +2,8 @@ import { useCallback, useEffect, useState } from "react";
 import { STATUS_COLORS, resolveElement } from "@fasterfixes/core";
 import type { FeedbackItem, FeedbackStatus, SelectorStrategies } from "@fasterfixes/core";
 import { useFeedbackContext } from "../context.js";
-import { pinStyle } from "../styles.js";
+import { Z_WIDGET } from "../styles.js";
+import { PIN_MARKER_SIZE, PinMarker } from "./pin-marker.js";
 import {
   clamp,
   getPinAnchor,
@@ -21,24 +22,12 @@ type PinPosition = {
   left: number;
 };
 
-const PinIcon = () => (
-  <svg
-    width="12"
-    height="12"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    stroke="none"
-  >
-    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-  </svg>
-);
+const PIN_SIZE = PIN_MARKER_SIZE;
 
 export function FeedbackPin({ item }: FeedbackPinProps) {
   const { classNames, setActiveFeedback, activeFeedback, setHighlightSelector } =
     useFeedbackContext();
   const [position, setPosition] = useState<PinPosition | null>(null);
-
-  const PIN_SIZE = 24;
 
   const updatePosition = useCallback(() => {
     const metadata = item.metadata as Record<string, unknown> | null;
@@ -65,16 +54,13 @@ export function FeedbackPin({ item }: FeedbackPinProps) {
       const mode: PinPlacementMode =
         storedPlacement?.mode ?? (targetKind === "normal" ? "document" : "viewport");
 
-      // Horizontal: prefer the click side for newer pins, otherwise use the element edge.
-      let left = anchorX + 4;
-      if (left + PIN_SIZE > vw) {
-        left = anchorX - PIN_SIZE - 4;
-      }
-      left = clamp(left, 0, vw - PIN_SIZE);
+      // Teardrop tip sits on the anchor point: center horizontally, full
+      // height above the anchor.
+      const left = clamp(anchorX - PIN_SIZE / 2, 0, vw - PIN_SIZE);
 
-      let top = pinAnchor ? anchorY - PIN_SIZE / 2 : rect.top;
-      if (!pinAnchor && top + PIN_SIZE > vh) {
-        top = rect.bottom - PIN_SIZE;
+      let top = pinAnchor ? anchorY - PIN_SIZE : rect.top - PIN_SIZE;
+      if (!pinAnchor && top < 0) {
+        top = rect.bottom;
       }
       top = mode === "viewport" ? clamp(top, 0, vh - PIN_SIZE) : top;
 
@@ -100,16 +86,16 @@ export function FeedbackPin({ item }: FeedbackPinProps) {
       if (storedPlacement?.mode === "document" && storedPlacement.documentPoint) {
         setPosition({
           mode: "document",
-          top: storedPlacement.documentPoint.y,
-          left: storedPlacement.documentPoint.x,
+          top: storedPlacement.documentPoint.y - PIN_SIZE,
+          left: storedPlacement.documentPoint.x - PIN_SIZE / 2,
         });
         return;
       }
 
       setPosition({
         mode: "viewport",
-        top: item.clickY,
-        left: item.clickX,
+        top: item.clickY - PIN_SIZE,
+        left: item.clickX - PIN_SIZE / 2,
       });
       return;
     }
@@ -151,13 +137,19 @@ export function FeedbackPin({ item }: FeedbackPinProps) {
   return (
     <button
       type="button"
-      className={`ff-pin ${classNames.pin ?? ""}`}
+      className={`ff-pin ff-widget-focusable ${classNames.pin ?? ""}`}
       style={{
-        ...pinStyle(statusColor),
+        width: PIN_SIZE,
+        height: PIN_SIZE,
+        padding: 0,
+        border: "none",
+        backgroundColor: "transparent",
+        cursor: "pointer",
+        zIndex: Z_WIDGET - 1,
+        pointerEvents: "auto",
         position: position.mode === "document" ? "absolute" : "fixed",
         top: position.top,
         left: position.left,
-        transform: isActive ? "scale(1.2)" : "scale(1)",
       }}
       data-ff-widget
       data-ff-pin-mode={position.mode}
@@ -179,7 +171,7 @@ export function FeedbackPin({ item }: FeedbackPinProps) {
       }}
       aria-label={`Feedback: ${item.comment.slice(0, 50)}`}
     >
-      <PinIcon />
+      <PinMarker statusColor={statusColor} isActive={isActive} />
     </button>
   );
 }

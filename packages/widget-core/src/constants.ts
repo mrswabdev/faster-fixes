@@ -44,6 +44,16 @@ export const DEFAULT_LABELS = {
   hideResolved: "Hide resolved",
   feedbackListTitle: "Feedback",
   emptyList: "No feedback on this page",
+  openTab: "Open",
+  resolvedTab: "Resolved",
+  thisPageSection: "This page",
+  otherPagesSection: "Other pages",
+  captureTooltip: "Leave feedback",
+  panelTooltip: "View feedback",
+  helpTooltip: "Click the camera, then click anywhere on the page to leave a comment.",
+  dragTooltip: "Move toolbar",
+  showMarkers: "Show markers",
+  hideMarkers: "Hide markers",
 } as const;
 
 export type Labels = typeof DEFAULT_LABELS;

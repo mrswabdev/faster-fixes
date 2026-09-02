@@ -26,7 +26,12 @@ export type ClassNames = {
   errorState?: string;
   feedbackList?: string;
   feedbackListItem?: string;
+  toolbar?: string;
+  panel?: string;
+  panelCard?: string;
 };
+
+export type PanelTab = "open" | "resolved";
 
 export type FeedbackContextValue = {
   // Core
@@ -59,9 +64,17 @@ export type FeedbackContextValue = {
   activeFeedback: FeedbackItem | null;
   setActiveFeedback: (item: FeedbackItem | null) => void;
 
-  // Resolved filter
+  // Panel tab: drives both the sheet's list and which pins render
+  panelTab: PanelTab;
+  setPanelTab: (tab: PanelTab) => void;
+
+  // Legacy aliases kept so the retired FloatingButton/FeedbackList (still
+  // type-checked, no longer rendered) and upstream code keep compiling:
+  // showResolved mirrors panelTab, showList mirrors panelOpen.
   showResolved: boolean;
   setShowResolved: (show: boolean) => void;
+  showList: boolean;
+  setShowList: (show: boolean) => void;
 
   // Element highlight (hover/active pin)
   highlightSelector: string | null;
@@ -70,8 +83,8 @@ export type FeedbackContextValue = {
   // Toolbar toggles
   showPins: boolean;
   setShowPins: (show: boolean) => void;
-  showList: boolean;
-  setShowList: (show: boolean) => void;
+  panelOpen: boolean;
+  setPanelOpen: (open: boolean) => void;
 
   // Customization
   classNames: ClassNames;

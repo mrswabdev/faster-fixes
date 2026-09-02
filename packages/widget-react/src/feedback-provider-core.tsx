@@ -18,15 +18,19 @@ import type {
   WidgetPosition,
 } from "@fasterfixes/core";
 import { FeedbackContext, type ClassNames } from "./context.js";
-import type { WidgetMode } from "./context.js";
-import { POSITION_STYLES, Z_WIDGET } from "./styles.js";
-import { FloatingButton } from "./components/floating-button.js";
+import type { PanelTab, WidgetMode } from "./context.js";
+// The retired components' position flexbox is gone with them — Toolbar and
+// FeedbackPanel dock themselves via position: fixed.
+// FloatingButton and FeedbackList are retired by the Feedbucket-style
+// redesign (Toolbar + FeedbackPanel). They stay on disk unreferenced so the
+// fork carries no diff against upstream in those files.
 import { AnnotationOverlay } from "./components/annotation-overlay.js";
 import { CommentPopover } from "./components/comment-popover.js";
 import { FeedbackPin } from "./components/feedback-pin.js";
 import { PinPopover } from "./components/pin-popover.js";
-import { FeedbackList } from "./components/feedback-list.js";
 import { ElementHighlight } from "./components/element-highlight.js";
+import { Toolbar } from "./components/toolbar.js";
+import { FeedbackPanel } from "./components/feedback-panel.js";
 
 export type FeedbackProviderCoreProps = {
   client: FeedbackClient;
@@ -78,9 +82,9 @@ export function FeedbackProviderCore({
   const [activeFeedback, setActiveFeedback] = useState<FeedbackItem | null>(
     null,
   );
-  const [showResolved, setShowResolved] = useState(false);
+  const [panelTab, setPanelTab] = useState<PanelTab>("open");
   const [showPins, setShowPins] = useState(true);
-  const [showList, setShowList] = useState(false);
+  const [panelOpen, setPanelOpen] = useState(false);
   const [highlightSelector, setHighlightSelector] = useState<string | null>(
     null,
   );
@@ -293,29 +297,28 @@ export function FeedbackProviderCore({
     };
   }, []);
 
-  const posStyle =
-    POSITION_STYLES[effectivePosition] ?? POSITION_STYLES["bottom-right"];
-
   const show = () => setIsVisible(true);
   const hide = () => {
     setIsVisible(false);
     setMode("idle");
     setActiveFeedback(null);
     setSelectedElement(null);
-    setShowList(false);
+    setPanelOpen(false);
   };
 
-  // Pins: only show feedback for the current page
+  // Pins: current page only, filtered by the panel tab so the markers on
+  // the page always mirror the list the reviewer is looking at.
   const currentPageItems = feedbackItems.filter(
     (f) => f.pageUrl === currentUrl,
   );
-  const visiblePins = showResolved
-    ? currentPageItems
-    : currentPageItems.filter(
-        (f) => f.status !== "resolved" && f.status !== "closed",
-      );
-
-  const isActive = mode !== "idle";
+  const visiblePins =
+    panelTab === "resolved"
+      ? currentPageItems.filter(
+          (f) => f.status === "resolved" || f.status === "closed",
+        )
+      : currentPageItems.filter(
+          (f) => f.status !== "resolved" && f.status !== "closed",
+        );
 
   const contextValue = {
     client,
@@ -337,12 +340,17 @@ export function FeedbackProviderCore({
     setScreenshotBlob,
     activeFeedback,
     setActiveFeedback,
-    showResolved,
-    setShowResolved,
+    panelTab,
+    setPanelTab,
+    // Legacy aliases for the retired components (see context.ts)
+    showResolved: panelTab === "resolved",
+    setShowResolved: (show: boolean) => setPanelTab(show ? "resolved" : "open"),
     showPins,
     setShowPins,
-    showList,
-    setShowList,
+    showList: panelOpen,
+    setShowList: setPanelOpen,
+    panelOpen,
+    setPanelOpen,
     highlightSelector,
     setHighlightSelector,
     screenshotCaptureRef,
@@ -378,27 +386,8 @@ export function FeedbackProviderCore({
                 <FeedbackPin key={item.id} item={item} />
               ))}
 
-            <div
-              style={{
-                position: "fixed",
-                ...posStyle,
-                display: "flex",
-                flexDirection: effectivePosition.includes("right")
-                  ? "row-reverse"
-                  : "row",
-                alignItems: effectivePosition.includes("bottom")
-                  ? "flex-end"
-                  : effectivePosition.includes("top")
-                    ? "flex-start"
-                    : "center",
-                gap: 8,
-                zIndex: Z_WIDGET,
-                pointerEvents: "auto",
-              }}
-            >
-              <FloatingButton />
-              {isActive && <FeedbackList />}
-            </div>
+            <Toolbar />
+            <FeedbackPanel />
 
             <CommentPopover />
             <PinPopover />
