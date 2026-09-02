@@ -78,3 +78,22 @@ export const ClockIcon = ({ size = 14 }: IconProps) => (
     <path d="M12 7.5V12l3 2" />
   </svg>
 );
+
+export const PaperclipIcon = ({ size = 18 }: IconProps) => (
+  <svg {...base(size)}>
+    <path d="M20 11.5l-7.8 7.8a5 5 0 0 1-7.1-7.1l8.1-8.1a3.4 3.4 0 0 1 4.8 4.8l-8.1 8.1a1.8 1.8 0 0 1-2.5-2.5l7.4-7.4" />
+  </svg>
+);
+
+export const SendIcon = ({ size = 18 }: IconProps) => (
+  <svg {...base(size)}>
+    <path d="M4.5 12L20 4.5 14.5 20l-2.8-5.7L4.5 12z" />
+    <path d="M11.7 14.3L20 4.5" />
+  </svg>
+);
+
+export const CommentBubbleIcon = ({ size = 14 }: IconProps) => (
+  <svg {...base(size)}>
+    <path d="M6 5h12a2.5 2.5 0 0 1 2.5 2.5v6A2.5 2.5 0 0 1 18 16h-5l-4 3.5V16H6a2.5 2.5 0 0 1-2.5-2.5v-6A2.5 2.5 0 0 1 6 5z" />
+  </svg>
+);

@@ -18,6 +18,34 @@ export type FeedbackReviewer = {
   name: string;
 };
 
+export type FeedbackAttachmentItem = {
+  id: string;
+  filename: string;
+  mimeType: string;
+  size: number;
+  url: string;
+};
+
+export type FeedbackCommentAuthorType = "member" | "reviewer";
+
+export type FeedbackCommentItem = {
+  id: string;
+  body: string;
+  authorType: FeedbackCommentAuthorType;
+  // null when the authoring member has left the organization
+  author: { id: string; name: string } | null;
+  createdAt: string;
+  attachments: FeedbackAttachmentItem[];
+};
+
+export type CommentListResponse = {
+  comments: FeedbackCommentItem[];
+};
+
+export type CreateCommentData = {
+  body: string;
+};
+
 export type FeedbackItem = {
   id: string;
   status: FeedbackStatus;
@@ -30,6 +58,10 @@ export type FeedbackItem = {
   reviewer: FeedbackReviewer;
   createdAt: string;
   metadata?: Record<string, unknown> | null;
+  // Optional so alternative FeedbackClient implementations and older API
+  // responses keep compiling/working.
+  commentCount?: number;
+  attachments?: FeedbackAttachmentItem[];
 };
 
 export type FeedbackListResponse = {
@@ -105,6 +137,7 @@ export interface FeedbackClient {
     data: CreateFeedbackData,
     reviewerToken: string,
     screenshot?: Blob,
+    attachments?: File[],
   ): Promise<CreateFeedbackResponse>;
   updateFeedback(
     id: string,
@@ -115,6 +148,27 @@ export interface FeedbackClient {
   attachScreenshot(
     feedbackId: string,
     screenshot: Blob,
+    reviewerToken: string,
+  ): Promise<void>;
+  getComments(
+    feedbackId: string,
+    reviewerToken: string,
+  ): Promise<CommentListResponse>;
+  createComment(
+    feedbackId: string,
+    data: CreateCommentData,
+    reviewerToken: string,
+    attachments?: File[],
+  ): Promise<FeedbackCommentItem>;
+  updateComment(
+    feedbackId: string,
+    commentId: string,
+    data: CreateCommentData,
+    reviewerToken: string,
+  ): Promise<FeedbackCommentItem>;
+  deleteComment(
+    feedbackId: string,
+    commentId: string,
     reviewerToken: string,
   ): Promise<void>;
 }

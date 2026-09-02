@@ -1,4 +1,11 @@
 import { checkRateLimit } from "@/server/api/check-rate-limit";
+import {
+  AttachmentTypeError,
+  ATTACHMENT_ASSET_SELECT,
+  mapAttachment,
+  uploadFeedbackAttachment,
+  validateAttachmentFiles,
+} from "@/server/api/feedback-attachments";
 import { resolveProject } from "@/server/api/resolve-project";
 import { validateOrigin } from "@/server/api/validate-origin";
 import { validateReviewer } from "@/server/api/validate-reviewer";
@@ -205,6 +212,37 @@ export async function POST(req: NextRequest) {
     }
   }
 
+  // Optional reviewer attachments — old widget builds simply omit the field.
+  const attachmentFiles = formData
+    .getAll("attachments")
+    .filter((f): f is File => f instanceof File);
+  const invalidAttachments = validateAttachmentFiles(attachmentFiles);
+  if (invalidAttachments) {
+    return NextResponse.json(
+      { error: invalidAttachments.error },
+      { status: invalidAttachments.status },
+    );
+  }
+  let attachmentAssetIds: string[];
+  try {
+    attachmentAssetIds = (
+      await Promise.all(
+        attachmentFiles.map((file) =>
+          uploadFeedbackAttachment({ file, projectId: project.id }),
+        ),
+      )
+    ).map((asset) => asset.id);
+  } catch (err) {
+    if (err instanceof AttachmentTypeError) {
+      return NextResponse.json({ error: err.message }, { status: 422 });
+    }
+    console.error("[feedback] attachment upload failed:", err);
+    return NextResponse.json(
+      { error: "Attachment upload failed" },
+      { status: 500 },
+    );
+  }
+
   const feedback = await prisma.feedback.create({
     data: {
       projectId: project.id,
@@ -222,10 +260,16 @@ export async function POST(req: NextRequest) {
       metadata: data.metadata,
       diagnosticTrail: data.diagnosticTrail,
       screenshotId,
+      attachments: {
+        create: attachmentAssetIds.map((assetId) => ({ assetId })),
+      },
     },
     include: {
       reviewer: { select: { id: true, name: true } },
       screenshot: { select: { key: true, provider: true, bucket: true } },
+      attachments: {
+        include: { asset: { select: ATTACHMENT_ASSET_SELECT } },
+      },
     },
   });
 
@@ -251,6 +295,8 @@ export async function POST(req: NextRequest) {
       metadata: feedback.metadata,
       reviewer: feedback.reviewer,
       createdAt: feedback.createdAt,
+      commentCount: 0,
+      attachments: await Promise.all(feedback.attachments.map(mapAttachment)),
     },
     { status: 201 },
   );
@@ -295,6 +341,10 @@ export async function GET(req: NextRequest) {
     include: {
       reviewer: { select: { id: true, name: true } },
       screenshot: { select: { key: true, provider: true, bucket: true } },
+      attachments: {
+        include: { asset: { select: ATTACHMENT_ASSET_SELECT } },
+      },
+      _count: { select: { comments: true } },
     },
   });
 
@@ -313,6 +363,8 @@ export async function GET(req: NextRequest) {
       metadata: f.metadata,
       reviewer: f.reviewer,
       createdAt: f.createdAt,
+      commentCount: f._count.comments,
+      attachments: await Promise.all(f.attachments.map(mapAttachment)),
     })),
   );
 

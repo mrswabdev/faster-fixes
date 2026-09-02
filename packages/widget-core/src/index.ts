@@ -14,6 +14,11 @@ export type {
   UpdateFeedbackResponse,
   ApiErrorResponse,
   FeedbackClient,
+  FeedbackAttachmentItem,
+  FeedbackCommentItem,
+  FeedbackCommentAuthorType,
+  CommentListResponse,
+  CreateCommentData,
   ConsoleLevel,
   ConsoleEntry,
   NetworkEntry,
@@ -33,6 +38,9 @@ export {
   DIAGNOSTICS_MAX_ENTRIES,
   DIAGNOSTICS_MAX_MESSAGE_BYTES,
   DIAGNOSTICS_REDACT_PARAMS,
+  ALLOWED_ATTACHMENT_TYPES,
+  MAX_ATTACHMENT_SIZE,
+  MAX_ATTACHMENTS_PER_MESSAGE,
 } from "./constants.js";
 export type { Labels } from "./constants.js";
 

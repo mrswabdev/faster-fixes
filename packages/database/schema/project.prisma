@@ -50,7 +50,8 @@ model Reviewer {
   token    String  @unique
   isActive Boolean @default(true)
 
-  feedback Feedback[]
+  feedback         Feedback[]
+  feedbackComments FeedbackComment[]
 
   @@index([projectId])
   @@map("reviewer")
@@ -97,6 +98,8 @@ model Feedback {
   linearIssueLink FeedbackLinearIssueLink?
   jiraIssueLink   FeedbackJiraIssueLink?
   slackMessage    FeedbackSlackMessage?
+  comments        FeedbackComment[]
+  attachments     FeedbackAttachment[]
 
   @@index([projectId])
   @@index([reviewerId])

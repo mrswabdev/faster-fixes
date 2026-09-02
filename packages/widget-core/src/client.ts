@@ -1,7 +1,10 @@
 import type {
+  CommentListResponse,
+  CreateCommentData,
   CreateFeedbackData,
   CreateFeedbackResponse,
   FeedbackClient,
+  FeedbackCommentItem,
   FeedbackListResponse,
   UpdateFeedbackData,
   UpdateFeedbackResponse,
@@ -75,11 +78,15 @@ export class FasterFixesClient implements FeedbackClient {
     data: CreateFeedbackData,
     reviewerToken: string,
     screenshot?: Blob,
+    attachments?: File[],
   ): Promise<CreateFeedbackResponse> {
     const formData = new FormData();
     formData.append("data", JSON.stringify(data));
     if (screenshot) {
       formData.append("screenshot", screenshot, "screenshot.png");
+    }
+    for (const file of attachments ?? []) {
+      formData.append("attachments", file, file.name);
     }
 
     return this.request<CreateFeedbackResponse>("/api/v1/feedback", {
@@ -87,6 +94,74 @@ export class FasterFixesClient implements FeedbackClient {
       headers: this.headers(reviewerToken),
       body: formData,
     });
+  }
+
+  async getComments(
+    feedbackId: string,
+    reviewerToken: string,
+  ): Promise<CommentListResponse> {
+    return this.request<CommentListResponse>(
+      `/api/v1/feedback/${feedbackId}/comments`,
+      {
+        method: "GET",
+        headers: this.headers(reviewerToken),
+      },
+    );
+  }
+
+  async createComment(
+    feedbackId: string,
+    data: CreateCommentData,
+    reviewerToken: string,
+    attachments?: File[],
+  ): Promise<FeedbackCommentItem> {
+    const formData = new FormData();
+    formData.append("data", JSON.stringify(data));
+    for (const file of attachments ?? []) {
+      formData.append("attachments", file, file.name);
+    }
+
+    return this.request<FeedbackCommentItem>(
+      `/api/v1/feedback/${feedbackId}/comments`,
+      {
+        method: "POST",
+        headers: this.headers(reviewerToken),
+        body: formData,
+      },
+    );
+  }
+
+  async updateComment(
+    feedbackId: string,
+    commentId: string,
+    data: CreateCommentData,
+    reviewerToken: string,
+  ): Promise<FeedbackCommentItem> {
+    return this.request<FeedbackCommentItem>(
+      `/api/v1/feedback/${feedbackId}/comments/${commentId}`,
+      {
+        method: "PUT",
+        headers: {
+          ...this.headers(reviewerToken),
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      },
+    );
+  }
+
+  async deleteComment(
+    feedbackId: string,
+    commentId: string,
+    reviewerToken: string,
+  ): Promise<void> {
+    return this.request<void>(
+      `/api/v1/feedback/${feedbackId}/comments/${commentId}`,
+      {
+        method: "DELETE",
+        headers: this.headers(reviewerToken),
+      },
+    );
   }
 
   async updateFeedback(

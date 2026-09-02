@@ -197,6 +197,92 @@ export const collapsibleHeaderStyle: React.CSSProperties = {
   fontFamily: "inherit",
 };
 
+export const attachmentChipStyle: React.CSSProperties = {
+  display: "inline-flex",
+  alignItems: "center",
+  gap: 6,
+  maxWidth: "100%",
+  padding: "4px 8px",
+  borderRadius: 6,
+  backgroundColor: THEME.hover,
+  color: THEME.text,
+  fontSize: 12,
+  lineHeight: 1.3,
+};
+
+export const attachmentThumbStyle: React.CSSProperties = {
+  width: 72,
+  height: 72,
+  objectFit: "cover",
+  borderRadius: 6,
+  border: `1px solid ${THEME.ring}`,
+  display: "block",
+};
+
+export const attachmentLinkStyle: React.CSSProperties = {
+  display: "inline-flex",
+  alignItems: "center",
+  gap: 6,
+  color: THEME.text,
+  fontSize: 12,
+  textDecoration: "underline",
+  textUnderlineOffset: 2,
+  wordBreak: "break-all",
+};
+
+export const threadBubbleStyle = (
+  isReviewer: boolean,
+): React.CSSProperties => ({
+  backgroundColor: isReviewer ? THEME.hover : "#eef2f7",
+  borderRadius: 8,
+  padding: "8px 10px",
+  fontSize: 13,
+  lineHeight: 1.45,
+  color: THEME.text,
+});
+
+export const threadMetaStyle: React.CSSProperties = {
+  display: "flex",
+  alignItems: "center",
+  gap: 6,
+  marginBottom: 3,
+  fontSize: 11,
+  color: THEME.textMuted,
+};
+
+export const teamBadgeStyle: React.CSSProperties = {
+  backgroundColor: THEME.navy,
+  color: "#fff",
+  borderRadius: 4,
+  padding: "1px 5px",
+  fontSize: 10,
+  fontWeight: 600,
+  letterSpacing: 0.2,
+};
+
+export const composerRowStyle: React.CSSProperties = {
+  display: "flex",
+  alignItems: "flex-end",
+  gap: 6,
+  marginTop: 8,
+};
+
+export const iconOnlyButtonStyle: React.CSSProperties = {
+  width: 30,
+  height: 30,
+  border: "none",
+  backgroundColor: "transparent",
+  color: THEME.textMuted,
+  borderRadius: 6,
+  cursor: "pointer",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: 0,
+  flexShrink: 0,
+  transition: "background-color 0.15s ease, color 0.15s ease",
+};
+
 export const POSITION_STYLES: Record<WidgetPosition, React.CSSProperties> = {
   "bottom-right": { bottom: 20, right: 20 },
   "bottom-left": { bottom: 20, left: 20 },

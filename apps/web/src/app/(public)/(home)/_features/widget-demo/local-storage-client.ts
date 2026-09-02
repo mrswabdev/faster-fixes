@@ -1,7 +1,10 @@
 import type {
+  CommentListResponse,
+  CreateCommentData,
   CreateFeedbackData,
   CreateFeedbackResponse,
   FeedbackClient,
+  FeedbackCommentItem,
   FeedbackItem,
   FeedbackListResponse,
   UpdateFeedbackData,
@@ -163,5 +166,45 @@ export class LocalStorageFeedbackClient implements FeedbackClient {
 
   async attachScreenshot(): Promise<void> {
     // Screenshots are intentionally disabled in the demo. No-op.
+  }
+
+  // Threads and attachments are intentionally disabled in the demo: the
+  // widget lazily loads comments only when a pin popover opens, so an empty
+  // thread renders the normal composer UI without any network needs.
+  async getComments(): Promise<CommentListResponse> {
+    return { comments: [] };
+  }
+
+  async createComment(
+    _feedbackId: string,
+    data: CreateCommentData,
+  ): Promise<FeedbackCommentItem> {
+    return {
+      id: generateId(),
+      body: data.body,
+      authorType: "reviewer",
+      author: { id: "demo-visitor", name: "You" },
+      createdAt: new Date().toISOString(),
+      attachments: [],
+    };
+  }
+
+  async updateComment(
+    _feedbackId: string,
+    commentId: string,
+    data: CreateCommentData,
+  ): Promise<FeedbackCommentItem> {
+    return {
+      id: commentId,
+      body: data.body,
+      authorType: "reviewer",
+      author: { id: "demo-visitor", name: "You" },
+      createdAt: new Date().toISOString(),
+      attachments: [],
+    };
+  }
+
+  async deleteComment(): Promise<void> {
+    // No-op in the demo.
   }
 }

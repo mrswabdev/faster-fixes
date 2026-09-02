@@ -54,6 +54,15 @@ export const DEFAULT_LABELS = {
   dragTooltip: "Move toolbar",
   showMarkers: "Show markers",
   hideMarkers: "Hide markers",
+  replyPlaceholder: "Reply...",
+  replyButton: "Reply",
+  noReplies: "No replies yet",
+  attachButton: "Attach files",
+  attachmentTooLarge: "File too large (max 10 MB)",
+  attachmentWrongType: "Only images and PDF are allowed",
+  attachmentTooMany: "Up to 4 files per message",
+  formerMember: "Former member",
+  teamBadge: "Team",
 } as const;
 
 export type Labels = typeof DEFAULT_LABELS;
@@ -63,6 +72,18 @@ export const URL_PARAM_TOKEN = "ff_token";
 
 // Diagnostic Trail (console + network capture) bounds and redaction denylist.
 // Independent ring per stream; oldest entries drop once full.
+// Attachment rules — single source of truth: the web app's API routes import
+// these same values, so client validation and server enforcement cannot drift.
+export const ALLOWED_ATTACHMENT_TYPES = [
+  "image/png",
+  "image/jpeg",
+  "image/webp",
+  "image/gif",
+  "application/pdf",
+] as const;
+export const MAX_ATTACHMENT_SIZE = 10 * 1024 * 1024;
+export const MAX_ATTACHMENTS_PER_MESSAGE = 4;
+
 export const DIAGNOSTICS_MAX_ENTRIES = 50;
 export const DIAGNOSTICS_MAX_MESSAGE_BYTES = 2048;
 

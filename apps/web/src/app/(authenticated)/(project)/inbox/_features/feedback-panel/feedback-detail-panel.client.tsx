@@ -9,8 +9,9 @@ import {
   SheetTitle,
 } from "@workspace/ui/components/sheet";
 import { format, formatDistanceToNow } from "date-fns";
-import { ExternalLink, ImageOff } from "lucide-react";
+import { ExternalLink, ImageOff, Paperclip } from "lucide-react";
 import type { GetFeedbackOutput } from "../get-feedback.trpc.query";
+import { ThreadSection } from "./thread/thread-section.client";
 import { AssigneeSelect } from "./assignee-select.client";
 import { CopyFeedbackMarkdown } from "./copy-feedback-markdown.client";
 import { ScreenshotDialog } from "./screenshot-dialog.client";
@@ -90,7 +91,44 @@ export function FeedbackDetailPanel({
             <p className="text-sm leading-relaxed whitespace-pre-wrap">
               {feedback.comment}
             </p>
+            {feedback.attachments.length > 0 && (
+              <div className="mt-2 flex flex-wrap gap-2">
+                {feedback.attachments.map((attachment) =>
+                  attachment.mimeType.startsWith("image/") ? (
+                    <a
+                      key={attachment.id}
+                      href={attachment.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={attachment.url}
+                        alt={attachment.filename}
+                        className="size-16 rounded-md border object-cover"
+                      />
+                    </a>
+                  ) : (
+                    <a
+                      key={attachment.id}
+                      href={attachment.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary inline-flex items-center gap-1 text-xs underline underline-offset-2"
+                    >
+                      <Paperclip className="size-3" />
+                      {attachment.filename}
+                    </a>
+                  ),
+                )}
+              </div>
+            )}
           </div>
+
+          <Separator />
+
+          {/* Reply thread */}
+          <ThreadSection feedbackId={feedback.id} />
 
           <Separator />
 

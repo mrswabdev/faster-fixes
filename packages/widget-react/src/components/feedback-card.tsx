@@ -1,7 +1,7 @@
 import type { FeedbackItem, FeedbackStatus } from "@fasterfixes/core";
 import { STATUS_COLORS } from "@fasterfixes/core";
 import { cardMetaStyle, cardStyle, THEME } from "../styles.js";
-import { ClockIcon } from "./widget-icons.js";
+import { ClockIcon, CommentBubbleIcon, PaperclipIcon } from "./widget-icons.js";
 
 // "just now" / "5m" / "3h" / "5d" / "2w" — coarse buckets are enough for a
 // review context; exact timestamps live in the dashboard.
@@ -77,6 +77,17 @@ export function FeedbackCard({ item, onSelect, className }: FeedbackCardProps) {
         {item.comment}
       </p>
       <div style={cardMetaStyle}>
+        {(item.attachments?.length ?? 0) > 0 && (
+          <span style={{ display: "inline-flex", alignItems: "center" }}>
+            <PaperclipIcon size={14} />
+          </span>
+        )}
+        {(item.commentCount ?? 0) > 0 && (
+          <span style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
+            <CommentBubbleIcon />
+            {item.commentCount}
+          </span>
+        )}
         <span style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
           <ClockIcon />
           {formatAge(item.createdAt)}

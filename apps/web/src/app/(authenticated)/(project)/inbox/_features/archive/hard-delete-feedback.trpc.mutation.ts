@@ -41,6 +41,21 @@ export const hardDeleteFeedback = protectedProcedure
       await deleteAsset(feedback.screenshotId);
     }
 
+    // Attachment rows cascade with the feedback/comments, but the R2 objects
+    // and Asset rows would be orphaned without this sweep.
+    const attachments = await prisma.feedbackAttachment.findMany({
+      where: {
+        OR: [
+          { feedbackId: input.feedbackId },
+          { comment: { feedbackId: input.feedbackId } },
+        ],
+      },
+      select: { assetId: true },
+    });
+    for (const attachment of attachments) {
+      await deleteAsset(attachment.assetId);
+    }
+
     await prisma.feedback.delete({
       where: { id: input.feedbackId },
     });

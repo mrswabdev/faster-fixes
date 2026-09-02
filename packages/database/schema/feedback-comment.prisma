@@ -1,0 +1,45 @@
+model FeedbackComment {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  feedbackId String
+  feedback   Feedback @relation(fields: [feedbackId], references: [id], onDelete: Cascade)
+
+  // Exactly one of memberId/reviewerId is set, matching authorType — enforced
+  // in app code because the repo's migration style avoids DB CHECK constraints.
+  // memberId is SetNull so a member leaving the org never destroys a client
+  // thread (UI renders "Former member"); reviewerId cascades, consistent with
+  // Feedback.reviewerId.
+  authorType String // "member" | "reviewer"
+  memberId   String?
+  member     Member?   @relation(fields: [memberId], references: [id], onDelete: SetNull)
+  reviewerId String?
+  reviewer   Reviewer? @relation(fields: [reviewerId], references: [id], onDelete: Cascade)
+
+  body String
+
+  attachments FeedbackAttachment[]
+
+  @@index([feedbackId])
+  @@map("feedback_comment")
+}
+
+model FeedbackAttachment {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+
+  // Exactly one of feedbackId/commentId is set (app-enforced): an attachment
+  // belongs either to the initial feedback or to one thread comment.
+  feedbackId String?
+  feedback   Feedback? @relation(fields: [feedbackId], references: [id], onDelete: Cascade)
+  commentId  String?
+  comment    FeedbackComment? @relation(fields: [commentId], references: [id], onDelete: Cascade)
+
+  assetId String
+  asset   Asset  @relation(fields: [assetId], references: [id], onDelete: Cascade)
+
+  @@index([feedbackId])
+  @@index([commentId])
+  @@map("feedback_attachment")
+}

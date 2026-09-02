@@ -44,7 +44,23 @@ export const bulkHardDeleteFeedback = protectedProcedure
       .map((f) => f.screenshotId)
       .filter((id): id is string => id !== null);
 
-    await Promise.all(screenshotIds.map((id) => deleteAsset(id)));
+    // Attachment rows cascade with the feedback/comments, but the R2 objects
+    // and Asset rows would be orphaned without this sweep.
+    const attachments = await prisma.feedbackAttachment.findMany({
+      where: {
+        OR: [
+          { feedbackId: { in: input.feedbackIds } },
+          { comment: { feedbackId: { in: input.feedbackIds } } },
+        ],
+      },
+      select: { assetId: true },
+    });
+
+    await Promise.all(
+      [...screenshotIds, ...attachments.map((a) => a.assetId)].map((id) =>
+        deleteAsset(id),
+      ),
+    );
 
     await prisma.feedback.deleteMany({
       where: { id: { in: input.feedbackIds } },

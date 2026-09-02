@@ -9,6 +9,8 @@ import {
 import { STATUS_COLORS } from "@fasterfixes/core";
 import type { FeedbackStatus } from "@fasterfixes/core";
 import { useFeedbackContext } from "../context.js";
+import { AttachmentList } from "./attachment-list.js";
+import { CommentThread } from "./comment-thread.js";
 import {
   popoverStyle,
   textareaStyle,
@@ -311,7 +313,8 @@ export function PinPopover() {
           <p style={{ margin: "0 0 10px", whiteSpace: "pre-wrap" }}>
             {currentFeedback.comment}
           </p>
-          <div style={{ display: "flex", gap: 8 }}>
+          <AttachmentList attachments={currentFeedback.attachments ?? []} />
+          <div style={{ display: "flex", gap: 8, marginTop: 10 }}>
             <button
               type="button"
               style={secondaryButtonStyle}
@@ -327,6 +330,7 @@ export function PinPopover() {
               {labels.deleteButton}
             </button>
           </div>
+          <CommentThread feedbackId={currentFeedback.id} />
         </>
       )}
     </div>

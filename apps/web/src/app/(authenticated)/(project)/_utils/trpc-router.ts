@@ -3,6 +3,8 @@ import { createJiraIssueForFeedback } from "@/app/(authenticated)/(project)/inbo
 import { createLinearIssueForFeedback } from "@/app/(authenticated)/(project)/inbox/_features/feedback-panel/create-linear-issue-for-feedback.trpc.mutation";
 import { updateFeedbackAssignee } from "@/app/(authenticated)/(project)/inbox/_features/feedback-panel/update-feedback-assignee.trpc.mutation";
 import { updateFeedbackStatus } from "@/app/(authenticated)/(project)/inbox/_features/feedback-panel/update-feedback-status.trpc.mutation";
+import { getFeedbackComments } from "@/app/(authenticated)/(project)/inbox/_features/feedback-panel/thread/get-feedback-comments.trpc.query";
+import { createFeedbackComment } from "@/app/(authenticated)/(project)/inbox/_features/feedback-panel/thread/create-feedback-comment.trpc.mutation";
 import { createProject } from "@/app/(authenticated)/_features/sidebar/project/create/create-project.trpc.mutation";
 import { router } from "@/server/trpc/trpc";
 import { bulkUpdateFeedbackStatus } from "../inbox/_features/actions-toolbar/bulk-update-feedback-status.trpc.mutation";
@@ -72,6 +74,10 @@ export const projectsRouter = router({
     createIssue: createIssueForFeedback,
     createLinearIssue: createLinearIssueForFeedback,
     createJiraIssue: createJiraIssueForFeedback,
+    comments: router({
+      list: getFeedbackComments,
+      create: createFeedbackComment,
+    }),
   }),
   github: router({
     getLink: getProjectGitHubLink,

@@ -66,6 +66,20 @@ export const getFeedback = protectedProcedure
             issueStatusCategory: true,
           },
         },
+        attachments: {
+          include: {
+            asset: {
+              select: {
+                key: true,
+                bucket: true,
+                filename: true,
+                mimeType: true,
+                size: true,
+              },
+            },
+          },
+        },
+        _count: { select: { comments: true } },
       },
     });
 
@@ -100,6 +114,16 @@ export const getFeedback = protectedProcedure
         issueLink: f.issueLink,
         linearIssueLink: f.linearIssueLink,
         jiraIssueLink: f.jiraIssueLink,
+        commentCount: f._count.comments,
+        attachments: await Promise.all(
+          f.attachments.map(async (a) => ({
+            id: a.id,
+            filename: a.asset.filename,
+            mimeType: a.asset.mimeType,
+            size: a.asset.size,
+            url: await getSignedAssetUrl(a.asset),
+          })),
+        ),
       })),
     );
   });

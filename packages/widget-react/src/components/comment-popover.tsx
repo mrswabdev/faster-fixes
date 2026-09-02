@@ -16,6 +16,11 @@ import {
   secondaryButtonStyle,
 } from "../styles.js";
 import { clamp, createPinPlacementMetadata } from "../utils.js";
+import {
+  AttachmentButton,
+  AttachmentChips,
+  useAttachmentPicker,
+} from "./attachment-picker.js";
 
 const FADEOUT_DURATION = 200;
 
@@ -41,6 +46,7 @@ export function CommentPopover() {
   const [comment, setComment] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [fadingOut, setFadingOut] = useState(false);
+  const picker = useAttachmentPicker(labels);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fadeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const frozenStyleRef = useRef<React.CSSProperties | null>(null);
@@ -66,6 +72,7 @@ export function CommentPopover() {
   function resetState() {
     setComment("");
     setError(null);
+    picker.reset();
     setFadingOut(false);
     frozenStyleRef.current = null;
     setSelectedElement(null);
@@ -133,6 +140,8 @@ export function CommentPopover() {
           ...browserInfo,
         },
         reviewerToken,
+        undefined,
+        picker.files,
       );
 
       // Upload screenshot in the background — don't block the user
@@ -262,14 +271,24 @@ export function CommentPopover() {
             disabled={mode === "submitting" || fadingOut}
             autoFocus
           />
+          <AttachmentChips
+            picker={picker}
+            disabled={mode === "submitting" || fadingOut}
+          />
           <div
             style={{
               display: "flex",
-              justifyContent: "flex-end",
+              alignItems: "center",
               gap: 8,
               marginTop: 8,
             }}
           >
+            <AttachmentButton
+              picker={picker}
+              labels={labels}
+              disabled={mode === "submitting" || fadingOut}
+            />
+            <span style={{ flex: 1 }} />
             <button
               type="button"
               style={secondaryButtonStyle}
