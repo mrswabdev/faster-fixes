@@ -1,3 +1,12 @@
 packages:
   - "apps/*"
   - "packages/*"
+
+onlyBuiltDependencies:
+  - "@prisma/engines"
+  - "@tailwindcss/oxide"
+  - core-js-pure
+  - esbuild
+  - prisma
+  - protobufjs
+  - sharp
