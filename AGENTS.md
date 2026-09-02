@@ -10,7 +10,7 @@
 - Never run production database migrations (`pnpm migrate:prod`).
 - Only run development migrations (`pnpm migrate:dev`); production migration execution is user-managed.
 - Code identifiers, comments, filenames, schemas: English only.
-- User-facing UI copy: English only. Professional, clear, and concise — match the tone of serious developer tools (e.g., Vercel, Linear, Stripe). No marketing fluff, no casual language, no exclamation marks. Prefer precise, understated wording.
+- User-facing UI copy: German (fork decision 2026-09-03 — this fork ships as the German-language AgencyDock Feedback product; upstream's English-only rule no longer applies). Professional, clear, and concise; real umlauts (ä/ö/ü/ß), never ae/oe/ue transliterations. No marketing fluff, no exclamation marks. Prefer precise, understated wording.
 - All `unstable_cache` usage must include `cacheTags` from `@/server/cache/cache-tags`.
 
 ## Code comments
