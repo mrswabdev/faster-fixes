@@ -5,10 +5,11 @@
   "description": "Self-contained <script> embed of the FasterFixes feedback widget. Bundles React and @fasterfixes/react into a single IIFE served from the app's own origin.",
   "type": "module",
   "scripts": {
-    "build": "esbuild src/embed.tsx --bundle --format=iife --minify --target=es2018 --jsx=automatic --define:process.env.NODE_ENV='\"production\"' --outfile=../../apps/web/public/widget.js"
+    "build": "esbuild src/embed.tsx --bundle --format=iife --minify --target=es2018 --jsx=automatic --define:process.env.NODE_ENV='\"production\"' --alias:react=preact/compat --alias:react-dom/client=preact/compat/client --alias:react-dom=preact/compat --alias:react/jsx-runtime=preact/jsx-runtime --outfile=../../apps/web/public/widget.js"
   },
   "dependencies": {
     "@fasterfixes/react": "workspace:*",
+    "preact": "10",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
   },

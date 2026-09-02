@@ -28,6 +28,33 @@ const nextConfig = {
           },
         ],
       },
+      // The embed script loads on every client-site pageview; without caching
+      // each view re-downloads it. 1h freshness bounds how stale a widget
+      // update can be, SWR keeps loads instant in between.
+      {
+        source: "/widget.js",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=3600, stale-while-revalidate=86400",
+          },
+        ],
+      },
+      // Widget font is fetched cross-origin from client sites: fonts require
+      // CORS, and the file is immutable enough for a long cache.
+      {
+        source: "/fonts/(.*)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*",
+          },
+        ],
+      },
     ];
   },
 
