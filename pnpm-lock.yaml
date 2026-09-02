@@ -558,6 +558,22 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
 
+  packages/widget-embed:
+    dependencies:
+      '@fasterfixes/react':
+        specifier: workspace:*
+        version: link:../widget-react
+      react:
+        specifier: 19.2.4
+        version: 19.2.4
+      react-dom:
+        specifier: 19.2.4
+        version: 19.2.4(react@19.2.4)
+    devDependencies:
+      esbuild:
+        specifier: ^0.25.0
+        version: 0.25.12
+
   packages/widget-react:
     dependencies:
       '@fasterfixes/core':
