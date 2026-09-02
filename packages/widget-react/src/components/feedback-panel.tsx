@@ -373,12 +373,12 @@ export function FeedbackPanel() {
           }}
         >
           <a
-            href="https://faster-fixes.com?ref=widget"
+            href="https://agencydock.de"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: THEME.textMuted, textDecoration: "none" }}
           >
-            Powered by FasterFixes
+            AgencyDock Feedback
           </a>
         </div>
       )}

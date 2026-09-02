@@ -28,12 +28,12 @@ export function ensureWidgetStyles() {
     .ff-toolbar-dock {
       animation: ff-toolbar-pop 200ms cubic-bezier(0.22, 1, 0.36, 1);
     }
-    .ff-toolbar-icon-btn:hover { background-color: #f3f4f6 !important; color: #111827 !important; }
-    .ff-panel-icon-btn:hover { background-color: #e9eaec !important; color: #111827 !important; }
-    .ff-card:hover { border-color: #d1d5db !important; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-    .ff-collapsible:hover { color: #111827 !important; }
+    .ff-toolbar-icon-btn:hover { background-color: #edf2fc !important; color: #11182b !important; }
+    .ff-panel-icon-btn:hover { background-color: #e2e8f4 !important; color: #11182b !important; }
+    .ff-card:hover { border-color: #c9d3e6 !important; box-shadow: 0 2px 8px rgba(17,24,43,0.06); }
+    .ff-collapsible:hover { color: #11182b !important; }
     .ff-widget-focusable:focus-visible {
-      outline: 2px solid #1f2a44;
+      outline: 2px solid #2f6bff;
       outline-offset: 2px;
     }
     .ff-toolbar-tip {
@@ -45,7 +45,7 @@ export function ensureWidgetStyles() {
       max-width: 200px;
       padding: 6px 9px;
       border-radius: 6px;
-      background: #1f2a44;
+      background: #0b1124;
       color: #ffffff;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
       font: 500 12px/1.35 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -73,6 +73,35 @@ export function ensureWidgetStyles() {
     .ff-panel-scroll::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
     @media (prefers-reduced-motion: reduce) {
       .ff-toolbar-dock, [data-ff-widget] * { animation-duration: 0.01ms !important; }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+const FONT_STYLE_ID = "ff-widget-font";
+
+/**
+ * Self-hosts Inter from the widget's own instance under the alias "FF Inter"
+ * (avoids colliding with a host-page Inter of different weights). Skipped
+ * entirely when the host page already provides Inter.
+ */
+export function ensureWidgetFont(apiOrigin?: string) {
+  if (typeof document === "undefined" || !apiOrigin) return;
+  if (document.getElementById(FONT_STYLE_ID)) return;
+  try {
+    if (document.fonts?.check('12px "Inter"')) return;
+  } catch {
+    // fonts API unavailable — fall through and define the face
+  }
+  const style = document.createElement("style");
+  style.id = FONT_STYLE_ID;
+  style.textContent = `
+    @font-face {
+      font-family: "FF Inter";
+      src: url("${apiOrigin}/fonts/inter-latin.woff2") format("woff2");
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
     }
   `;
   document.head.appendChild(style);

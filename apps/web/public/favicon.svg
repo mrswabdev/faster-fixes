@@ -1,0 +1,14 @@
+<svg width="512" height="512" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AgencyDock">
+  <defs>
+    <linearGradient id="f-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6D5BF0"/>
+      <stop offset="0.46" stop-color="#2F6BFF"/>
+      <stop offset="1" stop-color="#16C7F2"/>
+    </linearGradient>
+    <clipPath id="f-clip"><rect x="0" y="0" width="1024" height="1024" rx="208" ry="208"/></clipPath>
+  </defs>
+  <g clip-path="url(#f-clip)">
+    <rect x="0" y="0" width="1024" height="1024" fill="url(#f-grad)"/>
+    <path fill="#ffffff" fill-rule="evenodd" d="M286,300 Q286,256 330,256 L512,256 Q748,256 748,512 Q748,768 512,768 L330,768 Q286,768 286,724 Z M500,462 L614,462 Q662,462 662,512 Q662,562 614,562 L500,562 Q452,562 452,512 Q452,462 500,462 Z"/>
+  </g>
+</svg>

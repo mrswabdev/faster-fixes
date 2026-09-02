@@ -5,19 +5,21 @@ const Z_PIN = 2147483646;
 const Z_HIGHLIGHT = 2147483645;
 const SHADOW_SM = "0 2px 8px rgba(0,0,0,0.08)";
 const SHADOW_LG = "0 12px 32px rgba(0,0,0,0.12)";
-const FONT_STACK = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+// "FF Inter" is the widget's self-hosted face (injected by the provider when
+// the host page has no Inter); plain Inter matches a host-provided load.
+const FONT_STACK = '"FF Inter", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
 
-// Light theme (Feedbucket-style redesign). The dark values below in the legacy
-// factories are only referenced by the retired FloatingButton/FeedbackList.
+// Light theme, AgencyDock tokens: blue #2F6BFF accent (via --ff-accent),
+// ink/mist neutrals, midnight for badges/pins.
 export const THEME = {
   bg: "#ffffff",
-  surface: "#f9fafb",
-  ring: "#e5e7eb",
-  border: "#d1d5db",
-  text: "#111827",
-  textMuted: "#6b7280",
-  navy: "#1f2a44",
-  hover: "#f3f4f6",
+  surface: "#f6f8fd",
+  ring: "#e2e8f4",
+  border: "#c9d3e6",
+  text: "#11182b",
+  textMuted: "#64708a",
+  navy: "#0b1124",
+  hover: "#edf2fc",
   danger: "#dc2626",
 } as const;
 
@@ -38,7 +40,7 @@ export const toolbarDockStyle = (
   width: 48,
   padding: 4,
   backgroundColor: THEME.bg,
-  borderRadius: 10,
+  borderRadius: 14,
   boxShadow: `0 0 0 1px ${THEME.ring}, ${SHADOW_TOOLBAR}`,
   zIndex: Z_WIDGET,
   pointerEvents: "auto",
@@ -166,7 +168,7 @@ export const sectionRuleStyle: React.CSSProperties = {
 
 export const cardStyle: React.CSSProperties = {
   backgroundColor: THEME.bg,
-  borderRadius: 8,
+  borderRadius: 12,
   border: `1px solid ${THEME.ring}`,
   padding: "14px 16px",
   cursor: "pointer",
@@ -346,7 +348,7 @@ export const toolbarButtonStyle: React.CSSProperties = {
 
 export const popoverStyle: React.CSSProperties = {
   backgroundColor: THEME.bg,
-  borderRadius: 10,
+  borderRadius: 14,
   boxShadow: `0 0 0 1px ${THEME.ring}, ${SHADOW_LG}`,
   padding: 16,
   width: 320,

@@ -54,9 +54,9 @@ export function FeedbackPin({ item }: FeedbackPinProps) {
       const mode: PinPlacementMode =
         storedPlacement?.mode ?? (targetKind === "normal" ? "document" : "viewport");
 
-      // Teardrop tip sits on the anchor point: center horizontally, full
-      // height above the anchor.
-      const left = clamp(anchorX - PIN_SIZE / 2, 0, vw - PIN_SIZE);
+      // Speech-bubble tail tip sits on the anchor point (tail at 25% of the
+      // marker width), bubble body above the anchor.
+      const left = clamp(anchorX - PIN_SIZE * 0.25, 0, vw - PIN_SIZE);
 
       let top = pinAnchor ? anchorY - PIN_SIZE : rect.top - PIN_SIZE;
       if (!pinAnchor && top < 0) {
@@ -87,7 +87,7 @@ export function FeedbackPin({ item }: FeedbackPinProps) {
         setPosition({
           mode: "document",
           top: storedPlacement.documentPoint.y - PIN_SIZE,
-          left: storedPlacement.documentPoint.x - PIN_SIZE / 2,
+          left: storedPlacement.documentPoint.x - PIN_SIZE * 0.25,
         });
         return;
       }
@@ -95,7 +95,7 @@ export function FeedbackPin({ item }: FeedbackPinProps) {
       setPosition({
         mode: "viewport",
         top: item.clickY - PIN_SIZE,
-        left: item.clickX - PIN_SIZE / 2,
+        left: item.clickX - PIN_SIZE * 0.25,
       });
       return;
     }

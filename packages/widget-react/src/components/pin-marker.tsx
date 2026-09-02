@@ -1,5 +1,3 @@
-import { THEME } from "../styles.js";
-
 export const PIN_MARKER_SIZE = 32;
 
 type PinMarkerProps = {
@@ -7,8 +5,9 @@ type PinMarkerProps = {
   isActive: boolean;
 };
 
-// Feedbucket-style teardrop: navy drop with the tip at the anchor point;
-// the inner dot carries the feedback status color.
+// AgencyDock speech-bubble marker: rounded bubble with its tail tip on the
+// anchor point; three dots read as "comment", the middle one carries the
+// feedback status color.
 export function PinMarker({ statusColor, isActive }: PinMarkerProps) {
   return (
     <svg
@@ -17,19 +16,21 @@ export function PinMarker({ statusColor, isActive }: PinMarkerProps) {
       viewBox="0 0 32 32"
       style={{
         display: "block",
-        filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.28))",
+        filter: "drop-shadow(0 2px 4px rgba(11,17,36,0.3))",
         transform: isActive ? "scale(1.15)" : "scale(1)",
-        transformOrigin: "50% 100%",
+        transformOrigin: "25% 100%",
         transition: "transform 0.15s ease",
       }}
     >
       <path
-        d="M16 1.5c-6.35 0-11.5 5.02-11.5 11.21 0 4.1 2.25 7.4 4.9 10.03 2.1 2.08 4.48 3.83 6.6 5.76 2.12-1.93 4.5-3.68 6.6-5.76 2.65-2.63 4.9-5.93 4.9-10.03C27.5 6.52 22.35 1.5 16 1.5z"
-        fill={THEME.navy}
+        d="M7 2.5h18A5.5 5.5 0 0 1 30.5 8v10a5.5 5.5 0 0 1-5.5 5.5H13.8L8 31.2v-7.9A5.5 5.5 0 0 1 1.5 18V8A5.5 5.5 0 0 1 7 2.5z"
+        fill="#2F6BFF"
         stroke="#ffffff"
         strokeWidth="1.5"
       />
-      <circle cx="16" cy="12.7" r="4.2" fill={statusColor} />
+      <circle cx="9.5" cy="13" r="2" fill="rgba(255,255,255,0.85)" />
+      <circle cx="16" cy="13" r="2.4" fill={statusColor} stroke="#ffffff" strokeWidth="1" />
+      <circle cx="22.5" cy="13" r="2" fill="rgba(255,255,255,0.85)" />
     </svg>
   );
 }

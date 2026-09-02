@@ -1,7 +1,7 @@
-export const SITE_NAME = "FasterFixes";
-export const SITE_TAGLINE = "Website feedback widget for developers";
+export const SITE_NAME = "AgencyDock Feedback";
+export const SITE_TAGLINE = "Website-Feedback für Agenturen";
 export const SITE_META_DESCRIPTION =
-  "Open-source website feedback widget for developer teams. Clients leave visual bug reports with full technical context, delivered to your AI coding agent via MCP.";
+  "Website-Feedback-Widget von AgencyDock: Kunden hinterlassen visuelle Anmerkungen direkt auf der Website — mit Screenshots, Anhängen und technischem Kontext.";
 export const ITEMS_PER_SITEMAP = 50000; // Google's recommended limit
 
 // Publisher logo for JSON-LD. Google's Article rich-result spec requires logo

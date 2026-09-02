@@ -24,6 +24,7 @@ import type { PanelTab, WidgetMode } from "./context.js";
 // FloatingButton and FeedbackList are retired by the Feedbucket-style
 // redesign (Toolbar + FeedbackPanel). They stay on disk unreferenced so the
 // fork carries no diff against upstream in those files.
+import { ensureWidgetFont } from "./animations.js";
 import { AnnotationOverlay } from "./components/annotation-overlay.js";
 import { CommentPopover } from "./components/comment-popover.js";
 import { FeedbackPin } from "./components/feedback-pin.js";
@@ -126,6 +127,11 @@ export function FeedbackProviderCore({
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Self-hosted Inter for the widget UI (no-op when the host page has Inter).
+  useEffect(() => {
+    ensureWidgetFont(apiOrigin);
+  }, [apiOrigin]);
 
   // Diagnostic Trail: instrument console + network for the lifetime of the
   // widget. Gated by captureDiagnostics so an opted-out site never patches

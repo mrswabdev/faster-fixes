@@ -66,6 +66,15 @@ Präsentationsschicht von `packages/widget-react/` komplett umgebaut (helles The
 - Bewusst weggelassen (User-Entscheid): Video-Recording, Onboarding-Modal; Filter-Button entfällt in V1 (kein toter Button); kein Kommentar-Zähler (kein Thread-Modell)
 - **Test-Reviewer „Claude Preview"** direkt in der DB angelegt (für lokale Tests; im Dashboard unter Reviewers revokebar). Lokale Testseite: launch.json-Eintrag `widget-test` (statischer Server, Scratchpad)
 
+## Antwort-Threads + Datei-Anhänge (02.09.2026, LIVE)
+
+- **Datenmodell:** `FeedbackComment` (authorType member|reviewer; memberId SetNull „Former member", reviewerId Cascade) + generisches `FeedbackAttachment` (feedbackId XOR commentId → Asset). Migration `20260902232143_add_feedback_comments_and_attachments` (via `prisma migrate diff --from-config-datasource --to-schema schema`, rein additiv, deployed).
+- **Widget-API:** `GET/POST /api/v1/feedback/[id]/comments` (+ `PUT/DELETE .../[commentId]` nur eigene, sonst 404); POST /feedback nimmt zusätzlich `attachments`-Files (backward-kompatibel); GET liefert `commentCount` + `attachments` (signierte URLs).
+- **Sicherheit:** Magic-Byte-Sniffing serverseitig (`apps/web/src/server/api/feedback-attachments.ts`), Limits 4 Dateien × 10 MB, Typen PNG/JPG/WebP/GIF/PDF (Single Source in `widget-core/constants.ts`); Dashboard-Presign (`/api/upload` Route `feedback-attachment`) mit Key-Prefix-Check in der tRPC-Mutation. Negativ-Tests bestanden (Fake-PNG 422, Fremd-Edit 404, 5. Datei 422).
+- **Vercel-Body-Limit ~4,5 MB:** Widget komprimiert Bilder clientseitig (Canvas max 2000 px, `widget-react/utils/compress-image.ts`); echte 10-MB-Dateien bräuchten Presign-Flow im Widget (offen).
+- **UI:** Widget-Thread im Pin-Popover (lazy, Composer mit Clip, Team-Badge), Anhang-Picker in beiden Composern, 💬/📎-Badges auf Karten; Dashboard-Thread-Sektion im Detail-Panel (`inbox/_features/feedback-panel/thread/`), Hard-Delete räumt Anhang-Assets mit.
+- Keine Benachrichtigung bei Antworten (kein Resend/Inngest) — Kunde sieht Antworten beim nächsten Besuch; Event `feedback/comment-created` wird als Hook bereits gefeuert.
+
 ## Aktueller Status (02.09.2026)
 
 ✅ Fork + Clone, lokaler Build grün, Vercel-Projekt konfiguriert, **Produktions-Deploy live**.

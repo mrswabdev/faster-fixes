@@ -7,16 +7,23 @@ import "@workspace/ui/globals.css";
 import { RootProvider } from "fumadocs-ui/provider/next";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
-import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import Script from "next/script";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { Toaster } from "sonner";
 import { StopImpersonateButton } from "./_features/auth/stop-impersonate-button/stop-impersonate-button.client";
 import { ConsentProvider } from "./_features/c15t/consent-provider";
 
-const fontSans = Space_Grotesk({
+// AgencyDock brand pairing: Inter carries UI text, Space Grotesk the display
+// voice (headings, wordmark).
+const fontSans = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
+});
+
+const fontDisplay = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-display",
 });
 
 const fontMono = JetBrains_Mono({
@@ -44,7 +51,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.svg",
     apple: "/apple-touch-icon.png",
   },
 };
@@ -56,13 +63,13 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="de"
       suppressHydrationWarning
       className="scroll-smooth"
       data-scroll-behavior="smooth"
     >
       <body
-        className={`${fontSans.variable} ${fontMono.variable} flex min-h-screen flex-col font-sans antialiased`}
+        className={`${fontSans.variable} ${fontDisplay.variable} ${fontMono.variable} flex min-h-screen flex-col font-sans antialiased`}
       >
         <ThemeProvider
           attribute="class"

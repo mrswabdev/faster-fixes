@@ -1,0 +1,10 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AgencyDock Zeichen">
+  <defs>
+    <linearGradient id="m" x1="0.1" y1="0.1" x2="0.9" y2="0.9">
+      <stop offset="0" stop-color="#6D5BF0"/>
+      <stop offset="0.5" stop-color="#2F6BFF"/>
+      <stop offset="1" stop-color="#16C7F2"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#m)" fill-rule="evenodd" d="M300,317 Q300,277 340,277 L512,277 Q724,277 724,512 Q724,747 512,747 L340,747 Q300,747 300,707 Z M508,478 L602,478 Q636,478 636,512 Q636,546 602,546 L508,546 Q474,546 474,512 Q474,478 508,478 Z"/>
+</svg>
